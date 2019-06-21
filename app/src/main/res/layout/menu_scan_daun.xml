@@ -9,21 +9,35 @@
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="60dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/icon_scan"/>
+        <Button
+            android:id="@+id/btn_tambah_area"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="@color/button1"
+            android:text="Tambahkan Area"
+            android:textColor="#fff"/>
 
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:text="Scan Daun"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="60dp"
+        android:orientation="vertical">
+
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="@color/button2"
+            android:text="Tambahkan Area"
+            android:textColor="#fff"/>
 
     </LinearLayout>
 
