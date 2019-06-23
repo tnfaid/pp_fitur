@@ -1,0 +1,83 @@
+package titik.com.pantaupadi.Adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import titik.com.pantaupadi.MainActivity;
+import titik.com.pantaupadi.Menu.Beranda;
+import titik.com.pantaupadi.Model.BerandaModel;
+import titik.com.pantaupadi.R;
+
+public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHolder> {
+
+    private Context mContext;
+    private List<BerandaModel> listBeranda;
+    View mView;
+
+    public BerandaAdapter(Context mContext, ArrayList<BerandaModel> orderList) {
+        this.mContext = mContext;
+        this.listBeranda = orderList;
+
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_beranda, parent, false);
+        ViewHolder vh = new ViewHolder(mView); // pass the view to View Holder
+        return vh;
+    }
+
+    public int getItemCount() {
+        return listBeranda.size();
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        holder.mNama.setText(listBeranda.get(position).getNama());
+        holder.mTanggal.setText(listBeranda.get(position).getTanggal());
+        holder.mAuthor.setText(listBeranda.get(position).getAuthor());
+        //holder.mDateOrder.setText(orderList.get(position).getDateOrder());
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext.getApplicationContext(), MainActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView mNama;
+        ImageView mGambar;
+        TextView mTanggal;
+        TextView mAuthor;
+        CardView mCardView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mNama = itemView.findViewById(R.id.tv_jenis_penyakit);
+            mGambar = itemView.findViewById(R.id.gambar);
+            mTanggal = itemView.findViewById(R.id.tv_tanggal);
+            mAuthor = itemView.findViewById(R.id.tv_author);
+            mCardView = itemView.findViewById(R.id.card_view);
+        }
+    }
+
+    public void clear(){
+        listBeranda.clear();
+        notifyDataSetChanged();
+    }
+
+}

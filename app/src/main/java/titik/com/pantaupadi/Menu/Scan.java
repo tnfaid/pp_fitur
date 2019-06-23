@@ -4,28 +4,24 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
-import org.w3c.dom.Text;
-
+import titik.com.pantaupadi.Data.DataPenyakit;
 import titik.com.pantaupadi.R;
 
 public class Scan extends Fragment {
 
+    DataPenyakit dPenyakit;
+    String[] namaP;
+    String[] namaD;
     Button btn_tambah_area, btn_monitor_area;
 
     private static final String TAG = Scan.class.getSimpleName();
@@ -45,12 +41,18 @@ public class Scan extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        view = (RelativeLayout)inflater.inflate(R.layout.menu_profile, container, false);
+        view = (RelativeLayout)inflater.inflate(R.layout.menu_scan_daun, container, false);
+
+        dPenyakit = new DataPenyakit();
+        namaP = dPenyakit.getNama();
+        namaD = dPenyakit.getDeskripsi();
 
         btn_tambah_area = (Button)view.findViewById(R.id.btn_tambah_area);
         btn_tambah_area.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), namaP[0] + namaD[0],
+                        Toast.LENGTH_LONG).show();
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getActivity());
                 View mView = layoutInflaterAndroid.inflate(R.layout.scan_tambahkan_area,null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getActivity());
