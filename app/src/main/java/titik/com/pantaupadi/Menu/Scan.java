@@ -1,9 +1,14 @@
 package titik.com.pantaupadi.Menu;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,74 +22,59 @@ import com.synnapps.carouselview.CarouselView;
 import titik.com.pantaupadi.Data.DataPenyakit;
 import titik.com.pantaupadi.R;
 
+import static android.app.Activity.RESULT_OK;
+
 public class Scan extends Fragment {
 
-    DataPenyakit dPenyakit;
-    String[] namaP;
-    String[] namaD;
-    Button btn_tambah_area, btn_monitor_area;
-
-    private static final String TAG = Scan.class.getSimpleName();
-    private static final String TAG_SUCCESS = "value";
-
-    TextView area, tanggal;
-
-    int success;
-    private static final String TAG_MESSAGE = "message";
-    final Scan c = this;
-
-    CarouselView carouselView;
-
-    public Scan() {}
-
     RelativeLayout view;
+    public Scan(){}
+
+    final int CAMERA_CAPTURE = 1;
+    private Uri picUri;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        view = (RelativeLayout)inflater.inflate(R.layout.menu_scan_daun, container, false);
+        view = (RelativeLayout) inflater.inflate(R.layout.menu_scan_daun, container, false);
 
-        dPenyakit = new DataPenyakit();
-        namaP = dPenyakit.getNama();
-        namaD = dPenyakit.getDeskripsi();
+        getActivity().setTitle("Scan Daun");
+        Log.e("Scan Daun", "Scan Daun");
 
-        btn_tambah_area = (Button)view.findViewById(R.id.btn_tambah_area);
-        btn_tambah_area.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), namaP[0] + namaD[0],
-                        Toast.LENGTH_LONG).show();
-                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getActivity());
-                View mView = layoutInflaterAndroid.inflate(R.layout.scan_tambahkan_area,null);
-                AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getActivity());
-                alertDialogBuilderUserInput.setView(mView);
+        try{
+            Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(captureIntent, CAMERA_CAPTURE);
+        }
 
-                area = (TextView) mView.findViewById(R.id.txt_nama_area);
-                alertDialogBuilderUserInput
-                        .setCancelable(false)
-                        .setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //tulis disni
-                    }
-                })
-                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
-                alertDialogAndroid.show();
-
-            }
-        });
+        catch(ActivityNotFoundException anfe){
+            String errorMessage = "Whoops - Perangkat anda tidak mendukung untuk mengambil gambar!";
+            Toast toast = Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
         return view;
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (resultCode == RESULT_OK){
+            if(requestCode == CAMERA_CAPTURE){
+                picUri = data.getData();
+                performCrop();
+            }
+        }
+    }
 
+    private void performCrop() {
+        try {
 
+        }
+
+        catch(ActivityNotFoundException anfe){
+//            menampilkan sebuah error message
+            String errorMessage = " oopss - perangkat anda tidak mendukung aksi crop";
+            Toast toast = Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 
 
 }
