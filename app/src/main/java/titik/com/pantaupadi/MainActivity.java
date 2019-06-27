@@ -17,6 +17,7 @@ import android.widget.Toast;
 import titik.com.pantaupadi.Menu.Beranda;
 import titik.com.pantaupadi.Menu.Profil;
 import titik.com.pantaupadi.Menu.Scan;
+import titik.com.pantaupadi.Menu.ScanDaun;
 import titik.com.pantaupadi.Menu.Tambah;
 import titik.com.pantaupadi.Menu.Tentang;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         // tampilan default awal ketika aplikasii dijalankan
         if (savedInstanceState == null) {
-            fragment = new Beranda();
+            fragment = new Scan();
             callFragment(fragment);
         }
 

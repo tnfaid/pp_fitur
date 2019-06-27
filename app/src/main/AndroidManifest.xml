@@ -2,16 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="titik.com.pantaupadi">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- see OpenCV Android Samples -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppThemeMonoChrome">
+
+        <activity
+            android:name=".ui.DetectionDetailsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Detection Details"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullscreenTheme" />
+
+        <activity android:name=".ui.SettingsActivity"
+            android:label="Detection Details"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+
+
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,5 +54,7 @@
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>
