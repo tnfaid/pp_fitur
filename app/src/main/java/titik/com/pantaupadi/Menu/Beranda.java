@@ -22,7 +22,7 @@ import titik.com.pantaupadi.R;
 
 public class Beranda extends Fragment {
     DataPenyakit dataPenyakit;
-    String[] arrNama, arrDeskripsi;
+    String[] arrNama, arrDeskripsi, arrTanggal;
 
 //
     BerandaAdapter myAdapter;
@@ -39,6 +39,7 @@ public class Beranda extends Fragment {
         dataPenyakit = new DataPenyakit();
         arrNama = dataPenyakit.getNama();
         arrDeskripsi = dataPenyakit.getDeskripsi();
+        arrTanggal = dataPenyakit.getTanggal();
         LoadData();
 //        namaPenyakit.setText(arrNama[1]);
 //        tanggal.setText(arrDeskripsi[1]);
@@ -55,6 +56,7 @@ public class Beranda extends Fragment {
                 //item.setGambar(jsonObject.getString("username"));
                 //item.setTanggal(jsonObject.getString("address"));
                 item.setAuthor(arrDeskripsi[i]);
+                item.setTanggal(arrTanggal[i]);
                 mItems.add(item);
             }
 

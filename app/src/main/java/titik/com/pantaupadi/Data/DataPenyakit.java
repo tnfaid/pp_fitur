@@ -15,6 +15,13 @@ public class DataPenyakit {
                             "Deskripsi 5"
     };
 
+    String []tanggal = { "20 july 2019",
+            "20 july 2019",
+            "20 july 2019",
+            "20 july 2019",
+            "20 july 2019",
+    };
+
     public String[] getNama() {
         return nama;
     }
@@ -30,4 +37,8 @@ public class DataPenyakit {
     public void setDeskripsi(String[] deskripsi) {
         this.deskripsi = deskripsi;
     }
+
+    public String[] getTanggal() {return tanggal;}
+
+    public void setTanggal(String[] tanggal){this.tanggal = tanggal ;}
 }

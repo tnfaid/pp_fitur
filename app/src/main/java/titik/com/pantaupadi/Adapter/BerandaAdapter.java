@@ -67,11 +67,11 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mNama = itemView.findViewById(R.id.tv_jenis_penyakit);
-            mGambar = itemView.findViewById(R.id.gambar);
-            mTanggal = itemView.findViewById(R.id.tv_tanggal);
+            mNama = itemView.findViewById(R.id.tv_nama_penyakit);
+            mGambar = itemView.findViewById(R.id.imageView);
+            mTanggal = itemView.findViewById(R.id.tv_tanggal_unggah);
             mAuthor = itemView.findViewById(R.id.tv_author);
-            mCardView = itemView.findViewById(R.id.card_view);
+            mCardView = itemView.findViewById(R.id.beranda_penyakit);
         }
     }
 
