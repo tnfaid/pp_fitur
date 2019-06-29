@@ -11,19 +11,55 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_gravity="center"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_info"/>
+            android:text="Aplikasi PantauPadi"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="0dp"
+            />
 
         <TextView
-            android:layout_gravity="center"
+            android:id="@+id/tv_versi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:text="v1.0"
+            android:layout_gravity="center"
+            android:textSize="24dp"
             android:textStyle="bold"
-            android:text="Tentang"/>
+            android:layout_marginBottom="50dp"
+            />
+
+        <ImageView
+            android:layout_width="152dp"
+            android:layout_height="206dp"
+            android:layout_gravity="center"
+            android:background="@drawable/icon_padi" />
+
+        <Button
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/green_rounded_all"
+            android:text="Cek Update"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/cara_penggunaan"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/green_muda_rounded_all"
+            android:text="Cara Penggunaan"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
