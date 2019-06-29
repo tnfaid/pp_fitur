@@ -38,27 +38,28 @@
             android:layout_gravity="center"
             android:background="@drawable/icon_padi" />
 
-        <Button
-            android:layout_width="303dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/green_rounded_all"
-            android:text="Cek Update"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+        <!--<Button-->
+            <!--android:layout_width="303dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:background="@drawable/green_rounded_all"-->
+            <!--android:text="Cek Update"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16dp"-->
+            <!--android:textStyle="bold" />-->
 
         <Button
             android:id="@+id/cara_penggunaan"
             android:layout_width="303dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/green_muda_rounded_all"
             android:text="Cara Penggunaan"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="12dp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/memberDetail"
+        android:background="@drawable/green_rounded_top"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txt_memberName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lah Enggeh"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <com.alespero.expandablecardview.ExpandableCardView
+        android:layout_below="@+id/memberDetail"
+        android:id="@+id/keluhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Detail"
+        app:icon="@drawable/ic_menu_gallery"
+        app:inner_view="@layout/list"
+        app:expandOnClick="true"/>
+
+</RelativeLayout>
