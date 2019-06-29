@@ -6,5 +6,13 @@
 
     <color name="button1">#9cca3c</color>
     <color name="button2">#5c803b</color>
+    <color name="backgroundHijau">#5a823b</color>
     <color name="greyText">#a7a9ac</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="editTextBG">#DADADA</color>
+
+    <color name="textColor">#6e6e6e</color>
 </resources>

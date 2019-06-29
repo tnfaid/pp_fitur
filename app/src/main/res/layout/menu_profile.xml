@@ -2,29 +2,321 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <RelativeLayout
+            android:id="@+id/gambar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/btn_camera"
+            android:layout_width="32dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/icon_camera" />
+
+        <ImageButton
+            android:id="@+id/btn_galeri"
+            android:layout_width="32dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="100dp"
+            android:layout_toRightOf="@id/btn_camera"
+            android:background="@drawable/icon_galeri" />
+
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_gambar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/ic_menu_gallery"
+                android:paddingLeft="0dp" />
+        </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/form_general"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_profile"/>
-
-        <TextView
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:text="Profile"/>
+            android:layout_marginTop="0dp"
+            android:paddingTop="170dp">
 
-    </LinearLayout>
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/general"
+                android:layout_width="362dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="General"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/general"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="240dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center|left"
+                    android:text="EMAIL"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/icon_email"
+                    android:layout_width="18dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/email"
+                    android:background="@drawable/icon_mail"
+                    android:padding="0dp"
+                    android:paddingLeft="90dp" />
+
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/email"
+                    android:gravity="center|left"
+                    android:text="nurfaidahtitik@gmaill.com"
+                    android:textSize="12dp" />
+
+                <View
+                    android:id="@+id/line_nama_penyakit"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_email"
+                    android:background="@color/greyText" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeLayout1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center|left"
+                    android:text="PASSWORD"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon_key"
+                    android:layout_width="18dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/password"
+                    android:background="@drawable/icon_key"
+                    android:padding="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/password"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center|left"
+                    android:text="123456"
+                    android:textSize="12dp" />
+
+                <View
+                    android:id="@+id/line_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_password"
+                    android:background="@color/greyText" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/personal"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="Personal"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/personal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/nama"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center|left"
+                    android:text="NAMA"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon_nama"
+                    android:layout_width="18dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/nama"
+                    android:background="@drawable/icon_user"
+                    android:padding="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/nama"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:gravity="center|left"
+                    android:text="Titik Nurfaidah"
+                    android:textSize="12dp" />
+
+                <View
+                    android:id="@+id/line_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_nama"
+                    android:background="@color/greyText" />
+
+                <TextView
+                    android:id="@+id/lokasi"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/line_nama"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center|left"
+                    android:text="LOKASI"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/icon_lokasi"
+                    android:layout_below="@id/line_nama"
+                    android:layout_width="18dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/lokasi"
+                    android:background="@drawable/icon_location"
+                    android:padding="0dp"
+                    android:paddingLeft="20dp" />
+
+
+                <TextView
+                    android:id="@+id/tv_lokasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/lokasi"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:gravity="center|left"
+                    android:text="Indonesia"
+                    android:textSize="12dp" />
+
+                <View
+                    android:id="@+id/line_lokasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_lokasi"
+                    android:background="@color/greyText" />
+
+                <TextView
+                    android:id="@+id/bergabung"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/line_lokasi"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center|left"
+                    android:text="BERGABUNG"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/icon_bergabung"
+                    android:layout_below="@id/line_lokasi"
+                    android:layout_width="18dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/lokasi"
+                    android:background="@drawable/icon_edit"
+                    android:padding="0dp"
+                    android:paddingLeft="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_bergabung"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/bergabung"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:gravity="center|left"
+                    android:text="20 July 2019"
+                    android:textSize="12dp" />
+
+                <View
+                    android:id="@+id/line_bergabung"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_bergabung"
+                    android:background="@color/greyText" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -48,10 +48,9 @@ public class MainActivity extends AppCompatActivity
 
         // tampilan default awal ketika aplikasii dijalankan
         if (savedInstanceState == null) {
-            fragment = new Beranda();
+            fragment = new Profil();
             callFragment(fragment);
         }
-
     }
 
     @Override

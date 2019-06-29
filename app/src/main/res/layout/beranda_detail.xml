@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_dialog_layout_design_user_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/headerHijau"
+        android:background="@color/backgroundHijau"
+        android:orientation="vertical"
+        android:layout_height="@dimen/headerHijau">
+
+        <TextView
+            android:id="@+id/tv_judul_penyakit"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="20dp"
+            android:text="Penyakit"
+            android:paddingLeft="30dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_penyakit"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@+id/tv_judul_penyakit"
+            android:layout_marginTop="0dp"
+            android:paddingLeft="30dp"
+            android:text="Hash"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_gambar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv_penyakit"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/ic_menu_gallery"
+            android:paddingLeft="30dp" />
+
+        <TextView
+            android:id="@+id/tv_judul_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tv_penyakit"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/iv_gambar"
+            android:paddingLeft="3dp"
+            android:text="Tanggal"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@+id/tv_judul_tanggal"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@id/iv_gambar"
+            android:paddingLeft="3dp"
+            android:text="20 July 2019"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_judul_diunggah"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tv_tanggal"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/iv_gambar"
+            android:paddingLeft="3dp"
+            android:text="Diunggah Oleh"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_diunggah"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@+id/tv_judul_diunggah"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@id/iv_gambar"
+            android:paddingLeft="3dp"
+            android:text="Mamoru Miyano"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/iv_info_detail"
+            android:layout_width="42dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_diunggah"
+            android:layout_marginLeft="-62dp"
+            android:layout_marginTop="-100dp"
+            android:layout_toRightOf="@+id/tv_judul_tanggal"
+            android:src="@drawable/ic_info_black_24dp" />
+    </RelativeLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginTop="@dimen/footerPutih"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_judul_kondisi"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:text="Kondisi"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_kondisi"
+                android:layout_width="match_parent"
+                android:layout_below="@id/tv_judul_kondisi"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="18dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat orci ut metus aliquam, vel aliquam sem sollicitudin. Curabitur consectetur velit eget sem auctor, fringilla tincidunt nunc accumsan. Quisque facilisis convallis viverra. Etiam at tellus ac libero consequat scelerisque. Quisque nisi lectus, ultrices quis augue condimentum, malesuada molestie augue. Mauris dapibus eros at mi malesuada placerat. Maecenas eleifend sagittis venenatis. Etiam sem sem, congue nec nisi faucibus, iaculis pretium massa. Aliquam placerat bibendum mattis. Donec at pharetra nisl. Phasellus posuere pulvinar tellus, rutrum viverra enim scelerisque fringilla. Cras tellus nibh, hendrerit eu sapien a, fermentum suscipit arcu. Fusce eu ligula placerat, semper mi id, laoreet augue."
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:scrollHorizontally="false"
+                android:layout_gravity="center_vertical|end"/>
+
+            <TextView
+                android:id="@+id/tv_judul_solusi"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="22dp"
+                android:layout_below="@id/tv_kondisi"
+                android:textStyle="bold"
+                android:text="Solusi"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_below="@id/tv_judul_solusi"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="18dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat orci ut metus aliquam, vel aliquam sem sollicitudin. Curabitur consectetur velit eget sem auctor, fringilla tincidunt nunc accumsan. Quisque facilisis convallis viverra. Etiam at tellus ac libero consequat scelerisque. Quisque nisi lectus, ultrices quis augue condimentum, malesuada molestie augue. Mauris dapibus eros at mi malesuada placerat. Maecenas eleifend sagittis venenatis. Etiam sem sem, congue nec nisi faucibus, iaculis pretium massa. Aliquam placerat bibendum mattis. Donec at pharetra nisl. Phasellus posuere pulvinar tellus, rutrum viverra enim scelerisque fringilla. Cras tellus nibh, hendrerit eu sapien a, fermentum suscipit arcu. Fusce eu ligula placerat, semper mi id, laoreet augue."
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:scrollHorizontally="false"
+                android:layout_gravity="center_vertical|end"/>
+                <!--android:justificationMode="iter_word"-->
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
