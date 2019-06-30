@@ -60,7 +60,7 @@
                     android:layout_toRightOf="@+id/imageView_userIcon"
                     android:hint="Email"
                     android:inputType="text"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="7dp"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -100,7 +100,7 @@
                     android:layout_toRightOf="@+id/imageView_passwordIcon"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="7dp"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -141,7 +141,7 @@
                 android:textSize="10sp" />
 
             <Button
-                android:id="@+id/btn_login_tukang"
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relativeLayout3"
@@ -151,6 +151,7 @@
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:text="LOGIN"
+                android:textSize="15dp"
                 android:textAllCaps="false"
                 android:textColor="@color/white">
 
@@ -181,18 +182,18 @@
                 android:text="Belum Memiliki Akun?"
                 android:layout_marginTop="3dp"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_Register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="12dp"
                 android:layout_toRightOf="@id/belum"
-                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="Daftar"
-                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textSize="15dp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>

@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import maes.tech.intentanim.CustomIntent;
 import titik.com.pantaupadi.Server.MySingleton;
 import titik.com.pantaupadi.Server.Server;
 
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
-    Button btn_login_tukang;
+    Button btn_login;
 
 
     @Override
@@ -113,8 +114,8 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        btn_login_tukang = (Button) findViewById(R.id.btn_login_tukang);
-        btn_login_tukang.setOnClickListener(new View.OnClickListener() {
+        btn_login = (Button) findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -248,5 +249,11 @@ public class LoginActivity extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    public void Register(View view){
+        Intent intent = new Intent (this, RegisterActivity.class);
+        startActivity(intent);
+        CustomIntent.customType(this, "fadein-to-fadeout");
     }
 }
