@@ -56,6 +56,8 @@ public class Beranda extends Fragment {
     {
         final View view = inflater.inflate(R.layout.list_beranda, container, false);
 
+        getActivity().setTitle("Beranda Info");
+
 
         myAdapter = new BerandaAdapter(view.getContext(),mItems);
         mRecyclerView = view.findViewById(R.id.recycler_view1);

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -25,6 +26,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -110,7 +112,7 @@ public class Scan extends Fragment {
             public void onManagerConnected(int status) {
                 switch (status) {
                     case LoaderCallbackInterface.SUCCESS: {
-                        Log.i("ResistorDetector", "OpenCV loaded successfully");
+                        Log.i("PenyakitDaunDetector", "OpenCV loaded successfully");
                         cameraView.enableView();
 //                        System.loadLibrary("opencv_java");
                     }
@@ -161,7 +163,7 @@ public class Scan extends Fragment {
             });
 
             final TextView resultTextView = (TextView) view.findViewById(R.id.main_activity_result_text);
-            final Button resultDetailsButton = (Button) view.findViewById(R.id.main_activity_details_button);
+            final ImageView resultDetailsButton = (ImageView) view.findViewById(R.id.main_activity_details_button);
 
             resultDetailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -204,7 +206,7 @@ public class Scan extends Fragment {
          * will be used to start the resistor detection.
          */
         public void setupStartDetectionControl() {
-            Button startDetectionButton = (Button) getActivity().findViewById(R.id.mainActivity_start_detection);
+            ImageView startDetectionButton = (ImageView) getActivity().findViewById(R.id.mainActivity_start_detection);
 
             startDetectionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -228,7 +230,7 @@ public class Scan extends Fragment {
          * A click on this button opens the SettingsActivity.
          */
         public void setupSettingsControl() {
-            Button settingsButton = (Button) getActivity().findViewById(R.id.mainActivity_settings);
+            ImageView settingsButton = (ImageView) getActivity().findViewById(R.id.mainActivity_settings);
 
             settingsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -280,7 +282,7 @@ public class Scan extends Fragment {
          * of the indicator to a file.
          */
         public void setupSaveImageControl() {
-            Button saveImageButton = (Button) getActivity().findViewById(R.id.mainActivity_save_image);
+            ImageView saveImageButton = (ImageView) getActivity().findViewById(R.id.mainActivity_save_image);
 
             saveImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
