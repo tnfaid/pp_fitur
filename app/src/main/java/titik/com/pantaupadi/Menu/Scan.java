@@ -181,7 +181,7 @@ public class Scan extends Fragment {
                             if (detectionResult.getResistorValue() == DetectionResult.UNKNOWN_RESISTANCE_VALUE) {
                                 resultTextView.setText("N/A");
                             } else {
-                                resultTextView.setText(detectionResult.getResistorValue() + " Ohm");
+                                resultTextView.setText( " Warna " + detectionResult.getResistorValue() );
                             }
                             resultTextView.setVisibility(View.VISIBLE);
 

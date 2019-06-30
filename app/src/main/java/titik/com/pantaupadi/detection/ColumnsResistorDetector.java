@@ -77,7 +77,7 @@ public class ColumnsResistorDetector extends ResistorDetector {
         inputMatWidth = resistorImage.width();
 
         detectionResult = new DetectionResult();
-        detectionResult.addDetectionStepDetail(new DetectionStepDetail("original Image", resistorImage));
+        detectionResult.addDetectionStepDetail(new DetectionStepDetail("Foto Asli", resistorImage));
 
         applyBilateralFilter(resistorImage);
 
@@ -154,7 +154,7 @@ public class ColumnsResistorDetector extends ResistorDetector {
         Core.bitwise_not(resistorMask, resistorMask);
 
         Mat tmpMat = MatColorConversions.newBgrMatFromGray(resistorMask);
-        detectionResult.addDetectionStepDetail(new DetectionStepDetail("resistor mask", tmpMat));
+        detectionResult.addDetectionStepDetail(new DetectionStepDetail("Mask", tmpMat));
 
         backgroundMask.release();
         reflectionMask.release();
