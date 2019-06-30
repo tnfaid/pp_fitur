@@ -112,7 +112,7 @@ public class Scan extends Fragment {
                     case LoaderCallbackInterface.SUCCESS: {
                         Log.i("ResistorDetector", "OpenCV loaded successfully");
                         cameraView.enableView();
-                        System.loadLibrary("opencv_java");
+//                        System.loadLibrary("opencv_java");
                     }
                     break;
                     default: {
@@ -140,7 +140,7 @@ public class Scan extends Fragment {
 
             cameraViewListener = new CameraViewListener();
 
-            CameraView cameraView = (CameraView) view.findViewById(R.id.main_activity_camera_view);
+            cameraView = (CameraView) view.findViewById(R.id.main_activity_camera_view);
             cameraView.setVisibility(SurfaceView.VISIBLE);
 
             // to use front camera:
@@ -438,7 +438,7 @@ public class Scan extends Fragment {
                 OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, getContext(), baseLoaderCallback);
             } else {
                 Log.d("ResistorDetector", "OpenCV library found inside package. Using it!");
-//                baseLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+                baseLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
             }
         }
 
