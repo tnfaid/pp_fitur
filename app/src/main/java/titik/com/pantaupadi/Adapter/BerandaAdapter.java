@@ -10,12 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import titik.com.pantaupadi.DetailPenyakitDaunActivity;
 import titik.com.pantaupadi.LoginActivity;
 import titik.com.pantaupadi.MainActivity;
 import titik.com.pantaupadi.Menu.Beranda;
@@ -54,10 +56,27 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
         holder.mAuthor.setText(listBeranda.get(position).getPenulis());
         holder.mTanggalPost.setText(listBeranda.get(position).getTanggal_upload());
         //holder.mDateOrder.setText(orderList.get(position).getDateOrder());
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+//        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(mContext.getApplicationContext(), MainActivity.class);
+//
+//                mContext.startActivity(intent);
+//            }
+//        });
+        holder.mDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext.getApplicationContext(), MainActivity.class);
+                //Toast.makeText(mContext.getApplicationContext(), "Detail " + position+ "alamat :" + orderList.get(position).getAddress(),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext.getApplicationContext(), DetailPenyakitDaunActivity.class);
+                //parcelabel
+                intent.putExtra("id",listBeranda.get(position).getId());
+                intent.putExtra("jenis_tanaman",listBeranda.get(position).getJenis_tanaman());
+                intent.putExtra("tanggal_upload",listBeranda.get(position).getTanggal_upload());
+                intent.putExtra("penulis",listBeranda.get(position).getPenulis());
+                intent.putExtra("kondisi",listBeranda.get(position).getKondisi());
+                intent.putExtra("solusi",listBeranda.get(position).getSolusi());
+                intent.putExtra("pic_compare",listBeranda.get(position).getPic_compare());
 
                 mContext.startActivity(intent);
             }
@@ -65,17 +84,19 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        CardView mCardView;
+//        CardView mCardView;
         TextView mNamaPenyakit;
         TextView mAuthor;
         TextView mTanggalPost;
+        CardView mDetail;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mCardView = itemView.findViewById(R.id.beranda_penyakit);
+//            mCardView = itemView.findViewById(R.id.beranda_penyakit);
             mNamaPenyakit = itemView.findViewById(R.id.tv_nama_penyakit);
             mAuthor = itemView.findViewById(R.id.tv_author);
             mTanggalPost = itemView.findViewById(R.id.tv_tanggal_unggah);
+            mDetail = itemView.findViewById(R.id.beranda_penyakit);
         }
     }
 
