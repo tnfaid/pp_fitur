@@ -4,18 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class BerandaModel{
+    private String user_id;
     private String jenis_tanaman;//ini jenis penyakit karena malas ganti makanya tetep aja
     private String bwd_range;
     private String solusi;
     private String kondisi;
     private String pic_compare;
-
     private String warna_daun;
     private String penulis;
     private String tanggal_upload;
 
-    public BerandaModel(String id, String jenis_tanaman, String bwd_range, String solusi, String kondisi, String pic_compare, String warna_daun, String penulis, String tanggal_upload) {
+
+    public BerandaModel(String id, String user_id, String jenis_tanaman, String bwd_range, String solusi, String kondisi, String pic_compare, String warna_daun, String penulis, String tanggal_upload) {
         this.id = id;
+        this.user_id = user_id;
         this.jenis_tanaman = jenis_tanaman;
         this.bwd_range = bwd_range;
         this.solusi = solusi;
@@ -100,6 +102,13 @@ public class BerandaModel{
         this.tanggal_upload = tanggal_upload;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public BerandaModel() {
 

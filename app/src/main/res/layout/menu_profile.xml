@@ -19,14 +19,14 @@
             android:background="@drawable/icon_camera" />
 
         <ImageButton
-            android:id="@+id/btn_galeri"
+            android:id="@+id/btn_logout"
             android:layout_width="32dp"
-            android:layout_height="23dp"
+            android:layout_height="33dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="100dp"
             android:layout_toRightOf="@id/btn_camera"
-            android:background="@drawable/icon_galeri" />
+            android:background="@drawable/ic_exit_to_app_black_24dp" />
 
 
 

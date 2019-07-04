@@ -58,6 +58,7 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext.getApplicationContext(), MainActivity.class);
+
                 mContext.startActivity(intent);
             }
         });
