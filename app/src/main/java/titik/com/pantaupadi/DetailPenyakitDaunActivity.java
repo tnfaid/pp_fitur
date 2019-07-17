@@ -53,11 +53,11 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
         penulis = getIntent().getStringExtra("penulis");
         tanggal_upload = getIntent().getStringExtra("tanggal_upload");
 
-        Toast.makeText(getApplicationContext(), jenis_tanaman +
-                "\n" + kondisi +
-                "\n" + solusi +
-                "\n" + penulis +
-                "\n" + tanggal_upload, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), jenis_tanaman +
+//                "\n" + kondisi +
+//                "\n" + solusi +
+//                "\n" + penulis +
+//                "\n" + tanggal_upload, Toast.LENGTH_SHORT).show();
 //
         tv_penyakit.setText(jenis_tanaman);
         tv_kondisi.setText(kondisi);

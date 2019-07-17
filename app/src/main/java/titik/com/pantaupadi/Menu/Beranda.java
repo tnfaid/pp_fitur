@@ -99,7 +99,7 @@ public class Beranda extends Fragment {
                                 item.setUsia(jsonObject.getString("usia"));
                                 item.setValue_warna(jsonObject.getString("value_warna"));
                                 item.setSolusi(jsonObject.getString("solusi"));
-                                item.setGambar(Server.URL_IMG+jsonObject.getString("gambar"));
+                                item.setGambar(jsonObject.getString("gambar"));
                                 item.setKondisi(jsonObject.getString("kondisi"));
                                 item.setPenulis(jsonObject.getString("penulis"));
                                 item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
@@ -123,49 +123,5 @@ public class Beranda extends Fragment {
         });
         MySingleton.getInstance(this.getContext()).addToRequestQueue(stringRequest);
     }
-
-
-//    DataPenyakit dataPenyakit;
-//    String[] arrNama, arrDeskripsi, arrTanggal;
-//    ArrayList<BerandaModel> mItems = new ArrayList<>();
-//
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-//    {
-//        final View view = inflater.inflate(R.layout.list_beranda, container, false);
-////        myAdapter = new BerandaAdapter(view.getContext(),mItems);
-//        mRecyclerView = view.findViewById(R.id.recycler_view1);
-//
-////        dataPenyakit = new DataPenyakit();
-////        arrNama = dataPenyakit.getNama();
-////        arrDeskripsi = dataPenyakit.getDeskripsi();
-////        arrTanggal = dataPenyakit.getTanggal();
-//        LoadData();
-////        namaPenyakit.setText(arrNama[1]);
-////        tanggal.setText(arrDeskripsi[1]);
-//        getActivity().setTitle("Beranda Info");
-//        Log.e("Beranda", "Beranda");
-//        return view;
-//    }
-//
-//    private void LoadData() {
-//        for (int i = 0; i < arrNama.length; i++) {
-//                BerandaModel item = new BerandaModel();
-//
-//                item.setNama(arrNama[i]);
-//                //item.setGambar(jsonObject.getString("username"));
-//                //item.setTanggal(jsonObject.getString("address"));
-//                item.setAuthor(arrDeskripsi[i]);
-//                item.setTanggal(arrTanggal[i]);
-//                mItems.add(item);
-//            }
-//
-//            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//            mRecyclerView.setHasFixedSize(true);
-//            myAdapter = new BerandaAdapter(getActivity(), mItems);
-//            mRecyclerView.setAdapter(myAdapter);
-//            myAdapter.notifyDataSetChanged();
-//
-//
-//        }
 
 }
