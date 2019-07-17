@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class ContoursOrigResistorDetector extends ResistorDetector {
 
-    private static final int NUM_CODES = 10;
+        private static final int NUM_CODES = 10;
 
     // HSV colour bounds
     private static final Scalar COLOR_BOUNDS[][] = {

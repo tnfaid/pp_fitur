@@ -24,7 +24,7 @@ public class DetectionDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detection_details_list_row);
+        setContentView(R.layout.scan_daun_detail);
 
         if (DetectionResultHolder.detectionResultAvailable()) {
             ListView detectionDetailsList = (ListView) findViewById(R.id.detection_deteils_activity_list);

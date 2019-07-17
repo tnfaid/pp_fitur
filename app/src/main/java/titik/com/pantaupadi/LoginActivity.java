@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG_MESSAGE = "message";
 
     public final static String TAG_ID = "id";
-    public final static String TAG_USER_ID = "user_id";
     public final static String TAG_FIRST_NAME = "first_name";
     public final static String TAG_LAST_NAME = "last_name";
     public final static String TAG_EMAIL = "email";
@@ -60,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, user_id, first_name, last_name, email, mobile, country, created_at, status, role;
+    String id, first_name, last_name, email, mobile, country, created_at, status, role;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -90,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
         id = sharedpreferences.getString(TAG_ID, null);
-        user_id = sharedpreferences.getString(TAG_USER_ID, null);
         first_name = sharedpreferences.getString(TAG_FIRST_NAME, null);
         last_name = sharedpreferences.getString(TAG_LAST_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
@@ -103,7 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         if (session) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra(TAG_ID, id);
-            intent.putExtra(TAG_USER_ID, user_id);
             intent.putExtra(TAG_FIRST_NAME, first_name);
             intent.putExtra(TAG_LAST_NAME, last_name);
             intent.putExtra(TAG_EMAIL, email);
@@ -164,7 +161,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (success == 1) {
 
                         String id = jObj.getString(TAG_ID);
-                        String user_id = jObj.getString(TAG_USER_ID);
                         String first_name = jObj.getString(TAG_FIRST_NAME);
                         String last_name = jObj.getString(TAG_LAST_NAME);
                         String email = jObj.getString(TAG_EMAIL);
@@ -183,7 +179,6 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putBoolean(session_status, true);
                         editor.putString(TAG_ID, id);
-                        editor.putString(TAG_USER_ID, user_id);
                         editor.putString(TAG_FIRST_NAME, first_name);
                         editor.putString(TAG_LAST_NAME, last_name);
                         editor.putString(TAG_EMAIL, email);
@@ -197,7 +192,6 @@ public class LoginActivity extends AppCompatActivity {
                         // Memanggil main activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra(TAG_ID, id);
-                        intent.putExtra(TAG_USER_ID, user_id);
                         intent.putExtra(TAG_FIRST_NAME, first_name);
                         intent.putExtra(TAG_LAST_NAME, last_name);
                         intent.putExtra(TAG_EMAIL, email);

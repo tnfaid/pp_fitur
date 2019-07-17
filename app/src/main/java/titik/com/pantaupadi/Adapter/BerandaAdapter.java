@@ -76,7 +76,7 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
                 intent.putExtra("penulis",listBeranda.get(position).getPenulis());
                 intent.putExtra("kondisi",listBeranda.get(position).getKondisi());
                 intent.putExtra("solusi",listBeranda.get(position).getSolusi());
-                intent.putExtra("pic_compare",listBeranda.get(position).getPic_compare());
+                intent.putExtra("gambar",listBeranda.get(position).getPic_compare());
 
                 mContext.startActivity(intent);
             }

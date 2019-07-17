@@ -48,6 +48,8 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import titik.com.pantaupadi.AppSettings;
@@ -126,7 +128,17 @@ public class Scan extends Fragment {
         };
 
 
-
+        double result = 0;
+        int counter = 0;
+        int hasil = 0;
+        double temp = 0;
+        int realResult = 0;
+        ArrayList<Integer> value = new ArrayList<Integer>();
+        ArrayList<Integer> firstDigit = new ArrayList<Integer>();
+        ArrayList<Double> similarValue = new ArrayList<Double>();
+//        ArrayList<Integer> tempFirstDigit= new ArrayList<Integer>();
+//        ArrayList<Integer> tempCounter= new ArrayList<Integer>();
+//        ArrayList<Integer> tempIndex= new ArrayList<Integer>();
         /**
          * Sets up the view and initializes the view elements (controls).
          *
@@ -171,7 +183,7 @@ public class Scan extends Fragment {
                     startActivity(new Intent(getContext(), DetectionDetailsActivity.class));
                 }
             });
-
+// INILOOOOOOOOOO
             resultListener = new ResistorDetector.ResultListener() {
                 @Override
                 public void resultReady(final DetectionResult detectionResult) {
@@ -182,7 +194,50 @@ public class Scan extends Fragment {
                                 resultTextView.setText("N/A");
                             } else {
                                 resultTextView.setText( " Warna " + detectionResult.getResistorValue() );
-                            }
+//                                result[0] = detectionResult.getResistorValue();
+//                                if(value.size() >= 5){
+//                                    Toast.makeText(getContext(), "FULL SAM", Toast.LENGTH_SHORT).show();
+//                                    result = iconList.get(0) +
+//                                    Toast.makeText(getContext(),""+iconList.size() + "warna "+ colorRgba, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getContext(),""+value.size() + "warna "+ firstDigit, Toast.LENGTH_SHORT).show();
+
+//                                }
+//                                else{
+                                    Toast.makeText(getContext(),""+value.size() + "warna "+ firstDigit, Toast.LENGTH_SHORT).show();
+//                                    value.add(detectionResult.getResistorValue());
+                                    firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue()).substring(0, 1)));
+
+                                    for(int h=0; h<firstDigit.size(); h++)
+                                    {
+                                        for(int i=h+1; i<firstDigit.size(); i++)
+                                        {
+                                            if(firstDigit.get(h) > firstDigit.get(i))
+                                            {
+                                                counter = firstDigit.get(i);
+                                                firstDigit.set(i, firstDigit.get(h));
+                                                firstDigit.set(h, counter) ;
+                                            }
+                                        }
+                                        value.add(firstDigit.get(h));
+                                        result = result + value.get(h);
+                                    }
+                                    //rata"
+                                    result = result/(double)value.size();
+
+//                                    hold dulu yaaaah !
+                                temp = (double)value.get(0) - result;
+                                    for(int h=0; h<value.size(); h++){
+                                        similarValue.add((double)value.get(h) - result);
+                                        if(similarValue.get(h) < temp){
+                                            temp = similarValue.get(h);
+                                            hasil = h;
+                                        }
+                                    }
+                                    Toast.makeText(getContext(), "Rata2 : "+ result,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Hasil : "+ value.get(hasil),Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(getContext(), ""+detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
+                                }
                             resultTextView.setVisibility(View.VISIBLE);
 
                             DetectionResultHolder.setDetectionResult(detectionResult);
@@ -205,17 +260,19 @@ public class Scan extends Fragment {
          * When the button is pressed, the image matrix of the inside of the displayed indicator
          * will be used to start the resistor detection.
          */
+
+        Mat colorRgba;
+
         public void setupStartDetectionControl() {
             ImageView startDetectionButton = (ImageView) getActivity().findViewById(R.id.mainActivity_start_detection);
 
             startDetectionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Mat resistorImage = cameraViewListener.getResistorImage();
 
                     Imgproc.cvtColor(resistorImage, resistorImage, Imgproc.COLOR_RGBA2BGR);
-
+                    colorRgba = resistorImage;
                     resistorDetector.detectResistorValue(resistorImage);
 
                     resistorImage.release();
