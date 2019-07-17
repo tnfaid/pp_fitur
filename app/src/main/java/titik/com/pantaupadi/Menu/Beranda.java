@@ -95,11 +95,11 @@ public class Beranda extends Fragment {
                                 BerandaModel item = new BerandaModel();
 
                                 item.setId(jsonObject.getString("id"));
-                                item.setJenis_tanaman(jsonObject.getString("jenis_tanaman"));
-                                item.setWarna_daun(jsonObject.getString("warna_daun"));
-                                item.setBwd_range(jsonObject.getString("bwd_range"));
+                                item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
+                                item.setUsia(jsonObject.getString("usia"));
+                                item.setValue_warna(jsonObject.getString("value_warna"));
                                 item.setSolusi(jsonObject.getString("solusi"));
-//                                item.setPic_compare(Server.URL_IMG+jsonObject.getString("pic_compare"));
+                                item.setGambar(Server.URL_IMG+jsonObject.getString("gambar"));
                                 item.setKondisi(jsonObject.getString("kondisi"));
                                 item.setPenulis(jsonObject.getString("penulis"));
                                 item.setTanggal_upload(jsonObject.getString("tanggal_upload"));

@@ -52,7 +52,7 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.mNamaPenyakit.setText(listBeranda.get(position).getJenis_tanaman());
+        holder.mNamaPenyakit.setText(listBeranda.get(position).getNama_penyakit());
         holder.mAuthor.setText(listBeranda.get(position).getPenulis());
         holder.mTanggalPost.setText(listBeranda.get(position).getTanggal_upload());
         //holder.mDateOrder.setText(orderList.get(position).getDateOrder());
@@ -71,12 +71,12 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
                 Intent intent = new Intent(mContext.getApplicationContext(), DetailPenyakitDaunActivity.class);
                 //parcelabel
                 intent.putExtra("id",listBeranda.get(position).getId());
-                intent.putExtra("jenis_tanaman",listBeranda.get(position).getJenis_tanaman());
+                intent.putExtra("nama_penyakit",listBeranda.get(position).getNama_penyakit());
                 intent.putExtra("tanggal_upload",listBeranda.get(position).getTanggal_upload());
                 intent.putExtra("penulis",listBeranda.get(position).getPenulis());
                 intent.putExtra("kondisi",listBeranda.get(position).getKondisi());
                 intent.putExtra("solusi",listBeranda.get(position).getSolusi());
-                intent.putExtra("gambar",listBeranda.get(position).getPic_compare());
+                intent.putExtra("gambar",listBeranda.get(position).getGambar());
 
                 mContext.startActivity(intent);
             }

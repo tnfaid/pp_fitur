@@ -1,33 +1,7 @@
 package titik.com.pantaupadi.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
 public class BerandaModel{
-    private String user_id;
-    private String jenis_tanaman;//ini jenis penyakit karena malas ganti makanya tetep aja
-    private String bwd_range;
-    private String solusi;
-    private String kondisi;
-    private String pic_compare;
-    private String warna_daun;
-    private String penulis;
-    private String tanggal_upload;
-
-
-    public BerandaModel(String id, String user_id, String jenis_tanaman, String bwd_range, String solusi, String kondisi, String pic_compare, String warna_daun, String penulis, String tanggal_upload) {
-        this.id = id;
-        this.user_id = user_id;
-        this.jenis_tanaman = jenis_tanaman;
-        this.bwd_range = bwd_range;
-        this.solusi = solusi;
-        this.kondisi = kondisi;
-        this.pic_compare = pic_compare;
-        this.warna_daun = warna_daun;
-        this.penulis = penulis;
-        this.tanggal_upload = tanggal_upload;
-    }
-
     private String id;
 
     public String getId() {
@@ -38,20 +12,20 @@ public class BerandaModel{
         this.id = id;
     }
 
-    public String getJenis_tanaman() {
-        return jenis_tanaman;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setJenis_tanaman(String jenis_tanaman) {
-        this.jenis_tanaman = jenis_tanaman;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getBwd_range() {
-        return bwd_range;
+    public String getNama_penyakit() {
+        return nama_penyakit;
     }
 
-    public void setBwd_range(String bwd_range) {
-        this.bwd_range = bwd_range;
+    public void setNama_penyakit(String nama_penyakit) {
+        this.nama_penyakit = nama_penyakit;
     }
 
     public String getSolusi() {
@@ -62,28 +36,20 @@ public class BerandaModel{
         this.solusi = solusi;
     }
 
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
+    }
+
     public String getKondisi() {
         return kondisi;
     }
 
     public void setKondisi(String kondisi) {
         this.kondisi = kondisi;
-    }
-
-    public String getPic_compare() {
-        return pic_compare;
-    }
-
-    public void setPic_compare(String pic_compare) {
-        this.pic_compare = pic_compare;
-    }
-
-    public String getWarna_daun() {
-        return warna_daun;
-    }
-
-    public void setWarna_daun(String warna_daun) {
-        this.warna_daun = warna_daun;
     }
 
     public String getPenulis() {
@@ -102,13 +68,46 @@ public class BerandaModel{
         this.tanggal_upload = tanggal_upload;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getValue_warna() {
+        return value_warna;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setValue_warna(String value_warna) {
+        this.value_warna = value_warna;
     }
+
+    public String getUsia() {
+        return usia;
+    }
+
+    public void setUsia(String usia) {
+        this.usia = usia;
+    }
+
+    private String user_id;
+    private String nama_penyakit;
+    private String solusi;
+    private String gambar;
+    private String kondisi;
+    private String penulis;
+    private String tanggal_upload;
+    private String value_warna;
+    private String usia;
+
+
+    public BerandaModel(String id, String user_id, String nama_penyakit, String solusi, String kondisi, String gambar, String penulis, String tanggal_upload, String value_warna, String usia) {
+        this.id = id;
+        this.user_id = user_id;
+        this.nama_penyakit = nama_penyakit;
+        this.solusi = solusi;
+        this.gambar = gambar;
+        this.kondisi = kondisi;
+        this.penulis = penulis;
+        this.tanggal_upload = tanggal_upload;
+        this.value_warna = value_warna;
+        this.usia = usia;
+    }
+
 
     public BerandaModel() {
 
