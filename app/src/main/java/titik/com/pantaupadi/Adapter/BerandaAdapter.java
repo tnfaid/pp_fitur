@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -25,6 +27,8 @@ import titik.com.pantaupadi.MainActivity;
 import titik.com.pantaupadi.Menu.Beranda;
 import titik.com.pantaupadi.Model.BerandaModel;
 import titik.com.pantaupadi.R;
+import titik.com.pantaupadi.Server.MySingleton;
+import titik.com.pantaupadi.Server.Server;
 
 import static titik.com.pantaupadi.LoginActivity.TAG_FIRST_NAME;
 import static titik.com.pantaupadi.LoginActivity.TAG_LAST_NAME;
@@ -56,13 +60,14 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         // Load image from internet and set it into imageView using Glide
         final BerandaModel beranda = listBeranda.get(position);
-        Glide.with(mContext)
-                .load(beranda.getGambar())
-                .into(holder.mGambar);
+//        Glide.with(mContext)
+//                .load(beranda.getGambar())
+//                .into(holder.mGambar);
 
         holder.mNamaPenyakit.setText(beranda.getNama_penyakit());
         holder.mAuthor.setText(beranda.getPenulis());
         holder.mTanggalPost.setText(beranda.getTanggal_upload());
+        showImage(Server.URL_IMG+beranda.getGambar());
         holder.mDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,15 +85,32 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
                 mContext.startActivity(intent);
             }
         });
+
+
+    }
+    public void showImage(String linkImage){
+        ImageLoader imageLoader = MySingleton.getInstance(mContext).getImageLoader();
+        imageLoader.get(linkImage, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                mGambar.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
     }
 
+
+    ImageView mGambar;
     class ViewHolder extends RecyclerView.ViewHolder{
 //        CardView mCardView;
         TextView mNamaPenyakit;
         TextView mAuthor;
         TextView mTanggalPost;
         CardView mDetail;
-        ImageView mGambar;
 
 
         public ViewHolder(View itemView) {
@@ -100,11 +122,15 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
             mDetail = itemView.findViewById(R.id.beranda_penyakit);
             mGambar = itemView.findViewById(R.id.imageView);
         }
+
+
     }
 
     public void clear(){
         listBeranda.clear();
         notifyDataSetChanged();
     }
+
+
 
 }

@@ -12,6 +12,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
@@ -45,7 +46,7 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
         tv_judul_solusi = (TextView) findViewById(R.id.text_solusi);
         tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
         tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
-
+        img_detail = (ImageView) findViewById(R.id.iv_gambar);
 
         jenis_tanaman = getIntent().getStringExtra("jenis_tanaman");
         kondisi = getIntent().getStringExtra("kondisi");
@@ -65,9 +66,10 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
         tv_diunggah.setText(penulis);
         tv_tanggal.setText(tanggal_upload);
 //        Toast.makeText(DetailPenyakitDaunActivity.this, jenis_tanaman ,Toast.LENGTH_SHORT).show();
+        detailDaun();
     }
 
-    public void detailOrder(){
+    public void detailDaun(){
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DETAIL,
                 new Response.Listener<String>() {
                     public void onResponse(String response){
@@ -82,12 +84,13 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
                                 JSONObject jsonObject = array.getJSONObject(i);
 
 
-                                tv_penyakit.setText(jsonObject.getString("jenis_tanaman"));
+                                tv_penyakit.setText(jsonObject.getString("nama_penyakit"));
                                 tv_kondisi.setText(jsonObject.getString("kondisi"));
                                 tv_judul_solusi.setText(jsonObject.getString("solusi"));
                                 tv_diunggah.setText(jsonObject.getString("penulis"));
                                 tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
-//                                showImage(Server.URL_IMG+jsonObject.getString("image"));
+
+                                showImage(Server.URL_IMG+jsonObject.getString("gambar"));
 
                                 //Toast.makeText(getApplicationContext(), jsonObject.getString("title"),Toast.LENGTH_LONG).show();
 
@@ -113,5 +116,19 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
         };
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
+    public void showImage(String linkImage){
+        ImageLoader imageLoader = MySingleton.getInstance(this.getApplicationContext()).getImageLoader();
+        imageLoader.get(linkImage, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                img_detail.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
     }
 }

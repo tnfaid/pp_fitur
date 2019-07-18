@@ -54,6 +54,7 @@ import java.util.UUID;
 
 import titik.com.pantaupadi.AppSettings;
 import titik.com.pantaupadi.Data.DataPenyakit;
+import titik.com.pantaupadi.DetailPenyakitDaunActivity;
 import titik.com.pantaupadi.DetectionResultHolder;
 import titik.com.pantaupadi.R;
 import titik.com.pantaupadi.detection.ColumnsResistorDetector;
@@ -195,47 +196,46 @@ public class Scan extends Fragment {
                             } else {
                                 resultTextView.setText( " Warna " + detectionResult.getResistorValue() );
 //                                result[0] = detectionResult.getResistorValue();
-//                                if(value.size() >= 5){
-//                                    Toast.makeText(getContext(), "FULL SAM", Toast.LENGTH_SHORT).show();
+                                if(value.size() >= 5){
+                                    Toast.makeText(getContext(), "FULL SAM", Toast.LENGTH_SHORT).show();
 //                                    result = iconList.get(0) +
 //                                    Toast.makeText(getContext(),""+iconList.size() + "warna "+ colorRgba, Toast.LENGTH_SHORT).show();
 //                                    Toast.makeText(getContext(),""+value.size() + "warna "+ firstDigit, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getActivity(), DetectionDetailsActivity.class);
+                                    intent.putExtra("hasil",hasil);
+                                    getActivity().startActivity(intent);
 
-//                                }
-//                                else{
-                                    Toast.makeText(getContext(),""+value.size() + "warna "+ firstDigit, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), "" + value.size() + "warna " + firstDigit, Toast.LENGTH_SHORT).show();
 //                                    value.add(detectionResult.getResistorValue());
                                     firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue()).substring(0, 1)));
 
-                                    for(int h=0; h<firstDigit.size(); h++)
-                                    {
-                                        for(int i=h+1; i<firstDigit.size(); i++)
-                                        {
-                                            if(firstDigit.get(h) > firstDigit.get(i))
-                                            {
+                                    for (int h = 0; h < firstDigit.size(); h++) {
+                                        for (int i = h + 1; i < firstDigit.size(); i++) {
+                                            if (firstDigit.get(h) > firstDigit.get(i)) {
                                                 counter = firstDigit.get(i);
                                                 firstDigit.set(i, firstDigit.get(h));
-                                                firstDigit.set(h, counter) ;
+                                                firstDigit.set(h, counter);
                                             }
                                         }
                                         value.add(firstDigit.get(h));
                                         result = result + value.get(h);
                                     }
                                     //rata"
-                                    result = result/(double)value.size();
+                                    result = result / (double) value.size();
 
 //                                    hold dulu yaaaah !
-                                temp = (double)value.get(0) - result;
-                                    for(int h=0; h<value.size(); h++){
-                                        similarValue.add((double)value.get(h) - result);
-                                        if(similarValue.get(h) < temp){
+                                    temp = (double) value.get(0) - result;
+                                    for (int h = 0; h < value.size(); h++) {
+                                        similarValue.add(Math.abs((double) value.get(h) - result));
+                                        if (similarValue.get(h) < temp) {
                                             temp = similarValue.get(h);
                                             hasil = h;
                                         }
                                     }
-                                    Toast.makeText(getContext(), "Rata2 : "+ result,Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getContext(), "Hasil : "+ value.get(hasil),Toast.LENGTH_SHORT).show();
-
+                                    Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Hasil : " + value.get(hasil), Toast.LENGTH_LONG).show();
+                                }
                                 Toast.makeText(getContext(), ""+detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
                                 }
                             resultTextView.setVisibility(View.VISIBLE);

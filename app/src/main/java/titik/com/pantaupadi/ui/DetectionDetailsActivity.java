@@ -3,6 +3,7 @@ package titik.com.pantaupadi.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import titik.com.pantaupadi.DetectionResultHolder;
 import titik.com.pantaupadi.R;
@@ -21,6 +22,9 @@ public class DetectionDetailsActivity extends AppCompatActivity {
      *
      * @param savedInstanceState see android documentation
      */
+
+    int hasilScan, valueDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +37,8 @@ public class DetectionDetailsActivity extends AppCompatActivity {
 
             detectionDetailsList.setAdapter(adapter);
         }
+
+        hasilScan = getIntent().getIntExtra("hasil",0);
+        Toast.makeText(getApplicationContext(), "hasil "+ hasilScan, Toast.LENGTH_SHORT).show();
     }
 }

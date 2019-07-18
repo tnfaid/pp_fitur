@@ -476,6 +476,8 @@ public class ColumnsResistorDetector extends ResistorDetector {
             int resistance = (int) ((firstDigit * 100 + secondDigit * 10 + thirdDigit) * Math.pow(10, multiplier));
 
             return resistance;
+
+            //ini untuk get multicolor nya
         } else if (bands.size() >= 3) {
             int firstDigit = ColorValues.getValueForColor(bands.get(0).getColor());
             int secondDigit = ColorValues.getValueForColor(bands.get(1).getColor());
