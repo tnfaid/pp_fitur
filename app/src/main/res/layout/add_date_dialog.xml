@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_dialog_layout_design_date_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usia Tanaman"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <TextView
+        android:id="@+id/tv_nilai_modus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modul Nilai warna = "
+        android:paddingTop="20dp"
+        android:textSize="20dp"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/txt_usia_tanaman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:textSize="20dp"
+        android:ems="10"
+        android:hint="input usia tanaman"/>
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tgl_tanam"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="Masukkan Tanggal Tanam"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:background="@drawable/green_rounded_all_2"-->
+            <!--android:padding="20dp"-->
+            <!--android:textSize="10sp"/>-->
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

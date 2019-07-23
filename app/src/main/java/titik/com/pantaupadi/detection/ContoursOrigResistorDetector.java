@@ -30,11 +30,19 @@ public class ContoursOrigResistorDetector extends ResistorDetector {
             {new Scalar(0, 0, 0), new Scalar(0, 0, 0)},         // red (defined by two bounds)
             {new Scalar(4, 100, 100), new Scalar(9, 250, 150)},   // orange
             {new Scalar(20, 130, 100), new Scalar(30, 250, 160)}, // yellow
-            {new Scalar(45, 50, 60), new Scalar(72, 250, 150)},   // green
+//            {new Scalar(45, 50, 60), new Scalar(72, 250, 150)},   // green
             {new Scalar(80, 50, 50), new Scalar(106, 250, 150)},  // blue
             {new Scalar(130, 40, 50), new Scalar(155, 250, 150)}, // purple
             {new Scalar(0, 0, 50), new Scalar(180, 50, 80)},       // gray
-            {new Scalar(0, 0, 90), new Scalar(180, 15, 140)}      // white
+            {new Scalar(0, 0, 90), new Scalar(180, 15, 140)},      // white
+            {new Scalar(90, 50.7, 59.6), new Scalar(89, 33.9, 87.9)},      // green0
+            {new Scalar(108, 49.6, 46.7), new Scalar(93, 64.8, 64.7)},      // green1
+            {new Scalar(133, 37.9, 34.1), new Scalar(140, 50, 58)},      // green2
+            {new Scalar(145, 41.4, 27.5), new Scalar(153, 61.6, 43.9)},   // green3
+            {new Scalar(88, 71.5, 51), new Scalar(81, 38.8, 87.8)}   // coba
+
+
+
     };
 
     // red wraps around in HSV, so we need two ranges

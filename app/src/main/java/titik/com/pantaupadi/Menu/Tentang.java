@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import titik.com.pantaupadi.Activity.MainBlobDetector;
 import titik.com.pantaupadi.R;
+import titik.com.pantaupadi.ui.DetectionDetailsActivity;
 
 public class Tentang extends Fragment {
 
@@ -30,6 +32,8 @@ public class Tentang extends Fragment {
             public void onClick(View v) {
 //                Intent intent = new Intent(getContext())
                 Toast.makeText(getContext(), "Pindah ke sono", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), MainBlobDetector.class);
+                startActivity(intent);
             }
         });
 

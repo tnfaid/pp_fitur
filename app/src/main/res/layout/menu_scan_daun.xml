@@ -37,7 +37,8 @@
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+           >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,9 +52,9 @@
                     android:id="@+id/main_activity_details_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_marginLeft="130dp"
                     android:background="@drawable/circle_green"
                     android:enabled="false"
-                    android:layout_marginLeft="130dp"
                     android:gravity="center"
                     android:padding="5dp"
                     android:src="@drawable/icon_detail_background" />
@@ -62,11 +63,11 @@
                     android:id="@+id/mainActivity_flash_toggle"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="20dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/circle_green"
-                    android:src="@drawable/icon_thunder_background" />
+                    android:src="@drawable/icon_thunder_background"
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/mainActivity_start_detection"
@@ -104,22 +105,23 @@
                     android:src="@drawable/icon_download_background" />
             </LinearLayout>
         </HorizontalScrollView>
-
-        <SeekBar
-            android:id="@+id/main_activity_camera_zoom"
-            android:background="@color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:visibility="gone" />
-
-        <Spinner
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:visibility="gone"
-            android:background="@color/transparent"
-            android:layout_gravity="right|center_vertical"
-            android:id="@+id/mainActivity_number_of_bands" />
-
     </LinearLayout>
+
+        <!--<SeekBar-->
+            <!--android:id="@+id/main_activity_camera_zoom"-->
+            <!--android:background="@color/transparent"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:visibility="gone" />-->
+
+        <!--<Spinner-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:background="@color/transparent"-->
+            <!--android:layout_gravity="right|center_vertical"-->
+            <!--android:id="@+id/mainActivity_number_of_bands" />-->
+
+
 
 </RelativeLayout>

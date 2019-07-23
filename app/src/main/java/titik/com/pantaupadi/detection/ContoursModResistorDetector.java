@@ -34,11 +34,17 @@ public class ContoursModResistorDetector extends ResistorDetector {
             {ColorDefinitionsHsv.RED1_MIN, ColorDefinitionsHsv.RED1_MAX},         // red (defined by two bounds)
             {ColorDefinitionsHsv.ORANGE_MIN, ColorDefinitionsHsv.ORANGE_MAX},   // orange
             {ColorDefinitionsHsv.YELLOW_MIN, ColorDefinitionsHsv.YELLOW_MAX}, // yellow
-            {ColorDefinitionsHsv.GREEN_MIN, ColorDefinitionsHsv.GREEN_MAX},   // green
+//            {ColorDefinitionsHsv.GREEN_MIN, ColorDefinitionsHsv.GREEN_MAX},   // green
             {ColorDefinitionsHsv.BLUE_MIN, ColorDefinitionsHsv.BLUE_MAX},  // blue
             {ColorDefinitionsHsv.VIOLET_MIN, ColorDefinitionsHsv.VIOLET_MAX}, // purple
             {ColorDefinitionsHsv.GREY_MIN, ColorDefinitionsHsv.GREY_MAX},       // gray
-            {ColorDefinitionsHsv.WHITE_MIN, ColorDefinitionsHsv.WHITE_MAX}      // white
+            {ColorDefinitionsHsv.WHITE_MIN, ColorDefinitionsHsv.WHITE_MAX},      // white
+            {ColorDefinitionsHsv.GREEN_MIN0, ColorDefinitionsHsv.GREEN_MAX0},      // green0
+            {ColorDefinitionsHsv.GREEN_MIN1, ColorDefinitionsHsv.GREEN_MAX1},      // green1
+            {ColorDefinitionsHsv.GREEN_MIN2, ColorDefinitionsHsv.GREEN_MAX2},      // green2
+            {ColorDefinitionsHsv.GREEN_MIN3, ColorDefinitionsHsv.GREEN_MAX3},      // green3
+            {ColorDefinitionsHsv.COBA_MIN, ColorDefinitionsHsv.COBA_MAX},      // coba
+
     };
 
     // red wraps around in HSV, so we need two ranges
@@ -46,6 +52,7 @@ public class ContoursModResistorDetector extends ResistorDetector {
     private static Scalar UPPER_RED1 = ColorDefinitionsHsv.RED1_MAX;
     private static Scalar LOWER_RED2 = ColorDefinitionsHsv.RED2_MIN;
     private static Scalar UPPER_RED2 = ColorDefinitionsHsv.RED2_MAX;
+
 
     private SparseIntArray locationValues = new SparseIntArray(4);
 

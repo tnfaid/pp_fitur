@@ -19,5 +19,10 @@ public enum ColorName {
     White,
     //Gold,
     //Silver,
+    Green0,
+    Green1,
+    Green2,
+    Green3,
     Unknown,
+    Coba,
 }

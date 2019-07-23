@@ -151,7 +151,7 @@ public class ExperimentsResistorDetector extends ResistorDetector {
 
         Mat tmpMat = MatColorConversions.newBgrMatFromHsv(medianValues);
         Imgproc.resize(tmpMat, tmpMat, new Size(resistorImage.cols(), resistorImage.rows()), 0, 0, Imgproc.INTER_NEAREST);
-        detectionResult.addDetectionStepDetail(new DetectionStepDetail("Detected color per column", tmpMat));
+        detectionResult.addDetectionStepDetail(new DetectionStepDetail("Detected color detailed", tmpMat));
 
         List<ColorName> bands = new ArrayList<>();
         List<Integer> bandsWidth = new ArrayList<>();

@@ -38,9 +38,26 @@ public class ColorDefinitionsHsv {
     public static final Scalar VIOLET_MIN = new Scalar(129, 60, 50);
     public static final Scalar VIOLET_MAX = new Scalar(165, 250, 150);
 
+    public static final Scalar GREEN_MIN0 = new Scalar(90, 51, 60);
+    public static final Scalar GREEN_MAX0 = new Scalar(89, 34, 88);
+
+    public static final Scalar GREEN_MIN1 = new Scalar(108, 50, 47);
+    public static final Scalar GREEN_MAX1 = new Scalar(93, 65, 65);
+
+    public static final Scalar GREEN_MIN2 = new Scalar(133, 38, 34);
+    public static final Scalar GREEN_MAX2 = new Scalar(140, 50, 58);
+
+    public static final Scalar GREEN_MIN3 = new Scalar(145, 41, 28);
+    public static final Scalar GREEN_MAX3 = new Scalar(153, 62, 44);
+
+    public static final Scalar COBA_MIN = new Scalar(88, 72, 51);
+    public static final Scalar COBA_MAX = new Scalar(81, 39, 88);
+
     /**
      * Red wraps around and is therefore defined twice
      */
+
+//    jadi ini tuh warna HSV
     public static final Scalar RED2_MIN = new Scalar(166, 65, 50);
     public static final Scalar RED2_MAX = new Scalar(180, 250, 150);
 
@@ -141,6 +158,17 @@ public class ColorDefinitionsHsv {
             name = ColorName.Red;
         }
 
+//        if (isScalarBetweenBounds(colorHsv, GREEN_MIN0, GREEN_MAX0) ||
+//                isScalarBetweenBounds(colorHsv, GREEN_MIN1, GREEN_MAX1) ||
+//                     isScalarBetweenBounds(colorHsv, GREEN_MIN2, GREEN_MAX2) ||
+//                             isScalarBetweenBounds(colorHsv, GREEN_MIN3, GREEN_MAX3)){
+//                    if (name != ColorName.Unknown)
+//                        System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green + ")!");
+//
+//                    name = ColorName. Green;
+//        }
+
+
         if (isScalarBetweenBounds(colorHsv, ORANGE_MIN, ORANGE_MAX)) {
             if (name != ColorName.Unknown)
                 System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Orange + ")!");
@@ -204,6 +232,41 @@ public class ColorDefinitionsHsv {
             name = ColorName.White;
         }
 
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN0, GREEN_MAX0)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green0 + ")!");
+
+            name = ColorName.Green0;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN1, GREEN_MAX1)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green1 + ")!");
+
+            name = ColorName.Green1;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN2, GREEN_MAX2)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green2 + ")!");
+
+            name = ColorName.Green2;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN3, GREEN_MAX3)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green3 + ")!");
+
+            name = ColorName.Green3;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, COBA_MIN, COBA_MAX)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Coba + ")!");
+
+            name = ColorName.Coba;
+        }
+
         /*
         if(isScalarBetweenBounds(colorHsv, GOLD_MIN, GOLD_MAX)){
             if(name != ColorName.Unknown)
@@ -256,6 +319,14 @@ public class ColorDefinitionsHsv {
                 return meanOfScalars(GREY_MAX, GREY_MIN);
             case White:
                 return meanOfScalars(WHITE_MAX, BLACK_MIN);
+            case Green0:
+                return meanOfScalars(GREEN_MAX0, GREEN_MIN0);
+            case Green1:
+                return meanOfScalars(GREEN_MAX1, GREEN_MIN1);
+            case Green2:
+                return meanOfScalars(GREEN_MAX2, GREEN_MIN2);
+            case Green3:
+                return meanOfScalars(GREEN_MAX3, GREEN_MIN3);
 
             /*
             case Gold:

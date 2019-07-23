@@ -43,11 +43,16 @@ public class ColorValues {
         colorValues.put(ColorName.Red, 2);
         colorValues.put(ColorName.Orange, 3);
         colorValues.put(ColorName.Yellow, 4);
-        colorValues.put(ColorName.Green, 5);
+////        colorValues.put(ColorName.Green, 5);
         colorValues.put(ColorName.Blue, 6);
         colorValues.put(ColorName.Violet, 7);
         colorValues.put(ColorName.Grey, 8);
         colorValues.put(ColorName.White, 9);
+        colorValues.put(ColorName.Green0, 10);
+        colorValues.put(ColorName.Green1, 11);
+        colorValues.put(ColorName.Green2, 12);
+        colorValues.put(ColorName.Green3, 13);
+        colorValues.put(ColorName.Coba, 14);
     }
 
     /**
