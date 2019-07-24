@@ -38,19 +38,19 @@ public class ColorDefinitionsHsv {
     public static final Scalar VIOLET_MIN = new Scalar(129, 60, 50);
     public static final Scalar VIOLET_MAX = new Scalar(165, 250, 150);
 
-    public static final Scalar GREEN_MIN0 = new Scalar(90, 51, 60);
-    public static final Scalar GREEN_MAX0 = new Scalar(89, 34, 88);
+    public static final Scalar  GREEN_MAX0= new Scalar(44,255,255);
+    public static final Scalar  GREEN_MIN0= new Scalar(40,50,50);
 
-    public static final Scalar GREEN_MIN1 = new Scalar(108, 50, 47);
-    public static final Scalar GREEN_MAX1 = new Scalar(93, 65, 65);
+    public static final Scalar  GREEN_MAX1= new Scalar(49,255,255);
+    public static final Scalar  GREEN_MIN1= new Scalar(48,60,53);
 
-    public static final Scalar GREEN_MIN2 = new Scalar(133, 38, 34);
-    public static final Scalar GREEN_MAX2 = new Scalar(140, 50, 58);
+    public static final Scalar GREEN_MIN2 = new Scalar(45,60,53);
+    public static final Scalar GREEN_MAX2 = new Scalar(47,255,255);
 
-    public static final Scalar GREEN_MIN3 = new Scalar(145, 41, 28);
-    public static final Scalar GREEN_MAX3 = new Scalar(153, 62, 44);
+    public static final Scalar GREEN_MIN3 = new Scalar(50.5 ,56,35);
+    public static final Scalar GREEN_MAX3 = new Scalar(58, 255,255);
 
-    public static final Scalar COBA_MIN = new Scalar(88, 72, 51);
+    public static final Scalar COBA_MIN = new Scalar(88, 70, 65);
     public static final Scalar COBA_MAX = new Scalar(81, 39, 88);
 
     /**

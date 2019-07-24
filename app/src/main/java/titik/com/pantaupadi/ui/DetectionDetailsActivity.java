@@ -1,11 +1,14 @@
 package titik.com.pantaupadi.ui;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,7 +20,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,12 +56,19 @@ public class DetectionDetailsActivity extends AppCompatActivity {
     ArrayList<String> author = new ArrayList<String>();
     ArrayList<String> valueWarna = new ArrayList<String>();
     private static final String URL_DAUN = Server.URL + "ApiDaun.php";
+    ArrayList<BerandaModel> mItems = new ArrayList<>();
+    RecyclerView mRecyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
+    final DetectionDetailsActivity c = this;
+    TextView txt_nama_penyakit, txt_solusi, txt_kondisi, txt_tanggal, txt_penulis;
+    ImageView iv_gambar;
+    private BerandaAdapter bAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final View view = setContentView(R.layout.scan_daun_detail);
+        setContentView(R.layout.detection_details_activity);
 
         if (DetectionResultHolder.detectionResultAvailable()) {
             ListView detectionDetailsList = (ListView) findViewById(R.id.detection_deteils_activity_list);
@@ -73,6 +82,32 @@ public class DetectionDetailsActivity extends AppCompatActivity {
 //        umur = 21;
         umur = Integer.parseInt(getIntent().getStringExtra("usia"));
         tempUmur = umur;
+        txt_nama_penyakit = (TextView) findViewById(R.id.tv_nama_penyakit);
+        txt_kondisi = (TextView) findViewById(R.id.tv_nama_penyakit);
+        txt_solusi = (TextView) findViewById(R.id.tv_judul_solusi);
+        txt_tanggal = (TextView) findViewById(R.id.tv_tanggal_unggah);
+        txt_penulis = (TextView) findViewById(R.id.tv_author);
+
+        detailPenyakit();
+
+        bAdapter = new BerandaAdapter(this, mItems);
+        mRecyclerView = findViewById(R.id.recycler_view1);
+
+        swipeRefreshLayout = findViewById(R.id.swipe);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        swipeRefreshLayout.setRefreshing(false);
+//                        bAdapter.clear();
+//                        loadJson();
+//                    }
+//                })
+//            }
+//        });
+
 
         //get dr db
 //        valueDb = 5;
@@ -98,10 +133,15 @@ public class DetectionDetailsActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "hasil "+ hasilScan, Toast.LENGTH_SHORT).show();
 
-        loadJson(view);
+//        loadJson(view);
 
     }
-//
+
+    private void detailPenyakit() {
+
+    }
+
+    //
     private void loadJson(final View view ) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DAUN,
                 new Response.Listener<String>() {
@@ -130,5 +170,9 @@ public class DetectionDetailsActivity extends AppCompatActivity {
             }
         });
         MySingleton.getInstance(this.getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void loadView(View view){
+
     }
 }

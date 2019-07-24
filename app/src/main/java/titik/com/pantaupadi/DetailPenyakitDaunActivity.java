@@ -43,8 +43,7 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
 
         tv_penyakit = (TextView) findViewById(R.id.tv_penyakit);
         tv_kondisi = (TextView) findViewById(R.id.tv_kondisi);
-        tv_judul_solusi = (TextView) findViewById(R.id.text_solusi);
-        tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
+//        tv_judul_solusi = (TextView) findViewById(R.                                                                                _diunggah);
         tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
         img_detail = (ImageView) findViewById(R.id.iv_gambar);
 
