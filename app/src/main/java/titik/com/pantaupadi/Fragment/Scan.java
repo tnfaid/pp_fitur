@@ -42,6 +42,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import titik.com.pantaupadi.Activity.AppSettings;
+import titik.com.pantaupadi.Activity.Detection.ActivityDetectionContour;
 import titik.com.pantaupadi.Activity.DetectionResultHolder;
 import titik.com.pantaupadi.R;
 import titik.com.pantaupadi.FungsiDeteksi.ColumnsResistorDetector;
@@ -54,6 +55,8 @@ import titik.com.pantaupadi.Activity.Detection.CameraViewListener;
 import titik.com.pantaupadi.Activity.Detection.DetectionDetailsActivity;
 import titik.com.pantaupadi.Activity.Detection.DetectionMode;
 import titik.com.pantaupadi.Activity.Detection.SettingsActivity;
+
+import static android.media.CamcorderProfile.get;
 
 public class Scan extends Fragment {
 
@@ -115,13 +118,15 @@ public class Scan extends Fragment {
 
 
         double result = 0;
-        int counter = 0;
+        int counter = 0, ambilGambar = 5, KandidatModus =0, HModus=0;
         int hasil = 0;
         double temp = 0;
         int realResult = 0;
         ArrayList<Integer> value = new ArrayList<Integer>();
+        ArrayList<Integer> valueKe = new ArrayList<Integer>();
         ArrayList<Integer> firstDigit = new ArrayList<Integer>();
         ArrayList<Double> similarValue = new ArrayList<Double>();
+        ArrayList<Integer> deret = new ArrayList<Integer>();
         private DatePickerDialog datePickerDialog;
         private SimpleDateFormat dateFormatter;
         private TextView modus_nilai;
@@ -171,7 +176,8 @@ public class Scan extends Fragment {
             resultDetailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(), DetectionDetailsActivity.class));
+//                    startActivity(new Intent(getContext(), DetectionDetailsActivity.class));
+                    startActivity(new Intent(getContext(), ActivityDetectionContour.class));
                 }
             });
 // INILOOOOOOOOOO
@@ -185,30 +191,23 @@ public class Scan extends Fragment {
                                 resultTextView.setText("N/A");
                             } else {
                                 resultTextView.setText( " Warna " + detectionResult.getResistorValue() );
-//                                result[0] = detectionResult.getResistorValue();
+
+                                Toast.makeText(getActivity(), "detecresult" + detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
+
+
+
+//                              ini logikanya isola tapi udah tak ganti :v
                                 if(value.size() >= 5){
-                                    Toast.makeText(getContext(), "FULL SAM", Toast.LENGTH_SHORT).show();
-//                                    result = iconList.get(0) +
-//                                    Toast.makeText(getContext(),""+iconList.size() + "warna "+ colorRgba, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(getContext(),""+value.size() + "warna "+ firstDigit, Toast.LENGTH_SHORT).show();
 
-                                    //ini untuk pop up dialog input usia tanaman
-
-
-//
-
-//                                    Intent intent = new Intent(getActivity(), DetectionDetailsActivity.class);
-//                                    intent.putExtra("hasil",hasil);
-//                                    getActivity().startActivity(intent);
+                                    Toast.makeText(getActivity(), "Panjang deret element: " + firstDigit.size(), Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Toast.makeText(getContext(), "" + value.size() + "warnaaa " + firstDigit, Toast.LENGTH_SHORT).show();
-//                                    value.add(detectionResult.getResistorValue());
-                                    firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue()).substring(0, 1)));
+                                    firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue())));
 
+                                    //ini mengurutkan datanya dulu
                                     for (int h = 0; h < firstDigit.size(); h++) {
                                         for (int i = h + 1; i < firstDigit.size(); i++) {
-                                            if (firstDigit.get(h) > firstDigit.get(i)) {
+                                            if (firstDigit.get(h) < firstDigit.get(i)) {
                                                 counter = firstDigit.get(i);
                                                 firstDigit.set(i, firstDigit.get(h));
                                                 firstDigit.set(h, counter);
@@ -216,12 +215,13 @@ public class Scan extends Fragment {
                                         }
                                         value.add(firstDigit.get(h));
                                         result = result + value.get(h);
-                                        Toast.makeText(getContext(), "gambar ke " + h, Toast.LENGTH_SHORT).show();
                                     }
+
+
                                     //rata"
                                     result = result / (double) value.size();
 
-//                                    hold dulu yaaaah !
+//                                  hold dulu yaaaah !
                                     temp = (double) value.get(0) - result;
                                     for (int h = 0; h < value.size(); h++) {
                                         similarValue.add(Math.abs((double) value.get(h) - result));
@@ -229,11 +229,14 @@ public class Scan extends Fragment {
                                             temp = similarValue.get(h);
                                             hasil = h;
                                         }
+
                                     }
+
+
                                     Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getContext(), "Hasil : " + value.get(hasil), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "Hasil : " + firstDigit.get(hasil), Toast.LENGTH_LONG).show();
                                 }
-//                                Toast.makeText(getContext(), ""+detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
+
                                 }
                             resultTextView.setVisibility(View.VISIBLE);
 
@@ -241,45 +244,6 @@ public class Scan extends Fragment {
 
                             resultDetailsButton.setVisibility(View.VISIBLE);
                             resultDetailsButton.setEnabled(true);
-                        }
-
-                        private void showDateDialog(){
-
-                            /**
-                             * Calendar untuk mendapatkan tanggal sekarang
-                             */
-                            Calendar newCalendar = Calendar.getInstance();
-
-                            /**
-                             * Initiate DatePicker dialog
-                             */
-                            datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-                                @Override
-                                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                                    /**
-                                     * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
-                                     */
-
-                                    /**
-                                     * Set Calendar untuk menampung tanggal yang dipilih
-                                     */
-                                    Calendar newDate = Calendar.getInstance();
-                                    newDate.set(year, monthOfYear, dayOfMonth);
-
-                                    /**
-                                     * Update TextView dengan tanggal yang kita pilih
-                                     */
-//                                    tvDateResult.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()));
-                                }
-
-                            },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-                            /**
-                             * Tampilkan DatePicker dialog
-                             */
-                            datePickerDialog.show();
                         }
                     });
                 }
@@ -316,7 +280,10 @@ public class Scan extends Fragment {
                         modus_nilai = (TextView) mView.findViewById(R.id.tv_nilai_modus);
                         txt_usia = (EditText) mView.findViewById(R.id.txt_usia_tanaman);
 
-                        modus_nilai.setText("Hasil nilai perhitungan " + cobaHasil);
+
+                        modus_nilai.setText("Hasil modus perhitungan " + firstDigit.get(hasil) );
+
+
                         alertDialogBuilderUserInput
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
