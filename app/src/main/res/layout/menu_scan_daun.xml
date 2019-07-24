@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="Menu.Scan">
+    tools:context="Fragment.Scan">
 
-    <titik.com.pantaupadi.ui.CameraView
+    <titik.com.pantaupadi.Activity.Detection.CameraView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         opencv:show_fps="true"
