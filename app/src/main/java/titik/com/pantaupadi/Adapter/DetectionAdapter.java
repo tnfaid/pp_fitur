@@ -17,7 +17,7 @@ import com.android.volley.toolbox.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import titik.com.pantaupadi.Activity.DetailPenyakitDaunActivity;
+import titik.com.pantaupadi.Activity.ScanHasilDetail;
 import titik.com.pantaupadi.Model.BerandaModel;
 import titik.com.pantaupadi.R;
 import titik.com.pantaupadi.Server.MySingleton;
@@ -67,7 +67,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext.getApplicationContext(), "Detail " + position+ "alamat :" + orderList.get(position).getAddress(),Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext.getApplicationContext(), DetailPenyakitDaunActivity.class);
+                Intent intent = new Intent(mContext.getApplicationContext(), ScanHasilDetail.class);
                 //parcelabel
                 intent.putExtra("id",listBeranda.get(position).getId());
                 intent.putExtra("nama_penyakit",listBeranda.get(position).getNama_penyakit());

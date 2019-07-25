@@ -20,7 +20,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import titik.com.pantaupadi.Adapter.BerandaAdapter;
 import titik.com.pantaupadi.Adapter.DetectionAdapter;
 import titik.com.pantaupadi.Model.BerandaModel;
 import titik.com.pantaupadi.R;
@@ -34,7 +33,7 @@ public class ScanHasil extends AppCompatActivity {
     private DetectionAdapter myAdapter;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    int umur, hasilScan;
+    int umur, hasilScan, umurFix, valueFix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +59,25 @@ public class ScanHasil extends AppCompatActivity {
         });
         loadJson();
 
-        umur = Integer.parseInt(getIntent().getStringExtra("usia"));
-        hasilScan = getIntent().getIntExtra("hasil",0);
+//        umur = Integer.parseInt(getIntent().getStringExtra("usia"));
+//        hasilScan = getIntent().getIntExtra("hasil",0);
 
+        Toast.makeText(ScanHasil.this, "umur " + umur, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ScanHasil.this, "hasil Scan " + hasilScan, Toast.LENGTH_SHORT).show();
+
+//        if (umur >= 43 && hasilScan == 5){
+//            umurFix = umur;
+//            valueFix = hasilScan;
+//        }
+//        else if(umur >= 0 && hasilScan == 4 ) {
+//            umurFix = umur;
+//            valueFix = hasilScan;
+//        }
+//        else {
+//            umurFix = umur;
+//            valueFix = hasilScan;
+//            Toast.makeText(this, "DAUN APA INI ?", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     private void loadJson() {
@@ -77,17 +92,22 @@ public class ScanHasil extends AppCompatActivity {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                                 BerandaModel item = new BerandaModel();
-                                Toast.makeText(ScanHasil.this, "umur", Toast.LENGTH_SHORT).show();
-                                item.setId(jsonObject.getString("id"));
-                                item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
-                                item.setUsia(jsonObject.getString("usia"));
-                                item.setValue_warna(jsonObject.getString("value_warna"));
-                                item.setSolusi(jsonObject.getString("solusi"));
-                                item.setGambar(jsonObject.getString("gambar"));
-                                item.setKondisi(jsonObject.getString("kondisi"));
-                                item.setPenulis(jsonObject.getString("penulis"));
-                                item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
-                                mItems.add(item);
+//
+//                                if (jsonObject.getString("umur").equals(umur)) {
+//                                    if (jsonObject.getString("value_warna").equals(hasilScan)) {
+                                        item.setId(jsonObject.getString("id"));
+                                        item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
+                                        item.setUsia(jsonObject.getString("usia"));
+                                        item.setValue_warna(jsonObject.getString("value_warna"));
+                                        item.setSolusi(jsonObject.getString("solusi"));
+                                        item.setGambar(jsonObject.getString("gambar"));
+                                        item.setKondisi(jsonObject.getString("kondisi"));
+                                        item.setPenulis(jsonObject.getString("penulis"));
+                                        item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
+                                        item.setValue_warna(jsonObject.getString("value_warna"));
+                                        mItems.add(item);
+//                                    }
+//                                }
 
                                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                 mRecyclerView.setHasFixedSize(true);

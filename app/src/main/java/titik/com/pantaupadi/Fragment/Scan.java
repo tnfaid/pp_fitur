@@ -291,8 +291,8 @@ public class Scan extends Fragment {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         // ToDo get user input here'
                                         Intent intent = new Intent(getActivity(), ScanHasil.class);
-//                                        intent.putExtra("hasil", firstDigit.get(hasil));
-//                                        intent.putExtra("usia", txt_usia.getText().toString());
+                                        intent.putExtra("hasil", firstDigit.get(hasil));
+                                        intent.putExtra("usia", txt_usia.getText().toString());
                                         getActivity().startActivity(intent);
                                     }
                                 })
