@@ -1,9 +1,11 @@
 package titik.com.pantaupadi.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
@@ -33,7 +35,8 @@ public class ScanHasilDetail extends AppCompatActivity {
     public static final String URL = Server.URL;
     public static final String URL_DETAIL = Server.URL + "ApiDetailPenyakitDaun.php";
     TextView id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal;
-    ImageView img_detail;
+    ImageView img_detail, info_detail;
+
 
     String  idDaun, jenis_tanaman, kondisi, solusi, penulis, tanggal_upload;
 
@@ -51,6 +54,23 @@ public class ScanHasilDetail extends AppCompatActivity {
         tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
         tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
         img_detail = (ImageView) findViewById(R.id.gambar);
+        info_detail = (ImageView) findViewById(R.id.iv_info_detail);
+        info_detail.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ScanHasilDetail_info.class);
+                startActivity(intent);
+            }
+        });
+//        btn_coba_recycler_view.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ScanHasil.class);
+//                startActivity(intent);
+//            }
+//        });
+
 
         jenis_tanaman = getIntent().getStringExtra("jenis_tanaman");
         kondisi = getIntent().getStringExtra("kondisi");
@@ -66,6 +86,7 @@ public class ScanHasilDetail extends AppCompatActivity {
 
         ScanHasilDetail();
     }
+
 
     private void ScanHasilDetail() {
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DETAIL,
