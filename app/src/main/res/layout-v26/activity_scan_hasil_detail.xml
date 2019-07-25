@@ -147,7 +147,7 @@
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_kondisi"
                     android:layout_width="match_parent"
-                    android:layout_height="91dp"
+                    android:layout_height="wrap_content"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_kondisi"
                     android:layout_gravity="center_vertical|end"
@@ -175,7 +175,7 @@
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_solusi"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="100dp"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_solusi"

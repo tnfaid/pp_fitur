@@ -1,9 +1,12 @@
 package titik.com.pantaupadi.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +32,8 @@ import titik.com.pantaupadi.Server.Server;
 public class DetailPenyakitDaunActivity extends AppCompatActivity {
     public static final String URL = Server.URL;
     public static final String URL_DETAIL = Server.URL + "ApiDetailPenyakitDaun.php";
-    TextView  id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal;
-    ImageView img_detail;
+    TextView  id, tv_penyakit, tv_kondisi, tv_solusi, tv_diunggah, tv_tanggal;
+    ImageView img_detail, info_detail;
 
     String  idDaun, jenis_tanaman, kondisi, solusi, penulis, tanggal_upload;
 
@@ -44,9 +47,18 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
 
         tv_penyakit = (TextView) findViewById(R.id.tv_penyakit);
         tv_kondisi = (TextView) findViewById(R.id.tv_kondisi);
-//        tv_judul_solusi = (TextView) findViewById(R.                                                                                _diunggah);
+        tv_solusi = (TextView) findViewById(R.id.tv_solusi);
         tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
+        tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
         img_detail = (ImageView) findViewById(R.id.iv_gambar);
+        info_detail = (ImageView) findViewById(R.id.iv_info_detail);
+        info_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ScanHasilDetail_info.class );
+                startActivity(intent);
+            }
+        });
 
         jenis_tanaman = getIntent().getStringExtra("jenis_tanaman");
         kondisi = getIntent().getStringExtra("kondisi");
@@ -62,7 +74,7 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
 //
         tv_penyakit.setText(jenis_tanaman);
         tv_kondisi.setText(kondisi);
-        tv_judul_solusi.setText(solusi);
+        tv_solusi.setText(solusi);
         tv_diunggah.setText(penulis);
         tv_tanggal.setText(tanggal_upload);
 //        Toast.makeText(DetailPenyakitDaunActivity.this, jenis_tanaman ,Toast.LENGTH_SHORT).show();
@@ -86,7 +98,7 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
 
                                 tv_penyakit.setText(jsonObject.getString("nama_penyakit"));
                                 tv_kondisi.setText(jsonObject.getString("kondisi"));
-                                tv_judul_solusi.setText(jsonObject.getString("solusi"));
+                                tv_solusi.setText(jsonObject.getString("solusi"));
                                 tv_diunggah.setText(jsonObject.getString("penulis"));
                                 tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
 

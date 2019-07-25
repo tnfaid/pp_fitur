@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         // tampilan default awal ketika aplikasii dijalankan
         if (savedInstanceState == null) {
-            fragment = new Scan();
+            fragment = new Beranda();
             callFragment(fragment);
         }
     }
@@ -122,8 +122,5 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.frame_container, fragment)
                 .commit();
     }
-
-
-
 }
 
