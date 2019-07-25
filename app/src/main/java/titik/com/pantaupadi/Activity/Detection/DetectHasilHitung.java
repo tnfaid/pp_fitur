@@ -45,8 +45,8 @@ public class DetectHasilHitung extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detection_details_activity);
-//        setContentView(R.layout.activity_detection_details);
+        setContentView(R.layout.activity_detect_hasil_hitung);
+//        setContentView(R.layout.activity_detection_contours_list);
 //
 //        if (DetectionResultHolder.detectionResultAvailable()) {
 //            ListView detectionDetailsList = (ListView) findViewById(R.id.detection_deteils_activity_list);

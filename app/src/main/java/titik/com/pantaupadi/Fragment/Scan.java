@@ -2,6 +2,7 @@ package titik.com.pantaupadi.Fragment;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.bluetooth.le.ScanResult;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,7 +19,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,13 +37,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 import java.util.UUID;
 
 import titik.com.pantaupadi.Activity.AppSettings;
 import titik.com.pantaupadi.Activity.Detection.ActivityDetectionContour;
+import titik.com.pantaupadi.Activity.Detection.DetectHasilHitung;
 import titik.com.pantaupadi.Activity.DetectionResultHolder;
+import titik.com.pantaupadi.Activity.ScanHasil;
+import titik.com.pantaupadi.Activity.SplashScreenActivity;
 import titik.com.pantaupadi.R;
 import titik.com.pantaupadi.FungsiDeteksi.ColumnsResistorDetector;
 import titik.com.pantaupadi.FungsiDeteksi.ContoursModResistorDetector;
@@ -52,7 +54,6 @@ import titik.com.pantaupadi.FungsiDeteksi.ExperimentsResistorDetector;
 import titik.com.pantaupadi.FungsiDeteksi.ResistorDetector;
 import titik.com.pantaupadi.Activity.Detection.CameraView;
 import titik.com.pantaupadi.Activity.Detection.CameraViewListener;
-import titik.com.pantaupadi.Activity.Detection.DetectionDetailsActivity;
 import titik.com.pantaupadi.Activity.Detection.DetectionMode;
 import titik.com.pantaupadi.Activity.Detection.SettingsActivity;
 
@@ -262,7 +263,7 @@ public class Scan extends Fragment {
          */
 
         Mat colorRgba;
-        int cobaHasil = 5;
+
 
         public void setupStartDetectionControl() {
             ImageView startDetectionButton = (ImageView) getActivity().findViewById(R.id.mainActivity_start_detection);
@@ -289,9 +290,9 @@ public class Scan extends Fragment {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         // ToDo get user input here'
-                                        Intent intent = new Intent(getActivity(), DetectionDetailsActivity.class);
-                                        intent.putExtra("hasil", cobaHasil);
-                                        intent.putExtra("usia", txt_usia.getText().toString());
+                                        Intent intent = new Intent(getActivity(), ScanHasil.class);
+//                                        intent.putExtra("hasil", firstDigit.get(hasil));
+//                                        intent.putExtra("usia", txt_usia.getText().toString());
                                         getActivity().startActivity(intent);
                                     }
                                 })

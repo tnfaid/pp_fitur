@@ -1,8 +1,17 @@
 package titik.com.pantaupadi.Model;
 
+public class DetectionModel {
 
-public class BerandaModel{
     private String id;
+    private String user_id;
+    private String nama_penyakit;
+    private String solusi;
+    private String gambar;
+    private String kondisi;
+    private String penulis;
+    private String tanggal_upload;
+    private String value_warna;
+    private String usia;
 
     public String getId() {
         return id;
@@ -84,34 +93,20 @@ public class BerandaModel{
         this.usia = usia;
     }
 
-    private String user_id;
-    private String nama_penyakit;
-    private String solusi;
-    private String gambar;
-    private String kondisi;
-    private String penulis;
-    private String tanggal_upload;
-    private String value_warna;
-    private String usia;
 
-
-    public BerandaModel(String id, String user_id, String nama_penyakit, String solusi, String kondisi, String gambar, String penulis, String tanggal_upload, String value_warna, String usia) {
-        this.id = id;
-        this.user_id = user_id;
-        this.nama_penyakit = nama_penyakit;
-        this.solusi = solusi;
-        this.gambar = gambar;
-        this.kondisi = kondisi;
-        this.penulis = penulis;
-        this.tanggal_upload = tanggal_upload;
-        this.value_warna = value_warna;
-        this.usia = usia;
+    public DetectionModel(String id, String user_id, String nama_penyakit, String solusi, String kondisi, String gambar, String penulis, String tanggal_upload, String value_warna, String usia) {
+          this.id = id;
+          this.user_id = user_id;
+          this.nama_penyakit = nama_penyakit;
+          this.solusi = solusi;
+          this.kondisi = kondisi;
+          this.penulis = penulis;
+          this.tanggal_upload = tanggal_upload;
+          this.value_warna = value_warna;
+          this.usia = usia;
+          this.gambar = gambar;
     }
 
-    public BerandaModel()
-    {
-
-    }
 
 
 

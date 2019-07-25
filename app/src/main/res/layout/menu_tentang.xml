@@ -63,6 +63,18 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/coba_RecyclerView"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/green_muda_rounded_all"
+            android:text="Recycler View"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/coba_deteksi"
             android:layout_width="303dp"
             android:layout_height="wrap_content"

@@ -1,4 +1,3 @@
-
 package titik.com.pantaupadi.Adapter;
 
 import android.content.Context;
@@ -24,13 +23,14 @@ import titik.com.pantaupadi.R;
 import titik.com.pantaupadi.Server.MySingleton;
 import titik.com.pantaupadi.Server.Server;
 
-public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHolder> {
+public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.ViewHolder> {
+
 
     private Context mContext;
     private List<BerandaModel> listBeranda;
     View mView;
 
-    public BerandaAdapter(Context mContext, ArrayList<BerandaModel> orderList) {
+    public DetectionAdapter(Context mContext, ArrayList<BerandaModel> orderList) {
         this.mContext = mContext;
         this.listBeranda = orderList;
     }
@@ -39,18 +39,20 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_beranda, parent, false);
-        ViewHolder vh = new ViewHolder(mView); // pass the view to View Holder
+    public DetectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detect_hasil_hitung, parent, false);
+        DetectionAdapter.ViewHolder vh = new DetectionAdapter.ViewHolder(mView); // pass the view to View Holder
         return vh;
     }
+
+
 
     public int getItemCount() {
         return listBeranda.size();
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final DetectionAdapter.ViewHolder holder, final int position) {
         // Load image from internet and set it into imageView using Glide
         final BerandaModel beranda = listBeranda.get(position);
 //        Glide.with(mContext)
@@ -99,7 +101,7 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
 
     ImageView mGambar;
     class ViewHolder extends RecyclerView.ViewHolder{
-//        CardView mCardView;
+        //        CardView mCardView;
         TextView mNamaPenyakit;
         TextView mAuthor;
         TextView mTanggalPost;
@@ -123,7 +125,6 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
         listBeranda.clear();
         notifyDataSetChanged();
     }
-
 
 
 }

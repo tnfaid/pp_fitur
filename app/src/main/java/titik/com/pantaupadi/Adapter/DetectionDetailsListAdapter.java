@@ -34,7 +34,7 @@ public class DetectionDetailsListAdapter extends ArrayAdapter<DetectionStepDetai
      * @param data    the data to display inside the list
      */
     public DetectionDetailsListAdapter(Context context, ArrayList<DetectionStepDetail> data) {
-        super(context, R.layout.detection_details_list_row, data);
+        super(context, R.layout.detection_details_list_adapter, data);
     }
 
     /**
@@ -71,7 +71,7 @@ public class DetectionDetailsListAdapter extends ArrayAdapter<DetectionStepDetai
 
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            view = inflater.inflate(R.layout.detection_details_list_row, null);
+            view = inflater.inflate(R.layout.detection_details_list_adapter, null);
         }
 
         DetectionStepDetail rowData = getItem(position);

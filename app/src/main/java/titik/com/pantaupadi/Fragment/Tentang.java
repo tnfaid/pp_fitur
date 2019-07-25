@@ -12,12 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import titik.com.pantaupadi.Activity.Blob.MainBlobDetector;
+import titik.com.pantaupadi.Activity.ScanHasil;
 import titik.com.pantaupadi.Activity.Tentang_CobaDeteksi;
 import titik.com.pantaupadi.R;
 
 public class Tentang extends Fragment {
 
-    Button btn_cara_penggunaan, btn_coba_deteksi;
+    Button btn_cara_penggunaan, btn_coba_deteksi, btn_coba_recycler_view;
     RelativeLayout view;
     public Tentang(){}
 
@@ -27,6 +28,14 @@ public class Tentang extends Fragment {
 
         btn_cara_penggunaan = (Button) view.findViewById(R.id.cara_penggunaan);
         btn_coba_deteksi = (Button) view.findViewById(R.id.coba_deteksi);
+        btn_coba_recycler_view = (Button) view.findViewById(R.id.coba_RecyclerView);
+        btn_coba_recycler_view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ScanHasil.class);
+                startActivity(intent);
+            }
+        });
         btn_cara_penggunaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

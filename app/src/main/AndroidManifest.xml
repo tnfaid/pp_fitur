@@ -32,12 +32,6 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppThemeMonoChrome">
         <activity
-            android:name=".Activity.Detection.DetectionDetailsActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Detection Details"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullscreenTheme" />
-        <activity
             android:name=".Activity.Detection.SettingsActivity"
             android:label="Detection Details"
             android:screenOrientation="portrait"
@@ -50,6 +44,11 @@
         <activity
             android:name=".Activity.Detection.ActivityDetectionContour"
             android:label="DeteksiKontur"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullscreenTheme" />
+        <activity
+            android:name=".Activity.ScanHasil"
+            android:label="Scan Hasil"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullscreenTheme" />
         <activity
