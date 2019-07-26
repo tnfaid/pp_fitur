@@ -119,7 +119,7 @@ public class Scan extends Fragment {
 
 
         double result = 0;
-        int counter = 0, ambilGambar = 5, KandidatModus =0, HModus=0;
+        int counter = 0, ambilGambar = 5, KandidatModus =0, HModus=0, i, FrekModus, FrekKandidatModus;
         int hasil = 0;
         double temp = 0;
         int realResult = 0;
@@ -134,6 +134,8 @@ public class Scan extends Fragment {
         private Button btn_tambah_tanggal;
         EditText txt_usia;
 
+
+    boolean MasihSama;
 //        ArrayList<Integer> tempFirstDigit= new ArrayList<Integer>();
 //        ArrayList<Integer> tempCounter= new ArrayList<Integer>();
 //        ArrayList<Integer> tempIndex= new ArrayList<Integer>();
@@ -198,44 +200,77 @@ public class Scan extends Fragment {
 
 
 //                              ini logikanya isola tapi udah tak ganti :v
-                                if(value.size() >= 5){
+                                if(firstDigit.size() >= 5){
 
-                                    Toast.makeText(getActivity(), "Panjang deret element: " + firstDigit.size(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "DAH MENTOK LOO: ", Toast.LENGTH_SHORT).show();
+                                    firstDigit.clear();
 
                                 } else {
+                                    Toast.makeText(getActivity(), "Panjang deret element: " + firstDigit.size(), Toast.LENGTH_SHORT).show();
                                     firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue())));
 
                                     //ini mengurutkan datanya dulu
-                                    for (int h = 0; h < firstDigit.size(); h++) {
-                                        for (int i = h + 1; i < firstDigit.size(); i++) {
-                                            if (firstDigit.get(h) < firstDigit.get(i)) {
-                                                counter = firstDigit.get(i);
-                                                firstDigit.set(i, firstDigit.get(h));
-                                                firstDigit.set(h, counter);
+//                                    for (int h = 0; h < firstDigit.size(); h++) {
+//                                        for (int i = h + 1; i < firstDigit.size(); i++) {
+//                                            if (firstDigit.get(h) < firstDigit.get(i)) {
+//                                                counter = firstDigit.get(i);
+//                                                firstDigit.set(i, firstDigit.get(h));
+//                                                firstDigit.set(h, counter);
+//                                            }
+//                                        }
+//                                        value.add(firstDigit.get(h));
+//                                        result = result + value.get(h);
+//                                    }
+//
+                                    for(int i=0;i<firstDigit.size()-1;i++){
+                                        for(int j=i+1;j<firstDigit.size();j++){
+                                            if(firstDigit.get(j)<firstDigit.get(i)){
+                                                int temp=firstDigit.get(i);
+                                                firstDigit.set(i,firstDigit.get(j));
+                                                firstDigit.set(j, temp);
                                             }
                                         }
-                                        value.add(firstDigit.get(h));
-                                        result = result + value.get(h);
                                     }
 
-
-                                    //rata"
-                                    result = result / (double) value.size();
-
-//                                  hold dulu yaaaah !
-                                    temp = (double) value.get(0) - result;
-                                    for (int h = 0; h < value.size(); h++) {
-                                        similarValue.add(Math.abs((double) value.get(h) - result));
-                                        if (similarValue.get(h) < temp) {
-                                            temp = similarValue.get(h);
-                                            hasil = h;
+                                    FrekModus=0;
+                                    i=0;
+                                    while(i < firstDigit.size()){
+                                        KandidatModus= firstDigit.get(i);
+                                        FrekKandidatModus=1;
+                                        i++;
+                                        MasihSama = true;
+                                        while(MasihSama && i< firstDigit.size()){
+                                            if( firstDigit.get(i)==KandidatModus){
+                                                FrekKandidatModus=FrekKandidatModus+1;
+                                                MasihSama=true;
+                                            }
+                                            else{
+                                                MasihSama=false;
+                                            }
+                                            i++;
                                         }
-
+                                        if(FrekKandidatModus > FrekModus){
+                                            HModus=KandidatModus;
+                                            FrekModus=FrekKandidatModus;
+                                        }
                                     }
+                                    //rata"
+//                                    result = result / (double) value.size();
+//
+////                                  hold dulu yaaaah !
+//                                    temp = (double) value.get(0) - result;
+//                                    for (int h = 0; h < value.size(); h++) {
+//                                        similarValue.add(Math.abs((double) value.get(h) - result));
+//                                        if (similarValue.get(h) > temp) {
+//                                            temp = similarValue.get(h);
+//                                            hasil = h;
+//                                        }
+//
+//                                    }
 
 
                                     Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getContext(), "Hasil : " + firstDigit.get(hasil), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
                                 }
 
                                 }
@@ -271,7 +306,7 @@ public class Scan extends Fragment {
             startDetectionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(value.size() >= 5) {
+                    if(firstDigit.size() >= 5) {
                         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getContext());
                         View mView = layoutInflaterAndroid.inflate(R.layout.add_date_dialog, null);
@@ -282,7 +317,7 @@ public class Scan extends Fragment {
                         txt_usia = (EditText) mView.findViewById(R.id.txt_usia_tanaman);
 
 
-                        modus_nilai.setText("Hasil modus perhitungan " + firstDigit.get(hasil) );
+                        modus_nilai.setText("Hasil modus perhitungan " +HModus );
 
 
                         alertDialogBuilderUserInput
@@ -291,7 +326,7 @@ public class Scan extends Fragment {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         // ToDo get user input here'
                                         Intent intent = new Intent(getActivity(), ScanHasil.class);
-                                        intent.putExtra("hasil", firstDigit.get(hasil));
+                                        intent.putExtra("hasil", modus_nilai.getText().toString());
                                         intent.putExtra("usia", txt_usia.getText().toString());
                                         getActivity().startActivity(intent);
                                     }
