@@ -3,6 +3,16 @@ package titik.com.pantaupadi.Model;
 
 public class BerandaModel{
     private String id;
+    private String user_id;
+    private String nama_penyakit;
+    private String solusi;
+    private String gambar;
+    private String kondisi;
+    private String penulis;
+    private String tanggal_upload;
+    private String value_warna;
+    private String usia;
+
 
     public String getId() {
         return id;
@@ -84,15 +94,6 @@ public class BerandaModel{
         this.usia = usia;
     }
 
-    private String user_id;
-    private String nama_penyakit;
-    private String solusi;
-    private String gambar;
-    private String kondisi;
-    private String penulis;
-    private String tanggal_upload;
-    private String value_warna;
-    private String usia;
 
 
     public BerandaModel(String id, String user_id, String nama_penyakit, String solusi, String kondisi, String gambar, String penulis, String tanggal_upload, String value_warna, String usia) {

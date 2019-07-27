@@ -94,7 +94,7 @@ public class Tentang_CobaDeteksi extends AppCompatActivity {
     private void processImage(){
 
         //reading input image from internal storage.
-        Mat img = imread(Environment.getExternalStorageDirectory().getAbsolutePath() +"/BWD.png");
+        Mat img = imread(Environment.getExternalStorageDirectory().getAbsolutePath() +"/tes_kuning.png");
 
         Mat oImg = detectColor(img);
 
@@ -113,6 +113,7 @@ public class Tentang_CobaDeteksi extends AppCompatActivity {
         Mat color_range_green3 = new Mat();
         Mat color_range_green4 = new Mat();
         Mat color_range_blue = new Mat();
+        Mat color_range_yellow = new Mat();
         Mat color_range = new Mat();
 
         //bluring image to filter noises
@@ -128,9 +129,9 @@ public class Tentang_CobaDeteksi extends AppCompatActivity {
         Core.inRange(hsvImage, new Scalar(45,60,53), new Scalar(47,255,255), color_range_green3);
         Core.inRange(hsvImage, new Scalar(50.5 ,56,35), new Scalar(255,255,255), color_range_green4);
         Core.inRange(hsvImage, new Scalar(180,50,50), new Scalar(187,255,255), color_range_blue);
-
+        Core.inRange(hsvImage, new Scalar(25, 130, 100), new Scalar(34, 250, 160), color_range_yellow);
         //applying bitwise or to detect both red and green color.
-        Core.bitwise_or(color_range_red,color_range_green4,color_range);
+        Core.bitwise_or(color_range_red,color_range_yellow,color_range);
 
         return color_range;
     }

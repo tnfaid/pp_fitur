@@ -615,12 +615,14 @@ public class Scan extends Fragment {
             DetectionMode detectionMode = appSettings.getDetectionMode();
 
             switch (detectionMode) {
-                case ColumnResistorDetection:
-                    resistorDetector = new ColumnsResistorDetector(resultListener);
-                    break;
                 case ContoursModResistorDetection:
                     resistorDetector = new ContoursModResistorDetector(resultListener);
                     break;
+
+                case ColumnResistorDetection:
+                    resistorDetector = new ColumnsResistorDetector(resultListener);
+                    break;
+
                 case ExperimentsResistorDetection:
                     resistorDetector = new ExperimentsResistorDetector(resultListener);
                     break;
