@@ -124,7 +124,11 @@ public class Tentang_CobaDeteksi extends AppCompatActivity {
 
         //filtering red and green pixels based on given opencv HSV color range
         Core.inRange(hsvImage, new Scalar(0,50,50), new Scalar(5,255,255), color_range_red);
-        Core.inRange(hsvImage, new Scalar(40,50,50), new Scalar(44,255,255), color_range_green1);
+//        Core.inRange(hsvImage, new Scalar(40,50,50), new Scalar(44,255,255), color_range_green1);
+//        Core.inRange(hsvImage, new Scalar(48,60,53), new Scalar(49,255,255), color_range_green2);
+//        Core.inRange(hsvImage, new Scalar(45,60,53), new Scalar(47,255,255), color_range_green3);
+//        Core.inRange(hsvImage, new Scalar(50.5 ,56,35), new Scalar(58,255,255), color_range_green4);
+        Core.inRange(hsvImage, new Scalar(56, 243, 85), new Scalar(57.73, 248, 73), color_range_green1);
         Core.inRange(hsvImage, new Scalar(48,60,53), new Scalar(49,255,255), color_range_green2);
         Core.inRange(hsvImage, new Scalar(45,60,53), new Scalar(47,255,255), color_range_green3);
         Core.inRange(hsvImage, new Scalar(50.5 ,56,35), new Scalar(58,255,255), color_range_green4);

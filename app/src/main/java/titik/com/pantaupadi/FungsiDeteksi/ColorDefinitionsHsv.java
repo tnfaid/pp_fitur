@@ -28,9 +28,9 @@ public class ColorDefinitionsHsv {
 
     public static final Scalar YELLOW_MIN = new Scalar(25, 130, 100);
     public static final Scalar YELLOW_MAX = new Scalar(34, 250, 160);
-
-    public static final Scalar GREEN_MIN = new Scalar(35, 60, 60);
-    public static final Scalar GREEN_MAX = new Scalar(75, 250, 150);
+//
+//    public static final Scalar GREEN_MIN = new Scalar(35, 60, 60);
+//    public static final Scalar GREEN_MAX = new Scalar(75, 250, 150);
 
     public static final Scalar BLUE_MIN = new Scalar(82, 60, 49);
     public static final Scalar BLUE_MAX = new Scalar(128, 255, 255);
@@ -44,11 +44,23 @@ public class ColorDefinitionsHsv {
     public static final Scalar  GREEN_MAX1= new Scalar(49,255,255);
     public static final Scalar  GREEN_MIN1= new Scalar(48,60,53);
 
-    public static final Scalar GREEN_MIN2 = new Scalar(45,60,53);
-    public static final Scalar GREEN_MAX2 = new Scalar(47,255,255);
+//    public static final Scalar GREEN_MIN2 = new Scalar(45,60,53);
+//    public static final Scalar GREEN_MAX2 = new Scalar(47,255,255);
+//
+//    public static final Scalar GREEN_MIN3 = new Scalar(50.5 ,56,35);
+//    public static final Scalar GREEN_MAX3 = new Scalar(58, 255,255);
 
-    public static final Scalar GREEN_MIN3 = new Scalar(50.5 ,56,35);
-    public static final Scalar GREEN_MAX3 = new Scalar(58, 255,255);
+    public static final Scalar GREEN_MIN2 = new Scalar(56, 243, 85);
+    public static final Scalar GREEN_MAX2 = new Scalar(57, 248, 90);
+
+    public static final Scalar GREEN_MIN3 = new Scalar(58, 183, 92);
+    public static final Scalar GREEN_MAX3 = new Scalar(59, 184, 93);
+
+    public static final Scalar GREEN_MIN4 = new Scalar(61, 162, 83);
+    public static final Scalar GREEN_MAX4 = new Scalar(65, 163, 87);
+
+    public static final Scalar GREEN_MIN5 = new Scalar(66, 143, 85);
+    public static final Scalar GREEN_MAX5 = new Scalar(74, 109, 83);
 
     public static final Scalar COBA_MIN = new Scalar(88, 70, 65);
     public static final Scalar COBA_MAX = new Scalar(81, 39, 88);
@@ -183,12 +195,48 @@ public class ColorDefinitionsHsv {
             name = ColorName.Yellow;
         }
 
-        if (isScalarBetweenBounds(colorHsv, GREEN_MIN, GREEN_MAX)) {
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN1, GREEN_MAX1)) {
             if (name != ColorName.Unknown)
-                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green + ")!");
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green1 + ")!");
 
-            name = ColorName.Green;
+            name = ColorName.Green1;
         }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN2, GREEN_MAX2)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green2 + ")!");
+
+            name = ColorName.Green2;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN3, GREEN_MAX3)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green3 + ")!");
+
+            name = ColorName.Green3;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN4, GREEN_MAX4)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green4 + ")!");
+
+            name = ColorName.Green4;
+        }
+
+        if (isScalarBetweenBounds(colorHsv, GREEN_MIN5, GREEN_MAX5)) {
+            if (name != ColorName.Unknown)
+                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green5 + ")!");
+
+            name = ColorName.Green5;
+        }
+
+
+//        if (isScalarBetweenBounds(colorHsv, GREEN_MIN, GREEN_MAX)) {
+//            if (name != ColorName.Unknown)
+//                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green + ")!");
+//
+//            name = ColorName.Green;
+//        }
 
         if (isScalarBetweenBounds(colorHsv, BLUE_MIN, BLUE_MAX)) {
             if (name != ColorName.Unknown)
@@ -239,26 +287,6 @@ public class ColorDefinitionsHsv {
             name = ColorName.Green0;
         }
 
-        if (isScalarBetweenBounds(colorHsv, GREEN_MIN1, GREEN_MAX1)) {
-            if (name != ColorName.Unknown)
-                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green1 + ")!");
-
-            name = ColorName.Green1;
-        }
-
-        if (isScalarBetweenBounds(colorHsv, GREEN_MIN2, GREEN_MAX2)) {
-            if (name != ColorName.Unknown)
-                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green2 + ")!");
-
-            name = ColorName.Green2;
-        }
-
-        if (isScalarBetweenBounds(colorHsv, GREEN_MIN3, GREEN_MAX3)) {
-            if (name != ColorName.Unknown)
-                System.err.println("overlapping colorHsv name definitions (" + name + " and " + ColorName.Green3 + ")!");
-
-            name = ColorName.Green3;
-        }
 
         if (isScalarBetweenBounds(colorHsv, COBA_MIN, COBA_MAX)) {
             if (name != ColorName.Unknown)
@@ -309,8 +337,8 @@ public class ColorDefinitionsHsv {
                 return meanOfScalars(ORANGE_MAX, ORANGE_MIN);
             case Yellow:
                 return meanOfScalars(YELLOW_MAX, YELLOW_MIN);
-            case Green:
-                return meanOfScalars(GREEN_MAX, GREEN_MIN);
+//            case Green:
+//                return meanOfScalars(GREEN_MAX, GREEN_MIN);
             case Blue:
                 return meanOfScalars(BLUE_MAX, BLUE_MIN);
             case Violet:

@@ -24,8 +24,9 @@ public class DetectionDetailsListAdapter extends ArrayAdapter<DetectionStepDetai
 
     /**
      * The detection images are scaled with this factor.
+     * jadi ini tuh buat ukuran lebar dan tinggi gambar detail yang banyak2 ituloh
      */
-    private static final int IMAGE_SCALE_FACTOR = 4;
+    private static final int IMAGE_SCALE_FACTOR = 2;
 
     /**
      * Creates a new instance of this class to display the given data.

@@ -12,7 +12,7 @@ public enum ColorName {
     Red,
     Orange,
     Yellow,
-    Green,
+//    Green,
     Blue,
     Violet,
     Grey,
@@ -23,6 +23,8 @@ public enum ColorName {
     Green1,
     Green2,
     Green3,
+    Green4,
+    Green5,
     Unknown,
     Coba,
 }

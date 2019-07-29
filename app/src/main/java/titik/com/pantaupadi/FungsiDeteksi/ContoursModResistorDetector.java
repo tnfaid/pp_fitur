@@ -25,7 +25,7 @@ public class ContoursModResistorDetector extends ResistorDetector {
      */
     private static final boolean VERBOSE_DETECTION_DETAILS = false;
 
-    private static final int NUM_CODES = 14;
+    private static final int NUM_CODES = 15;
 
     // HSV colour bounds
     private static final Scalar COLOR_BOUNDS[][] = {
@@ -34,7 +34,7 @@ public class ContoursModResistorDetector extends ResistorDetector {
             {ColorDefinitionsHsv.RED1_MIN, ColorDefinitionsHsv.RED1_MAX},         // red (defined by two bounds)
             {ColorDefinitionsHsv.ORANGE_MIN, ColorDefinitionsHsv.ORANGE_MAX},   // orange
             {ColorDefinitionsHsv.YELLOW_MIN, ColorDefinitionsHsv.YELLOW_MAX}, // yellow
-            {ColorDefinitionsHsv.GREEN_MIN, ColorDefinitionsHsv.GREEN_MAX},   // green
+//            {ColorDefinitionsHsv.GREEN_MIN, ColorDefinitionsHsv.GREEN_MAX},   // green
             {ColorDefinitionsHsv.BLUE_MIN, ColorDefinitionsHsv.BLUE_MAX},  // blue
             {ColorDefinitionsHsv.VIOLET_MIN, ColorDefinitionsHsv.VIOLET_MAX}, // purple
             {ColorDefinitionsHsv.GREY_MIN, ColorDefinitionsHsv.GREY_MAX},       // gray
@@ -43,6 +43,8 @@ public class ContoursModResistorDetector extends ResistorDetector {
             {ColorDefinitionsHsv.GREEN_MIN1, ColorDefinitionsHsv.GREEN_MAX1},      // green1
             {ColorDefinitionsHsv.GREEN_MIN2, ColorDefinitionsHsv.GREEN_MAX2},      // green2
             {ColorDefinitionsHsv.GREEN_MIN3, ColorDefinitionsHsv.GREEN_MAX3},      // green3
+            {ColorDefinitionsHsv.GREEN_MIN4, ColorDefinitionsHsv.GREEN_MAX4},      // green3
+            {ColorDefinitionsHsv.GREEN_MIN5, ColorDefinitionsHsv.GREEN_MAX5},      // green3
             {ColorDefinitionsHsv.COBA_MIN, ColorDefinitionsHsv.COBA_MAX},      // coba
 
     };
@@ -76,6 +78,20 @@ public class ContoursModResistorDetector extends ResistorDetector {
         detectionResult.addDetectionStepDetail(new DetectionStepDetail("original Image", resistorImage));
 
         Mat filteredMat = new Mat();
+        /**
+         * pengertian cara penggunaan bilateral filter
+         * https://www.tutorialspoint.com/opencv/opencv_bilateral_filter
+         *bilateral filter menggunakan metode medianBlur()  dari kelas imgproc
+         *
+         * bilateralFilter(src, dst, d, sigmaColor, sigmaSpace, borderType)
+         *
+         * src : Mat object, semacam sumber inputan image
+         * dst : Mat object yang merepresentasikan tujuan/ output image untuk operasi ini
+         * d : sebuah variabel tipe data integer yang menggambarkan diameter darii pizel neighborhood
+         * sigmaColor : sebuah variabel yang bertipe integer yang menggambarkan filter sigma pada color spave
+         * sigmaSpace : sbuah variabel bertipe data integer yang menggambarkan filter sigma pada bagian koordinat
+         * borderType : sebuah objek integer yang menggambarkan tipe dari border yang digunakan
+         */
         Imgproc.bilateralFilter(resistorImage, filteredMat, 5, 80, 80);
 
         if (VERBOSE_DETECTION_DETAILS)
