@@ -10,6 +10,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -43,6 +44,7 @@ public class MainBlobDetector extends Activity implements View.OnTouchListener, 
     private Scalar               CONTOUR_COLOR;
 
     private CameraBridgeViewBase mOpenCvCameraView;
+    TextView text_rgb, text_hsv;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -69,6 +71,7 @@ public class MainBlobDetector extends Activity implements View.OnTouchListener, 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
 
         Log.i(TAG, "called onCreate");
         super.onCreate(savedInstanceState);
@@ -124,6 +127,9 @@ public class MainBlobDetector extends Activity implements View.OnTouchListener, 
     }
 
     public boolean onTouch(View v, MotionEvent event) {
+        text_rgb = (TextView) findViewById(R.id.tv_rgb);
+        text_hsv = (TextView) findViewById(R.id.tv_hsv);
+
         int cols = mRgba.cols();
         int rows = mRgba.rows();
 
@@ -158,8 +164,12 @@ public class MainBlobDetector extends Activity implements View.OnTouchListener, 
 
         mBlobColorRgba = converScalarHsv2Rgba(mBlobColorHsv);
         Toast.makeText(this, "RGB = " + mBlobColorRgba, Toast.LENGTH_LONG).show();
+        String hasilRgb = mBlobColorRgba.toString();
+        String hasilHsv = mBlobColorHsv.toString();
         Log.i(TAG, "Touched rgba color: (" + mBlobColorRgba.val[0] + ", " + mBlobColorRgba.val[1] +
                 ", " + mBlobColorRgba.val[2] + ", " + mBlobColorRgba.val[3] + ")");
+        text_rgb.setText("RGB nya adalah = " +hasilRgb);
+        text_hsv.setText("HSV nya adalah = " +hasilHsv);
 
         mDetector.setHsvColor(mBlobColorHsv);
 

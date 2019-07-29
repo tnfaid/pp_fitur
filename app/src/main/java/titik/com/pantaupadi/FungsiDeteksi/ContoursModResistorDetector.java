@@ -167,5 +167,3 @@ public class ContoursModResistorDetector extends ResistorDetector {
         }
     }
 }
-
-

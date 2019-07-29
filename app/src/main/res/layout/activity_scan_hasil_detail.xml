@@ -56,18 +56,18 @@
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@id/iv_gambar"
                 android:paddingLeft="20dp"
-                android:text="Tanggal"
+                android:text="Banyak Ambil Gambar"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/tv_tanggal"
+                android:id="@+id/tv_ambil_gambar"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_below="@+id/tv_judul_tanggal"
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/iv_gambar"
                 android:paddingLeft="20dp"
-                android:text="03 July 2019"
+                android:text="10x"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
@@ -76,22 +76,46 @@
                 android:id="@+id/tv_judul_diunggah"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_below="@+id/tv_tanggal"
+                android:layout_below="@+id/tv_ambil_gambar"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/iv_gambar"
                 android:paddingLeft="20dp"
-                android:text="Diunggah Oleh"
+                android:text="Rataan nilai yang muncul"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/tv_diunggah"
+                android:id="@+id/tv_modus_nilai"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_below="@+id/tv_judul_diunggah"
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/iv_gambar"
                 android:paddingLeft="20dp"
-                android:text="Mamoru Miyano"
+                android:text="Modus nilai 8"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_judul_umur"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_modus_nilai"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_gambar"
+                android:paddingLeft="20dp"
+                android:text="Rataan nilai yang muncul"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_umur"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_below="@+id/tv_judul_umur"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/iv_gambar"
+                android:paddingLeft="20dp"
+                android:text="24 HST"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="18dp" />
@@ -100,7 +124,7 @@
                 android:id="@+id/iv_info_detail"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
-                android:layout_below="@id/tv_diunggah"
+                android:layout_below="@id/tv_modus_nilai"
                 android:layout_marginLeft="-64dp"
                 android:layout_marginTop="-182dp"
                 android:layout_toRightOf="@+id/tv_judul_tanggal"

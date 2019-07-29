@@ -33,7 +33,7 @@ public class ScanHasil extends AppCompatActivity {
     private DetectionAdapter myAdapter;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    int umur, hasilScan, umurFix, valueFix;
+    int umur, hasilScan, umurFix, valueFix, jumlahAmbilGambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,9 @@ public class ScanHasil extends AppCompatActivity {
 
         umur = Integer.parseInt(getIntent().getStringExtra("usia"));
         hasilScan = getIntent().getIntExtra("hasil",0);
+        jumlahAmbilGambar = getIntent().getIntExtra("max_ambil_gambar", 0);
+
+
 
         Toast.makeText(ScanHasil.this, "umur " + umur, Toast.LENGTH_SHORT).show();
         Toast.makeText(ScanHasil.this, "hasil Scan " + hasilScan, Toast.LENGTH_SHORT).show();
@@ -93,8 +96,8 @@ public class ScanHasil extends AppCompatActivity {
 
                                 BerandaModel item = new BerandaModel();
 
-                                if (jsonObject.getString("umur").equals(umur)) {
-                                    if (jsonObject.getString("value_warna").equals(hasilScan)) {
+//                                if (jsonObject.getString("umur").equals(umur)) {
+//                                    if (jsonObject.getString("value_warna").equals(hasilScan)) {
                                         item.setId(jsonObject.getString("id"));
                                         item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
                                         item.setUsia(jsonObject.getString("usia"));
@@ -106,8 +109,10 @@ public class ScanHasil extends AppCompatActivity {
                                         item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
                                         item.setValue_warna(jsonObject.getString("value_warna"));
                                         mItems.add(item);
-                                    }
-                                }
+
+
+//                                    }
+//                                }
 
                                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                 mRecyclerView.setHasFixedSize(true);

@@ -18,9 +18,13 @@ import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -133,6 +137,7 @@ public class Scan extends Fragment {
         private TextView modus_nilai;
         private Button btn_tambah_tanggal;
         EditText txt_usia;
+        int max_ambil_gambar = 10;
 
 
     boolean MasihSama;
@@ -164,12 +169,12 @@ public class Scan extends Fragment {
             cameraView.setOnCameraInitializedCallback(new CameraView.OnCameraInitializedCallback() {
                 @Override
                 public void cameraViewInitialized() {
-//                    setupZoomControl();
+                    setupZoomControl();
                     setupFlashControl();
                     setupStartDetectionControl();
                     setupSaveImageControl();
                     setupSettingsControl();
-//                    setupNumberOfBandsControl();
+                    setupNumberOfBandsControl();
                 }
             });
 
@@ -200,7 +205,7 @@ public class Scan extends Fragment {
 
 
 //                              ini logikanya isola tapi udah tak ganti :v
-                                if(firstDigit.size() >= 5){
+                                if(firstDigit.size() >= max_ambil_gambar){
 
                                     Toast.makeText(getActivity(), "DAH MENTOK LOO: ", Toast.LENGTH_SHORT).show();
                                     firstDigit.clear();
@@ -328,6 +333,7 @@ public class Scan extends Fragment {
                                         Intent intent = new Intent(getActivity(), ScanHasil.class);
                                         intent.putExtra("hasil", modus_nilai.getText().toString());
                                         intent.putExtra("usia", txt_usia.getText().toString());
+                                        intent.putExtra("max_ambil_gambar", max_ambil_gambar);
                                         getActivity().startActivity(intent);
                                     }
                                 })
@@ -377,35 +383,35 @@ public class Scan extends Fragment {
          * The values of the ResistorDetector.NumberOfBands enum are used as values for the spinner.
          * If the spinner is changed, the selected enum value is set in the resistor detector.
          */
-//        public void setupNumberOfBandsControl() {
-//            Spinner numberOfBandsSelect = (Spinner) getActivity().findViewById(R.id.mainActivity_number_of_bands);
-//
-//            final ArrayAdapter<String> modeElements = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item);
-//
-//            for (ResistorDetector.NumberOfBands numberOfBands : ResistorDetector.NumberOfBands.values()) {
-//                modeElements.add(numberOfBands.name());
-//            }
-//
-//            modeElements.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//            numberOfBandsSelect.setAdapter(modeElements);
-//
-//            numberOfBandsSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                    ResistorDetector.NumberOfBands selectedNumberOfBands = ResistorDetector.NumberOfBands.valueOf(modeElements.getItem(position));
-//
-//                    resistorDetector.setNumberOfBands(selectedNumberOfBands);
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> parent) {
-//
-//                }
-//            });
-//
-//            numberOfBandsSelect.setVisibility(View.VISIBLE);
-//        }
+        public void setupNumberOfBandsControl() {
+            Spinner numberOfBandsSelect = (Spinner) getActivity().findViewById(R.id.mainActivity_number_of_bands);
+
+            final ArrayAdapter<String> modeElements = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item);
+
+            for (ResistorDetector.NumberOfBands numberOfBands : ResistorDetector.NumberOfBands.values()) {
+                modeElements.add(numberOfBands.name());
+            }
+
+            modeElements.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            numberOfBandsSelect.setAdapter(modeElements);
+
+            numberOfBandsSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    ResistorDetector.NumberOfBands selectedNumberOfBands = ResistorDetector.NumberOfBands.valueOf(modeElements.getItem(position));
+
+                    resistorDetector.setNumberOfBands(selectedNumberOfBands);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            numberOfBandsSelect.setVisibility(View.VISIBLE);
+        }
 
         /**
          * Sets up and initializes the button which saves the current image content
@@ -498,46 +504,46 @@ public class Scan extends Fragment {
          * <p>
          * It is only displayed if the camera supports a flashlight.
          */
-//        public void setupZoomControl() {
-//            SeekBar zoomControl = (SeekBar) getActivity().findViewById(R.id.main_activity_camera_zoom);
-//
-//            if (cameraView.isZoomSupported()) {
-//                zoomControl.setMax(cameraView.getMaxZoom());
-//
-//                int initZoomLevel = appSettings.getZoomLevel();
-//
-//                if (initZoomLevel < 0 || initZoomLevel > cameraView.getMaxZoom()) {
-//                    initZoomLevel = (int) (cameraView.getMaxZoom() * 0.3);  //30% of max zoom level
-//                }
-//
-//                zoomControl.setProgress(initZoomLevel);
-//
-//                cameraView.setZoomLevel(initZoomLevel);
-//
-//                zoomControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                    @Override
-//                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                        cameraView.setZoomLevel(progress);
-//
-//                        appSettings.saveZoomLevel(progress);
-//                    }
-//
-//                    @Override
-//                    public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//                    }
-//                });
-//
-//                zoomControl.setVisibility(View.VISIBLE);
-//            } else {
-//                zoomControl.setVisibility(View.GONE);
-//            }
-//        }
+        public void setupZoomControl() {
+            SeekBar zoomControl = (SeekBar) getActivity().findViewById(R.id.main_activity_camera_zoom);
+
+            if (cameraView.isZoomSupported()) {
+                zoomControl.setMax(cameraView.getMaxZoom());
+
+                int initZoomLevel = appSettings.getZoomLevel();
+
+                if (initZoomLevel < 0 || initZoomLevel > cameraView.getMaxZoom()) {
+                    initZoomLevel = (int) (cameraView.getMaxZoom() * 0.3);  //30% of max zoom level
+                }
+
+                zoomControl.setProgress(initZoomLevel);
+
+                cameraView.setZoomLevel(initZoomLevel);
+
+                zoomControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        cameraView.setZoomLevel(progress);
+
+                        appSettings.saveZoomLevel(progress);
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                });
+
+                zoomControl.setVisibility(View.VISIBLE);
+            } else {
+                zoomControl.setVisibility(View.GONE);
+            }
+        }
 
         /**
          * Called when the app is paused (e.g. moved to background).

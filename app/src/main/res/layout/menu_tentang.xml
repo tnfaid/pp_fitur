@@ -48,7 +48,6 @@
             <!--android:textColor="@color/white"-->
             <!--android:textSize="16dp"-->
             <!--android:textStyle="bold" />-->
-
         <Button
             android:id="@+id/cara_penggunaan"
             android:layout_width="303dp"
@@ -63,28 +62,40 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/coba_RecyclerView"
+            android:id="@+id/blob_tracking"
             android:layout_width="303dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/green_muda_rounded_all"
-            android:text="Recycler View"
+            android:background="@drawable/red_rounded_all"
+            android:text="Color Blob Tracking"
             android:textColor="@color/white"
             android:textSize="12dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/coba_deteksi"
-            android:layout_width="303dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/green_rounded_all_2"
-            android:text="Coba Deteksi"
-            android:textColor="@color/white"
-            android:textSize="12dp"
-            android:textStyle="bold" />
+        <!--<Button-->
+            <!--android:id="@+id/coba_RecyclerView"-->
+            <!--android:layout_width="303dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginBottom="40dp"-->
+            <!--android:background="@drawable/green_muda_rounded_all"-->
+            <!--android:text="Recycler View"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="12dp"-->
+            <!--android:textStyle="bold" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/coba_deteksi"-->
+            <!--android:layout_width="303dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginBottom="40dp"-->
+            <!--android:background="@drawable/green_rounded_all_2"-->
+            <!--android:text="Coba Deteksi"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="12dp"-->
+            <!--android:textStyle="bold" />-->
 
     </LinearLayout>
 

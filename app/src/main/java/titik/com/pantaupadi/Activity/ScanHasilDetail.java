@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,11 +35,12 @@ public class ScanHasilDetail extends AppCompatActivity {
 
     public static final String URL = Server.URL;
     public static final String URL_DETAIL = Server.URL + "ApiDetailPenyakitDaun.php";
-    TextView id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal;
+    TextView id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal, tv_umur, tv_modus_nilai, tv_jumlah_ambil_gambar;
     ImageView img_detail, info_detail;
 
 
-    String  idDaun, jenis_tanaman, kondisi, solusi, penulis, tanggal_upload;
+    String  idDaun, jenis_tanaman, kondisi, solusi, penulis, tanggal_upload, usia;
+    int jumlah_ambil_gambar, modus_nilai;
 
 
     @Override
@@ -54,6 +56,10 @@ public class ScanHasilDetail extends AppCompatActivity {
         tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
         tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
         img_detail = (ImageView) findViewById(R.id.gambar);
+        tv_modus_nilai = (TextView) findViewById(R.id.tv_modus_nilai);
+        tv_jumlah_ambil_gambar = (TextView) findViewById(R.id.tv_ambil_gambar);
+        tv_umur = (TextView) findViewById(R.id.tv_umur);
+
         info_detail = (ImageView) findViewById(R.id.iv_info_detail);
         info_detail.setOnClickListener(new View.OnClickListener(){
 
@@ -63,13 +69,6 @@ public class ScanHasilDetail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        btn_coba_recycler_view.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), ScanHasil.class);
-//                startActivity(intent);
-//            }
-//        });
 
 
         jenis_tanaman = getIntent().getStringExtra("jenis_tanaman");
@@ -77,12 +76,18 @@ public class ScanHasilDetail extends AppCompatActivity {
         solusi = getIntent().getStringExtra("solusi");
         penulis = getIntent().getStringExtra("penulis");
         tanggal_upload = getIntent().getStringExtra("tanggal_upload");
+        usia = getIntent().getStringExtra("usia");
+        modus_nilai = getIntent().getIntExtra("hasil",0);
+        jumlah_ambil_gambar = getIntent().getIntExtra("max_ambil_gambar", 0);
 
         tv_penyakit.setText(jenis_tanaman);
         tv_kondisi.setText(kondisi);
         tv_judul_solusi.setText(solusi);
-        tv_diunggah.setText(penulis);
-        tv_tanggal.setText(tanggal_upload);
+//        tv_diunggah.setText(penulis);
+//        tv_tanggal.setText(tanggal_upload);
+//        tv_umur.setText(usia);
+//        tv_modus_nilai.setText(modus_nilai);
+//        tv_jumlah_ambil_gambar.setText(jumlah_ambil_gambar);
 
         ScanHasilDetail();
     }
@@ -107,8 +112,11 @@ public class ScanHasilDetail extends AppCompatActivity {
                                 tv_penyakit.setText(jsonObject.getString("nama_penyakit"));
                                 tv_kondisi.setText(jsonObject.getString("kondisi"));
                                 tv_judul_solusi.setText(jsonObject.getString("solusi"));
-                                tv_diunggah.setText(jsonObject.getString("penulis"));
-                                tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
+//                                tv_diunggah.setText(jsonObject.getString("penulis"));
+//                                tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
+//                                tv_umur.setText(jsonObject.getString("usia"));
+//                                tv_modus_nilai.setText(jsonObject.getString("modus_nilai"));
+//                                tv_jumlah_ambil_gambar.setText(jsonObject.getString("jumlah_ambil_gambar"));
 
                                 showImage(Server.URL_IMG+jsonObject.getString("gambar"));
 

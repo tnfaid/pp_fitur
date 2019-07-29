@@ -18,7 +18,7 @@ import titik.com.pantaupadi.R;
 
 public class Tentang extends Fragment {
 
-    Button btn_cara_penggunaan, btn_coba_deteksi, btn_coba_recycler_view;
+    Button btn_cara_penggunaan, btn_coba_deteksi, btn_coba_recycler_view, btn_blob_tracking;
     RelativeLayout view;
     public Tentang(){}
 
@@ -27,16 +27,17 @@ public class Tentang extends Fragment {
         view = (RelativeLayout) inflater.inflate(R.layout.menu_tentang, container, false);
 
         btn_cara_penggunaan = (Button) view.findViewById(R.id.cara_penggunaan);
-        btn_coba_deteksi = (Button) view.findViewById(R.id.coba_deteksi);
-        btn_coba_recycler_view = (Button) view.findViewById(R.id.coba_RecyclerView);
-        btn_coba_recycler_view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ScanHasil.class);
-                startActivity(intent);
-            }
-        });
-        btn_cara_penggunaan.setOnClickListener(new View.OnClickListener() {
+//        btn_coba_deteksi = (Button) view.findViewById(R.id.coba_deteksi);
+//        btn_coba_recycler_view = (Button) view.findViewById(R.id.coba_RecyclerView);
+        btn_blob_tracking = (Button) view.findViewById(R.id.blob_tracking);
+//        btn_coba_recycler_view.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ScanHasil.class);
+//                startActivity(intent);
+//            }
+//        });
+        btn_blob_tracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(getContext())
@@ -45,14 +46,14 @@ public class Tentang extends Fragment {
                 startActivity(intent);
             }
         });
-        btn_coba_deteksi.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Tentang_CobaDeteksi.class);
-                startActivity(intent);
-            }
-        });
+//        btn_coba_deteksi.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), Tentang_CobaDeteksi.class);
+//                startActivity(intent);
+//            }
+//        });
 
         getActivity().setTitle("Tentang");
         Log.e("Tentang", "Tentang");
