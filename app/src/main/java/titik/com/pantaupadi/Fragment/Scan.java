@@ -123,8 +123,8 @@ public class Scan extends Fragment {
 
 
         double result = 0;
-        int counter = 0, ambilGambar = 5, KandidatModus =0, HModus=0, i, FrekModus, FrekKandidatModus;
-        int hasil = 0;
+        int counter = 0, ambilGambar = 5, KandidatModus, HModus, i, FrekModus, FrekKandidatModus;
+        int hasil;
         double temp = 0;
         int realResult = 0;
         ArrayList<Integer> value = new ArrayList<Integer>();
@@ -137,7 +137,8 @@ public class Scan extends Fragment {
         private TextView modus_nilai;
         private Button btn_tambah_tanggal;
         EditText txt_usia;
-        int max_ambil_gambar = 10;
+        int max_ambil_gambar = 3;
+        String stringUsia;
 
 
     boolean MasihSama;
@@ -200,18 +201,18 @@ public class Scan extends Fragment {
                             } else {
                                 resultTextView.setText( " Warna " + detectionResult.getResistorValue() );
 
-                                Toast.makeText(getActivity(), "detecresult" + detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getActivity(), "detecresult" + detectionResult.getResistorValue(), Toast.LENGTH_SHORT).show();
 
 
 
 //                              ini logikanya isola tapi udah tak ganti :v
                                 if(firstDigit.size() >= max_ambil_gambar){
 
-                                    Toast.makeText(getActivity(), "DAH MENTOK LOO: ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "UDAH MENTOK INI : ", Toast.LENGTH_SHORT).show();
                                     firstDigit.clear();
 
                                 } else {
-                                    Toast.makeText(getActivity(), "Panjang deret element: " + firstDigit.size(), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Panjang deret element: " + firstDigit.size(), Toast.LENGTH_SHORT).show();
                                     firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue())));
 
                                     //ini mengurutkan datanya dulu
@@ -273,8 +274,8 @@ public class Scan extends Fragment {
 //
 //                                    }
 
-
-                                    Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "ambil gambar ke : " + i, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
                                     Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
                                 }
 
@@ -311,7 +312,7 @@ public class Scan extends Fragment {
             startDetectionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(firstDigit.size() >= 5) {
+                    if(firstDigit.size() == max_ambil_gambar) {
                         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getContext());
                         View mView = layoutInflaterAndroid.inflate(R.layout.add_date_dialog, null);
@@ -325,15 +326,19 @@ public class Scan extends Fragment {
                         modus_nilai.setText("Hasil modus perhitungan " +HModus );
 
 
+
+
                         alertDialogBuilderUserInput
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         // ToDo get user input here'
+                                        stringUsia = txt_usia.getText().toString();
                                         Intent intent = new Intent(getActivity(), ScanHasil.class);
-                                        intent.putExtra("hasil", modus_nilai.getText().toString());
-                                        intent.putExtra("usia", txt_usia.getText().toString());
-                                        intent.putExtra("max_ambil_gambar", max_ambil_gambar);
+                                            intent.putExtra("intIntentHasil", HModus);
+                                            intent.putExtra("intIntentUsia", stringUsia);
+                                            intent.putExtra("intMax_ambil_gambar", max_ambil_gambar);
+                                            Toast.makeText(getContext(), "nilai modus = "+ HModus + " usia = " + stringUsia + " max ambil gambar = " + max_ambil_gambar, Toast.LENGTH_LONG).show();
                                         getActivity().startActivity(intent);
                                     }
                                 })
@@ -341,6 +346,7 @@ public class Scan extends Fragment {
                                 .setNegativeButton("Cancel",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialogBox, int id) {
+                                                firstDigit.clear();
                                                 dialogBox.cancel();
                                             }
                                         });

@@ -1,5 +1,6 @@
 package titik.com.pantaupadi.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,7 +35,8 @@ public class ScanHasil extends AppCompatActivity {
     private DetectionAdapter myAdapter;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    int umur, hasilScan, umurFix, valueFix, jumlahAmbilGambar;
+    TextView text_umur, text_modus;
+    int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +61,36 @@ public class ScanHasil extends AppCompatActivity {
             }
         });
         loadJson();
+        text_modus = (TextView) findViewById(R.id.tv_modus);
+        text_umur = (TextView) findViewById(R.id.tv_umur);
+        Intent intent = getIntent();
+        jumlahAmbilGambar = intent.getIntExtra("intMax_ambil_gambar", jumlahAmbilGambar);
+        int intModus = intent.getIntExtra("intIntentHasil", 0);
+        int intUmur = intent.getIntExtra("intIntentUsia", 0);
 
-        umur = Integer.parseInt(getIntent().getStringExtra("usia"));
-        hasilScan = getIntent().getIntExtra("hasil",0);
-        jumlahAmbilGambar = getIntent().getIntExtra("max_ambil_gambar", 0);
-
-
-
-        Toast.makeText(ScanHasil.this, "umur " + umur, Toast.LENGTH_SHORT).show();
-        Toast.makeText(ScanHasil.this, "hasil Scan " + hasilScan, Toast.LENGTH_SHORT).show();
-
-        if (umur >= 43 && hasilScan == 5){
-            umurFix = umur;
-            valueFix = hasilScan;
+        text_modus.setText("get modus = " + intModus + " jumlah ambil gambar = "+ jumlahAmbilGambar);
+        if (intent.hasExtra("intIntentUsia")){
+            text_umur.setText("get umur = " + intent.getStringExtra("intIntentUsia"));
         }
-        else if(umur >= 0 && hasilScan == 4 ) {
-            umurFix = umur;
-            valueFix = hasilScan;
+
+
+        if (intUmur >= 25 && intModus == 10){
+            umurFix = intUmur;
+            valueFix = intModus;
+        }
+        else if(intUmur >= 0 && intModus == 4 ) {
+            umurFix = intUmur;
+            valueFix = intModus;
         }
         else {
-            umurFix = umur;
-            valueFix = hasilScan;
+            umurFix = intUmur;
+            valueFix = intModus;
             Toast.makeText(this, "DAUN APA INI ?", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private Intent intent() {
+     return intent();
     }
 
     private void loadJson() {
@@ -96,8 +106,8 @@ public class ScanHasil extends AppCompatActivity {
 
                                 BerandaModel item = new BerandaModel();
 
-//                                if (jsonObject.getString("umur").equals(umur)) {
-//                                    if (jsonObject.getString("value_warna").equals(hasilScan)) {
+                                if (jsonObject.getString("umur").equals(umurFix)) {
+                                    if (jsonObject.getString("value_warna").equals(valueFix)) {
                                         item.setId(jsonObject.getString("id"));
                                         item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
                                         item.setUsia(jsonObject.getString("usia"));
@@ -111,8 +121,8 @@ public class ScanHasil extends AppCompatActivity {
                                         mItems.add(item);
 
 
-//                                    }
-//                                }
+                                    }
+                                }
 
                                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                 mRecyclerView.setHasFixedSize(true);
