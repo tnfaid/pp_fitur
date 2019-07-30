@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     public final static String TAG_LAST_NAME = "last_name";
     public final static String TAG_EMAIL = "email";
     public final static String TAG_MOBILE = "mobile";
+    public final static String TAG_PASSWORD = "password";
     public final static String TAG_COUNTRY = "country";
     public final static String TAG_CREATED_AT = "created_at";
     public final static String TAG_STATUS = "status";
