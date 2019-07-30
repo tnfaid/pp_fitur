@@ -322,7 +322,6 @@ public class Scan extends Fragment {
                         modus_nilai = (TextView) mView.findViewById(R.id.tv_nilai_modus);
                         txt_usia = (EditText) mView.findViewById(R.id.txt_usia_tanaman);
 
-
                         modus_nilai.setText("Hasil modus perhitungan " +HModus );
 
 
@@ -336,10 +335,13 @@ public class Scan extends Fragment {
                                         stringUsia = txt_usia.getText().toString();
                                         Intent intent = new Intent(getActivity(), ScanHasil.class);
                                             intent.putExtra("intIntentHasil", HModus);
-                                            intent.putExtra("intIntentUsia", stringUsia);
                                             intent.putExtra("intMax_ambil_gambar", max_ambil_gambar);
+
+                                            //oke ini dah dapet string usianya
+                                            intent.putExtra("intIntentUsia", Integer.parseInt(stringUsia));
+
+                                            getActivity().startActivity(intent);
                                             Toast.makeText(getContext(), "nilai modus = "+ HModus + " usia = " + stringUsia + " max ambil gambar = " + max_ambil_gambar, Toast.LENGTH_LONG).show();
-                                        getActivity().startActivity(intent);
                                     }
                                 })
 

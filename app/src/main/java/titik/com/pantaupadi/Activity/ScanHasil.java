@@ -36,7 +36,8 @@ public class ScanHasil extends AppCompatActivity {
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text_umur, text_modus ;
-    int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar, umurDb, warnaDb;
+    int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar, umurDb, warnaDb, intModus, intUmur, intUmur2;
+    String str_text_umur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,21 +48,31 @@ public class ScanHasil extends AppCompatActivity {
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view1);
         text_modus = (TextView) findViewById(R.id.tv_modus);
         text_umur = (TextView) findViewById(R.id.tv_umur);
+
+
         Intent intent = getIntent();
 
         jumlahAmbilGambar = intent.getIntExtra("intMax_ambil_gambar", jumlahAmbilGambar);
-        int intModus = intent.getIntExtra("intIntentHasil", 0);
-        int intUmur = intent.getIntExtra("intIntentUsia", 0);
+        intModus = intent.getIntExtra("intIntentHasil", 0);
+        intUmur = intent.getIntExtra("intIntentUsia", 0);
 
-//        text_modus.setText("value = " +  intModus );
-//        text_umur.setText("umur ="+intUmur);
+        /**
+         *
+         * get umur bermasalah coy, bisa sih kalo get pake cara ini
+         *  if (intent.hasExtra("intIntentUsia")){
+         *             text_umur.setText("nilai usia dari pop up = " + intent.getStringExtra("intIntentUsia"));
+         *
+         *  }
+         */
 
         if (intent.hasExtra("intIntentUsia")){
-            text_umur.setText("get umur = " + intUmur  + "\nget modus = " + intModus  + "\n jumlah ambil gambar = "+ jumlahAmbilGambar);
+            text_umur.setText("nilai usia dari pop up = " + intent.getIntExtra("intIntentUsia",0));
+//            str_text_umur = text_umur.getText().toString();
+//            intUmur2 = Integer.parseInt(str_text_umur);
 
-//            text_modus.setText("value = " +  intModus );
-//            text_umur.setText("umur ="+intUmur);
         }
+        text_modus.setText("\nget modus = " + intModus  + "\n jumlah ambil gambar = "+ jumlahAmbilGambar );
+
 //        Toast.makeText(this, "modus" , Toast.LENGTH_SHORT).show();
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -77,7 +88,7 @@ public class ScanHasil extends AppCompatActivity {
                 }, 1000);
             }
         });
-//        loadJson();
+        loadJson();
 
 //        if (intUmur >= 25 && intModus == 10){
 //            umurFix = intUmur;
@@ -104,41 +115,43 @@ public class ScanHasil extends AppCompatActivity {
                     public void onResponse(String response){
                         Log.d("json", response.toString());
 
+                        //try catch biar g force close kalo error
                         try {
                             JSONArray jsonArray =  new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
                                 BerandaModel item = new BerandaModel();
 
-                                if (jsonObject.getString("value_warna").equals(text_modus.getText().toString())) {
-                                    if (Integer.parseInt(jsonObject.getString("usia"))<=(Integer.parseInt(text_umur.getText().toString()))) {
+                                if (jsonObject.getInt("value_warna") == getIntent().getIntExtra("intIntentHasil",0) &&
+                                        jsonObject.getInt("usia")<=getIntent().getIntExtra("intIntentUsia",0)) {
                                         item.setId(jsonObject.getString("id"));
                                         item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
-                                        item.setUsia(jsonObject.getString("usia"));
-                                        item.setValue_warna(jsonObject.getString("value_warna"));
+                                        item.setUsia(String.valueOf(jsonObject.getInt("usia")));
+                                        item.setValue_warna(""+jsonObject.getInt("value_warna"));
                                         item.setSolusi(jsonObject.getString("solusi"));
                                         item.setGambar(jsonObject.getString("gambar"));
                                         item.setKondisi(jsonObject.getString("kondisi"));
                                         item.setPenulis(jsonObject.getString("penulis"));
                                         item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
-                                        item.setValue_warna(jsonObject.getString("value_warna"));
+////                                        item.setValue_warna(jsonObject.getString("value_warna"));
                                         mItems.add(item);
-                                    } else{
-                                        Toast.makeText(ScanHasil.this, "Data tidak terdaftar", Toast.LENGTH_SHORT).show();
-                                    }
+//                                    } else{
+//                                        Toast.makeText(ScanHasil.this, "Data tidak terdaftar", Toast.LENGTH_SHORT).show();
+//                                    }
                                 }else{
                                     Toast.makeText(ScanHasil.this, "Warna tidak dikenali", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ScanHasil.this, "ini text_modus = " + getIntent().getIntExtra("intIntentHasil",0) + ", yang ini text_umur = " + getIntent().getIntExtra("intIntentUsia",0), Toast.LENGTH_LONG ).show();
                                 }
-
-                                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                                mRecyclerView.setHasFixedSize(true);
-                                myAdapter = new DetectionAdapter(getApplicationContext(), mItems);
-                                mRecyclerView.setAdapter(myAdapter);
-                                myAdapter.notifyDataSetChanged();
                             }
+                            Log.e(getClass().getSimpleName(), "total items :"+mItems.size() );
+                            mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                            mRecyclerView.setHasFixedSize(true);
+                            myAdapter = new DetectionAdapter(getApplicationContext(), mItems);
+                            mRecyclerView.setAdapter(myAdapter);
+                            myAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(ScanHasil.this, "something error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
