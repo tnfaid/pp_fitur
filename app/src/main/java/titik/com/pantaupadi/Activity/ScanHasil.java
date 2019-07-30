@@ -35,8 +35,8 @@ public class ScanHasil extends AppCompatActivity {
     private DetectionAdapter myAdapter;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text_umur, text_modus;
-    int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar;
+    TextView text_umur, text_modus ;
+    int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar, umurDb, warnaDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,24 @@ public class ScanHasil extends AppCompatActivity {
 
         myAdapter = new DetectionAdapter(getApplicationContext(), mItems);
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view1);
+        text_modus = (TextView) findViewById(R.id.tv_modus);
+        text_umur = (TextView) findViewById(R.id.tv_umur);
+        Intent intent = getIntent();
 
+        jumlahAmbilGambar = intent.getIntExtra("intMax_ambil_gambar", jumlahAmbilGambar);
+        int intModus = intent.getIntExtra("intIntentHasil", 0);
+        int intUmur = intent.getIntExtra("intIntentUsia", 0);
+
+//        text_modus.setText("value = " +  intModus );
+//        text_umur.setText("umur ="+intUmur);
+
+        if (intent.hasExtra("intIntentUsia")){
+            text_umur.setText("get umur = " + intUmur  + "\nget modus = " + intModus  + "\n jumlah ambil gambar = "+ jumlahAmbilGambar);
+
+//            text_modus.setText("value = " +  intModus );
+//            text_umur.setText("umur ="+intUmur);
+        }
+//        Toast.makeText(this, "modus" , Toast.LENGTH_SHORT).show();
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -60,38 +77,26 @@ public class ScanHasil extends AppCompatActivity {
                 }, 1000);
             }
         });
-        loadJson();
-        text_modus = (TextView) findViewById(R.id.tv_modus);
-        text_umur = (TextView) findViewById(R.id.tv_umur);
-        Intent intent = getIntent();
-        jumlahAmbilGambar = intent.getIntExtra("intMax_ambil_gambar", jumlahAmbilGambar);
-        int intModus = intent.getIntExtra("intIntentHasil", 0);
-        int intUmur = intent.getIntExtra("intIntentUsia", 0);
+//        loadJson();
 
-        text_modus.setText("get modus = " + intModus + " jumlah ambil gambar = "+ jumlahAmbilGambar);
-        if (intent.hasExtra("intIntentUsia")){
-            text_umur.setText("get umur = " + intent.getStringExtra("intIntentUsia"));
-        }
-
-
-        if (intUmur >= 25 && intModus == 10){
-            umurFix = intUmur;
-            valueFix = intModus;
-        }
-        else if(intUmur >= 0 && intModus == 4 ) {
-            umurFix = intUmur;
-            valueFix = intModus;
-        }
-        else {
-            umurFix = intUmur;
-            valueFix = intModus;
-            Toast.makeText(this, "DAUN APA INI ?", Toast.LENGTH_SHORT).show();
-        }
+//        if (intUmur >= 25 && intModus == 10){
+//            umurFix = intUmur;
+//            valueFix = intModus;
+//        }
+//        else if(intUmur >= 0 && intModus == 4 ) {
+//            umurFix = intUmur;
+//            valueFix = intModus;
+//        }
+//        else {
+//            umurFix = intUmur;
+//            valueFix = intModus;
+//            Toast.makeText(this, "DAUN APA INI ?", Toast.LENGTH_SHORT).show();
+//        }
     }
-
-    private Intent intent() {
-     return intent();
-    }
+//
+//    private Intent intent() {
+//     return intent();
+//    }
 
     private void loadJson() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DAUN,
@@ -106,8 +111,8 @@ public class ScanHasil extends AppCompatActivity {
 
                                 BerandaModel item = new BerandaModel();
 
-                                if (jsonObject.getString("umur").equals(umurFix)) {
-                                    if (jsonObject.getString("value_warna").equals(valueFix)) {
+                                if (jsonObject.getString("value_warna").equals(text_modus.getText().toString())) {
+                                    if (Integer.parseInt(jsonObject.getString("usia"))<=(Integer.parseInt(text_umur.getText().toString()))) {
                                         item.setId(jsonObject.getString("id"));
                                         item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
                                         item.setUsia(jsonObject.getString("usia"));
@@ -119,9 +124,11 @@ public class ScanHasil extends AppCompatActivity {
                                         item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
                                         item.setValue_warna(jsonObject.getString("value_warna"));
                                         mItems.add(item);
-
-
+                                    } else{
+                                        Toast.makeText(ScanHasil.this, "Data tidak terdaftar", Toast.LENGTH_SHORT).show();
                                     }
+                                }else{
+                                    Toast.makeText(ScanHasil.this, "Warna tidak dikenali", Toast.LENGTH_SHORT).show();
                                 }
 
                                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
