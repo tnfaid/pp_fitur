@@ -27,6 +27,7 @@ import static titik.com.pantaupadi.Activity.LoginActivity.TAG_ID;
 import static titik.com.pantaupadi.Activity.LoginActivity.TAG_LAST_NAME;
 import static titik.com.pantaupadi.Activity.LoginActivity.TAG_MOBILE;
 import static titik.com.pantaupadi.Activity.LoginActivity.TAG_PASSWORD;
+import static titik.com.pantaupadi.Activity.LoginActivity.session_status;
 
 public class Profil extends Fragment {
 
@@ -34,8 +35,9 @@ public class Profil extends Fragment {
     TextView txt_id, txt_mobile, txt_first_name, txt_last_name, txt_country, txt_created_at, txt_email, txt_nama;
     SharedPreferences sharedPreferences;
     String id, first_name, last_name, created_at, email, country, mobile, nama, password;
+    Boolean session = false;
     public Profil() {}
-    Button btn_logout;
+    Button btn_logout, btn_gambar;
 
     public static final String my_share_preferences = "my_shared_preferences";
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -52,7 +54,7 @@ public class Profil extends Fragment {
         country =sharedPreferences.getString(TAG_COUNTRY,null);
         mobile =sharedPreferences.getString(TAG_MOBILE,null);
         password =sharedPreferences.getString(TAG_PASSWORD,null);
-
+        session = sharedPreferences.getBoolean(session_status, false);
 
         txt_email = (TextView) view.findViewById(R.id.tv_email);
         txt_nama = (TextView) view.findViewById(R.id.tv_nama);
@@ -66,13 +68,24 @@ public class Profil extends Fragment {
         txt_created_at.setText(created_at);
         txt_mobile.setText(mobile);
 
+        btn_gambar = (Button) view.findViewById(R.id.btn_camera);
+        btn_gambar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!session){
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }else {
+                    Toast.makeText(getContext(), "dah session detect", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         btn_logout = (Button) view.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(LoginActivity.session_status, false);
+                editor.putBoolean(session_status, false);
                 editor.putString(TAG_ID, null);
                 editor.putString(TAG_FIRST_NAME, null);
                 editor.putString(TAG_LAST_NAME, null);

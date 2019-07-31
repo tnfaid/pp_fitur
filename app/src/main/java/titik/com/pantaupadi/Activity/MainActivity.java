@@ -1,9 +1,14 @@
 package titik.com.pantaupadi.Activity;
 
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,14 +26,34 @@ import titik.com.pantaupadi.Fragment.Tambah;
 import titik.com.pantaupadi.Fragment.Tentang;
 import titik.com.pantaupadi.R;
 
+import static titik.com.pantaupadi.Activity.LoginActivity.session_status;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Dialog myDialog;
     Toolbar toolbar;
     DrawerLayout drawer;
     NavigationView navigationView;
     FragmentManager fragmentManager;
-    Fragment fragment = null;
+    Fragment fragment;
+
+    SharedPreferences sharedPreferences;
+    public static final String TAG_FIRST_NAME = "first_name";
+    public static final String TAG_LAST_NAME = "last_name";
+    public final static String TAG_EMAIL = "email";
+    public static final String TAG_ID = "id";
+    public static final String TAG_MOBILE = "mobile";
+    public static final String TAG_COUNTRY = "country";
+
+    Boolean session = false;
+    String id;
+    String first_name, first_nameIntent;
+    String last_name, last_nameIntent;
+    String mobile, mobileIntent;
+    String country, countryIntent;
+    String email, emailIntent;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +61,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        myDialog = new Dialog(this);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,14 +69,51 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        sharedPreferences = getSharedPreferences(LoginActivity.my_shared_preferences, MODE_PRIVATE);
+        session = sharedPreferences.getBoolean(session_status, false);
+        id = sharedPreferences.getString(TAG_ID, null);
+        first_name = sharedPreferences.getString(TAG_FIRST_NAME, null);
+        last_name = sharedPreferences.getString(TAG_LAST_NAME, null);
+        email = sharedPreferences.getString(TAG_EMAIL, null);
+        country = sharedPreferences.getString(TAG_COUNTRY, null);
+        mobile = sharedPreferences.getString(TAG_MOBILE, null);
+
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // tampilan default awal ketika aplikasii dijalankan
+        /**
+         * if(isLogin)
+         *         {
+         *             navigationView.getMenu().clear();
+         *             navigationView.inflateMenu(R.menu.activity_main_drawer);
+         *         } else {
+         *             navigationView.getMenu().clear();
+         *             navigationView.inflateMenu(R.menu.activity_main_drawer_petani);
+         *         }
+         *
+         *
+         *         // tampilan default awal ketika aplikasii dijalankan
+         *         if (savedInstanceState == null) {
+         *             fragment = new Scan();
+         *             callFragment(fragment);
+         *         }
+         */
+
+
+        if(!session){
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.activity_main_drawer_petani);
+        }else{
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.activity_main_drawer);
+        }
         if (savedInstanceState == null) {
             fragment = new Scan();
             callFragment(fragment);
         }
+
+
+
     }
 
     @Override
@@ -78,37 +141,55 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(getApplicationContext(), "Action Settings", Toast.LENGTH_SHORT).show();
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            Toast.makeText(getApplicationContext(), "Action Settings", Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+//    @SuppressWarnings("StatementWithEmptyBody")
+//
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        // Untuk memanggil layout dari menu yang dipilih
-        if (id == R.id.nav_scan) {
-            fragment = new Scan();
-            callFragment(fragment);
-        } else if (id == R.id.nav_beranda) {
-            fragment = new Beranda();
-            callFragment(fragment);
-        } else if (id == R.id.nav_tambah) {
-            fragment = new Tambah();
-            callFragment(fragment);
-        } else if (id == R.id.nav_profile) {
-            fragment = new Profil();
-            callFragment(fragment);
-        } else if (id == R.id.nav_tentang) {
-            fragment = new Tentang();
-            callFragment(fragment);
+        if(!session){
+            if (id == R.id.nav_scan) {
+                fragment = new Scan();
+                callFragment(fragment);
+            } else if (id == R.id.nav_beranda) {
+                fragment = new Beranda();
+                callFragment(fragment);
+            } else if (id == R.id.nav_login) {
+                intent = new Intent (MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            } else if (id == R.id.nav_tentang) {
+                fragment = new Tentang();
+                callFragment(fragment);
+            }
+        } else {
+            if (id == R.id.nav_scan) {
+                fragment = new Scan();
+                callFragment(fragment);
+            } else if (id == R.id.nav_beranda) {
+                fragment = new Beranda();
+                callFragment(fragment);
+            } else if (id == R.id.nav_tambah) {
+                fragment = new Tambah();
+                callFragment(fragment);
+            } else if (id == R.id.nav_profile) {
+                fragment = new Profil();
+                callFragment(fragment);
+            } else if (id == R.id.nav_tentang) {
+                fragment = new Tentang();
+                callFragment(fragment);
+            }
         }
+        // Untuk memanggil layout dari menu yang dipilih
+
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

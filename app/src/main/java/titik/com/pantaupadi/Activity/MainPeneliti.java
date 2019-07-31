@@ -100,10 +100,10 @@ public class MainPeneliti extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(getApplicationContext(), "Action Settings", Toast.LENGTH_SHORT).show();
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            Toast.makeText(getApplicationContext(), "Action Settings", Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
