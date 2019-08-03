@@ -163,6 +163,9 @@ public class MainActivity extends AppCompatActivity
             } else if (id == R.id.nav_beranda) {
                 fragment = new Beranda();
                 callFragment(fragment);
+            }else if (id == R.id.nav_tambah) {
+                    fragment = new Tambah();
+                    callFragment(fragment);
             } else if (id == R.id.nav_login) {
                 intent = new Intent (MainActivity.this, LoginActivity.class);
                 startActivity(intent);

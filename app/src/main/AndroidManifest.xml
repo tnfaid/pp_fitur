@@ -77,7 +77,6 @@
         <activity
             android:name=".Activity.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
         <activity
             android:name=".Activity.MainActivity"

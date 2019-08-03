@@ -11,6 +11,10 @@
             android:icon="@drawable/icon_beranda_info"
             android:title="Beranda Info" />
         <item
+            android:id="@+id/nav_tambah"
+            android:icon="@drawable/icon_add"
+            android:title="Tambah Info" />
+        <item
             android:id="@+id/nav_login"
             android:icon="@drawable/icon_key"
             android:title="Login" />
