@@ -65,6 +65,7 @@
                         android:id="@+id/et_nama_penyakit"
                         android:layout_width="372dp"
                         android:layout_height="55dp"
+                        android:inputType="text"
                         android:textSize="12dp"
                         android:hint="Nama Penyakit daun" />
                 </RelativeLayout>
@@ -103,6 +104,7 @@
                         android:id="@+id/text_kondisi"
                         android:layout_width="350dp"
                         android:layout_height="40dp"
+                        android:inputType="text"
                         android:layout_marginLeft="-2dp"
                         android:layout_toRightOf="@id/icon_tulis"
                         android:gravity="center|left"
@@ -129,6 +131,7 @@
                         android:id="@+id/et_input_kondisi_"
                         android:layout_width="372dp"
                         android:layout_height="127dp"
+                        android:inputType="text"
                         android:textSize="12dp"
                         android:hint="Daun Kekuningan" />
                 </RelativeLayout>
@@ -169,6 +172,7 @@
                         android:layout_marginLeft="-2dp"
                         android:layout_toRightOf="@id/icon_solusi"
                         android:gravity="center|left"
+                        android:inputType="text"
                         android:text="Solusi"
                         android:textColor="@color/white"
                         android:textSize="15dp" />
@@ -191,6 +195,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_input_solusi_"
                         android:layout_width="356dp"
+                        android:inputType="text"
                         android:layout_height="122dp"
                         android:textSize="12dp"
                         android:hint="Disiram" />
@@ -223,7 +228,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:foregroundGravity="bottom"
-                        android:src="@drawable/icon_lampu" />
+                        android:src="@drawable/ic_date_range_black_24dp" />
 
                     <TextView
                         android:id="@+id/text_usia"
@@ -232,7 +237,7 @@
                         android:layout_marginLeft="-2dp"
                         android:layout_toRightOf="@id/icon_solusi2"
                         android:gravity="center|left"
-                        android:text="Usia Tanaman"
+                        android:text="Usia Tanaman (HST)"
                         android:textColor="@color/white"
                         android:textSize="15dp" />
                 </RelativeLayout>
@@ -247,16 +252,17 @@
                     android:id="@+id/footer3_2"
                     android:layout_below="@id/recycler_view3_2"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="55dp"
                     android:padding="10dp"
                     android:background="@drawable/white_rounded_bottom">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_input_usia"
-                        android:layout_width="356dp"
-                        android:layout_height="122dp"
+                        android:layout_width="372dp"
+                        android:layout_height="55dp"
+                        android:inputType="number"
                         android:textSize="12dp"
-                        android:hint="Disiram" />
+                        android:hint="25 HST" />
                 </RelativeLayout>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -281,21 +287,21 @@
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/iv_gambar"
-                        android:layout_width="80dp"
-                        android:layout_height="65dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_below="@+id/tv_penyakit"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="40dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="29dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:foregroundGravity="center"
                         android:padding="5dp"
                         android:paddingLeft="30dp" />
 
                     <Button
                         android:id="@+id/btn_unggah_gambar"
-                        android:layout_width="157dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="34dp"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
@@ -306,7 +312,7 @@
                         android:layout_marginBottom="47dp"
                         android:layout_toEndOf="@+id/iv_gambar"
                         android:background="@drawable/green_rounded_all"
-                        android:text="Ambil"
+                        android:text="GAMBAR"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
                 </RelativeLayout>
@@ -326,7 +332,7 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/green_rounded_all"
             android:gravity="center"
-            android:text="PILIH GAMBAR"
+            android:text="SIMPAN"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
