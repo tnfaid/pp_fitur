@@ -326,7 +326,7 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/green_rounded_all"
             android:gravity="center"
-            android:text="SIMPAN"
+            android:text="PILIH GAMBAR"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 

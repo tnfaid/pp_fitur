@@ -1,6 +1,7 @@
 package titik.com.pantaupadi.Fragment;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -102,9 +104,9 @@ public class Tambah extends Fragment {
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                uploadImage();
-//                simpanData();
+              uploadImage();
+              Intent i = new Intent(view.getContext(), Beranda.class);
+              view.getContext().startActivity(i);
             }
         });
         btn_gambar = (Button)view.findViewById(R.id.btn_unggah_gambar);
@@ -144,8 +146,7 @@ public class Tambah extends Fragment {
                                 Log.e("v Add", jObj.toString());
 
                                 Toast.makeText(getContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getContext(), Beranda.class);
-                                startActivity(i);
+
                                 kosong();
 
                             } else {
@@ -184,8 +185,11 @@ public class Tambah extends Fragment {
                 params.put(KEY_PENULIS, String.valueOf(first_name+ ' ' + last_name));
                 params.put(KEY_USERID, String.valueOf(user_id));
 
+
+
                 //kembali ke parameters
                 Log.e(TAG, "" + params);
+
 //                Toast.makeText(getContext(), "Berhasil horeeee"
 //                + "\nnama penyakit = " + nama_penyakit.getText().toString()
 //                + "\n kondisi = " + kondisi.getText().toString()
