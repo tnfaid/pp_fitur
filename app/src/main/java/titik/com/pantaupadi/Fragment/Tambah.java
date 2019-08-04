@@ -105,8 +105,8 @@ public class Tambah extends Fragment {
             @Override
             public void onClick(View v) {
               uploadImage();
-              Intent i = new Intent(view.getContext(), Beranda.class);
-              view.getContext().startActivity(i);
+//              Intent i = new Intent(view.getContext(), Beranda.class);
+//              view.getContext().startActivity(i);
             }
         });
         btn_gambar = (Button)view.findViewById(R.id.btn_unggah_gambar);
