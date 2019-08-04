@@ -16,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 public class VolleyMultipartRequest extends Request<NetworkResponse> {
+
     private final String twoHyphens = "--";
     private final String lineEnd = "\r\n";
     private final String boundary = "apiclient-" + System.currentTimeMillis();
@@ -184,7 +185,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         dataOutputStream.writeBytes(lineEnd);
     }
 
-    protected class DataPart {
+    public class DataPart {
         private String fileName;
         private byte[] content;
         private String type;

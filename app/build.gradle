@@ -46,4 +46,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'com.github.barteksc:android-pdf-viewer:2.0.3'
     implementation project(path: ':openCVLibrary345')
+
 }
