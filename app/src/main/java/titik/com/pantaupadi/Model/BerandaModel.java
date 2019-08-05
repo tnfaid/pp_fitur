@@ -109,7 +109,7 @@ public class BerandaModel{
         this.usia = usia;
     }
 
-    public BerandaModel()
+    public BerandaModel(int id, String gambar, String nama_penyakit, int tanggal_upload, String penulis)
     {
 
     }
