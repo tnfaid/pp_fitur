@@ -32,6 +32,7 @@ import titik.com.pantaupadi.Server.Server;
 
 public class DetailPenyakitDaunActivity extends AppCompatActivity {
     public static final String URL = Server.URL;
+    public static final String URL_IMAGE = Server.URL_IMG;
     public static final String URL_DETAIL = Server.URL + "ApiDetailPenyakitDaun.php";
     TextView  id, tv_penyakit, tv_kondisi, tv_solusi, tv_diunggah, tv_tanggal, tv_usia;
     ImageView img_detail, info_detail;
@@ -108,7 +109,7 @@ public class DetailPenyakitDaunActivity extends AppCompatActivity {
                                 tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
                                 tv_usia.setText(jsonObject.getString("usia" )+" HST");
 
-                                showImage(Server.URL+jsonObject.getString("gambar"));
+                                showImage(Server.URL_IMG+jsonObject.getString("gambar"));
 
                                 //Toast.makeText(getApplicationContext(), jsonObject.getString("title"),Toast.LENGTH_LONG).show();
 

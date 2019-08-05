@@ -1,8 +1,8 @@
 package titik.com.pantaupadi.Server;
 
 public class Server {
-    public static final String URL = "http://192.168.1.10:8080/CI_PantauPadi/webService/";
-    public static final String URL_IMG = URL;
+    public static final String URL = "http://192.168.1.10:8080/CI_PantauPadi_webService_Upload/webService/";
+    public static final String URL_IMG = URL + "uploads/";
 }
 
 //untuk emu genymotion menggunakan ip = http://10.0.3.2/
