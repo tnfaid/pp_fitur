@@ -107,8 +107,7 @@ public class Beranda extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                BerandaModel item = new BerandaModel(jsonObject.getInt("id"), Server.URL_IMG + jsonObject.getString("gambar"),
-                                        jsonObject.getString("nama_penyakit"), jsonObject.getInt("tanggal_upload"), jsonObject.getString("penulis"));
+                                BerandaModel item = new BerandaModel();
 
                                 item.setId(jsonObject.getString("id"));
                                 item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
@@ -181,8 +180,18 @@ public class Beranda extends Fragment {
 
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                mItems.add(new BerandaModel(jsonObject.getInt("id"), Server.URL_IMG + jsonObject.getString("gambar"),
-                                        jsonObject.getString("nama_penyakit"), jsonObject.getInt("tanggal_upload"), jsonObject.getString("penulis")));
+                                BerandaModel item = new BerandaModel();
+
+                                item.setId(jsonObject.getString("id"));
+                                item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
+                                item.setUsia(jsonObject.getString("usia"));
+                                item.setValue_warna(jsonObject.getString("value_warna"));
+                                item.setSolusi(jsonObject.getString("solusi"));
+                                item.setGambar(jsonObject.getString("gambar"));
+                                item.setKondisi(jsonObject.getString("kondisi"));
+                                item.setPenulis(jsonObject.getString("penulis"));
+                                item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
+                                mItems.add(item);
                                 berandaAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){
