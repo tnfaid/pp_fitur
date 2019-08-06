@@ -33,6 +33,9 @@
 6.1<img src="https://user-images.githubusercontent.com/18043046/62577704-b10f0680-b8c9-11e9-822f-7718675df268.png" data-canonical-src=" https://user-images.githubusercontent.com/18043046/62577704-b10f0680-b8c9-11e9-822f-7718675df268.png" width="200" height="400" />
 7<img src="https://user-images.githubusercontent.com/18043046/62577717-b704e780-b8c9-11e9-9cbc-be3ee6cdb784.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62577717-b704e780-b8c9-11e9-9cbc-be3ee6cdb784.png" width="200" height="400" />
 
+##Referensi
+1. OpenCV Android DetectResistor https://github.com/sourceclimber/ResistorDetector
+
 
 
 
