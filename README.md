@@ -21,9 +21,8 @@
 8. view FAQ (using navigation) - titik
 
 ```
-![Screenshot_2019-07-03-07-48-49-339_titik com pantaupadi]()
+
 <img src="https://user-images.githubusercontent.com/18043046/62548300-c9166400-b890-11e9-831e-8a808a61e09b.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548300-c9166400-b890-11e9-831e-8a808a61e09b.png" width="200" height="400" />
-![Uploading Screenshot_2019-07-03-08-05-47-496_titik.com.pantaupadi.png…]()
 <img src="https://user-images.githubusercontent.com/18043046/62548302-c9aefa80-b890-11e9-9d55-ac77078ea7db.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548302-c9aefa80-b890-11e9-9d55-ac77078ea7db.png" width="200" height="400" />
 <img src="https://user-images.githubusercontent.com/18043046/62548304-ca479100-b890-11e9-8012-12633b81b725.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548304-ca479100-b890-11e9-8012-12633b81b725.png" width="200" height="400" />
 <img src="https://user-images.githubusercontent.com/18043046/62548306-ca479100-b890-11e9-879a-fdc269c86a26.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548306-ca479100-b890-11e9-879a-fdc269c86a26.png" width="200" height="400" />
