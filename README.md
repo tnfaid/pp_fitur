@@ -10,27 +10,36 @@
 
 ## Project 1 PetroApp mobile version
 ```
-1. tampilan home belum bisa side bar  - titik
-2. view pemasaran (using navigation) bram
-3. view laporan (done editing)zed x
-4. view profile (tinggal ganti icon biar sesuai)zed 
-5. view tata kelola (harusnya pake icon) lima
-6. view produk (perlu disesuaikan) lima
-7. view CSR (belum sesuai) bram
-8. pranala luar (tampilan disesuaikan) - titik
-8. view FAQ (using navigation) - titik
+1. splash screen
+2. mainActivity yang isinya fragment dan side menu
+3. menu scan yang isinya proses mengenali warna daun dan melakukan perhitungan modus nilai serta input usia tanaman, nanti akan diperoleh hasil yang sesuai inputUsia == dbUsia && modusValue == dbValue
+4. menu beranda yang isinya ada pencarian, dan menampilkan semua data dari tabel daun
+5. menu tentang yang berisi informasi versi aplikasi dan cara penggunaan yang dilihat menggunakan pdf view
+6. jika sudah login dengan akun yang sudah ada di tabel user, maka akan tampil menu tambah daun. Itu input data ada gambarnya juga kok
+7. sama ada profil yang cuma nampilin info pengguna aja, gak ada edit
 
 ```
 
-<img src="https://user-images.githubusercontent.com/18043046/62548300-c9166400-b890-11e9-831e-8a808a61e09b.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548300-c9166400-b890-11e9-831e-8a808a61e09b.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548302-c9aefa80-b890-11e9-9d55-ac77078ea7db.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548302-c9aefa80-b890-11e9-9d55-ac77078ea7db.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548304-ca479100-b890-11e9-8012-12633b81b725.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548304-ca479100-b890-11e9-8012-12633b81b725.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548306-ca479100-b890-11e9-879a-fdc269c86a26.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548306-ca479100-b890-11e9-879a-fdc269c86a26.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548307-cae02780-b890-11e9-9fb1-7858aa8b4e21.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548307-cae02780-b890-11e9-9fb1-7858aa8b4e21.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548310-cae02780-b890-11e9-8c42-03036d1dfae6.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548310-cae02780-b890-11e9-8c42-03036d1dfae6.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548311-cae02780-b890-11e9-96c8-3d1fab804704.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548311-cae02780-b890-11e9-96c8-3d1fab804704.png" width="200" height="400" />
-<img src="ttps://user-images.githubusercontent.com/18043046/62548314-cb78be00-b890-11e9-9f67-343c45da4957.png" data-canonical-src="ttps://user-images.githubusercontent.com/18043046/62548314-cb78be00-b890-11e9-9f67-343c45da4957.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548316-cc115480-b890-11e9-9875-b167b9edfa6f.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548316-cc115480-b890-11e9-9875-b167b9edfa6f.png" width="200" height="400" />
-<img src="https://user-images.githubusercontent.com/18043046/62548322-cddb1800-b890-11e9-8db5-793a203f682c.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548322-cddb1800-b890-11e9-8db5-793a203f682c.png" width="200" height="400" />
+1.<img src="https://user-images.githubusercontent.com/18043046/62577509-4b227f00-b8c9-11e9-859d-249f07cab9bd.png" data-canonical-src="https://user-images.githubusercontent.com/18043046/62577509-4b227f00-b8c9-11e9-859d-249f07cab9bd.png" width="200" height="400" />
+
+2.![Screenshot_2019-07-03-08-05-47-496_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577587-76a56980-b8c9-11e9-8e5b-af83f198e7b7.png)
+3.![Uploading Screenshot_2019-07-27-21-00-04-022_titik.com.pantaupadi.png…]()
+3.1![Screenshot_2019-07-27-21-00-16-220_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577598-7ad18700-b8c9-11e9-8510-98f10945072c.png)
+3.2![Screenshot_2019-07-27-21-38-28-922_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577623-89b83980-b8c9-11e9-9b0b-5094b3dd1356.png)
+4.![Screenshot_2019-07-27-21-39-11-104_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577640-92107480-b8c9-11e9-8f9e-dc7d865ee397.png)
+4.1![Screenshot_2019-07-27-21-39-16-675_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577651-976dbf00-b8c9-11e9-9582-af26ead9940e.png)
+5.![Screenshot_2019-07-05-02-04-34-372_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577664-9d63a000-b8c9-11e9-84c5-35cafdba0b1f.png)
+5.1![Screenshot_2019-07-27-21-38-37-685_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577674-a3f21780-b8c9-11e9-8f35-146ec9e4591d.png)
+6.![Screenshot_2019-07-03-07-48-49-339_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577687-a9e7f880-b8c9-11e9-9747-9c3fa19d8f49.png)
+6.1![Screenshot_2019-07-27-21-40-15-624_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577704-b10f0680-b8c9-11e9-822f-7718675df268.png)
+6.2![Screenshot_2019-07-27-21-40-20-435_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62577717-b704e780-b8c9-11e9-9cbc-be3ee6cdb784.png)
+
+
+
+
+
+
+
+
 
 
