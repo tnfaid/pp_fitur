@@ -5,9 +5,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -71,6 +73,7 @@ public class Beranda extends Fragment {
         final View view = inflater.inflate(R.layout.list_beranda, container, false);
 
         getActivity().setTitle("Beranda Info");
+        setHasOptionsMenu(true);
 
 
         myAdapter = new BerandaAdapter(view.getContext(),mItems);
@@ -139,9 +142,14 @@ public class Beranda extends Fragment {
         MySingleton.getInstance(this.getContext()).addToRequestQueue(stringRequest);
     }
 
+//    public boolean onCreateOptionsMenu(Menu menu) {
+////         Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -173,26 +181,33 @@ public class Beranda extends Fragment {
                         String json = response.toString();
                         Log.e("Response: ", response.toString());
                         try {
-                            JSONObject jsonObject = new JSONObject(json);
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-                            mItems.clear();
-                            berandaAdapter.notifyDataSetChanged();
-
-                            for(int i = 0; i < jsonArray.length(); i++){
-                                JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                BerandaModel item = new BerandaModel();
-
-                                item.setId(jsonObject.getString("id"));
-                                item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
-                                item.setUsia(jsonObject.getString("usia"));
-                                item.setValue_warna(jsonObject.getString("value_warna"));
-                                item.setSolusi(jsonObject.getString("solusi"));
-                                item.setGambar(jsonObject.getString("gambar"));
-                                item.setKondisi(jsonObject.getString("kondisi"));
-                                item.setPenulis(jsonObject.getString("penulis"));
-                                item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
-                                mItems.add(item);
+//                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObject = new JSONObject(String.valueOf(response));
+                            int value = jsonObject.getInt("value");
+                            if (value == 1) {
+                                mItems.clear();
                                 berandaAdapter.notifyDataSetChanged();
+
+
+                                String getObject = jsonObject.getString("results");
+                                JSONArray jsonArray = new JSONArray(getObject);
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject obj = jsonArray.getJSONObject(i);
+                                    BerandaModel item = new BerandaModel();
+
+                                    item.setId(obj.getString("id"));
+                                    item.setNama_penyakit(obj.getString("nama_penyakit"));
+                                    item.setUsia(obj.getString("usia"));
+                                    item.setValue_warna(obj.getString("value_warna"));
+                                    item.setSolusi(obj.getString("solusi"));
+                                    item.setGambar(obj.getString("gambar"));
+                                    item.setKondisi(obj.getString("kondisi"));
+                                    item.setPenulis(obj.getString("penulis"));
+                                    item.setTanggal_upload(obj.getString("tanggal_upload"));
+                                    mItems.add(item);
+                                 //   berandaAdapter.notifyDataSetChanged();
+                                }
                             }
                         }catch (Exception e){
                             e.printStackTrace();
