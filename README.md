@@ -33,5 +33,6 @@
 ![Screenshot_2019-07-27-21-40-15-624_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62548316-cc115480-b890-11e9-9875-b167b9edfa6f.png)
 ![Screenshot_2019-07-27-21-40-20-435_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62548317-cd428180-b890-11e9-83fd-b591cf440731.png)
 ![Screenshot_2019-07-27-21-49-03-767_titik com pantaupadi](https://user-images.githubusercontent.com/18043046/62548322-cddb1800-b890-11e9-8db5-793a203f682c.png)
+<img src="Screenshot_2019-07-27-21-49-03-767_titik com pantaupadi" data-canonical-src="https://user-images.githubusercontent.com/18043046/62548322-cddb1800-b890-11e9-8db5-793a203f682c.png" width="200" height="400" />
 
 
