@@ -8,7 +8,7 @@
     jadi gitu manggilnya
 
 
-## Project 1 PetroApp mobile version
+## Project Skripsi PantauPadi
 ```
 1. splash screen
 2. mainActivity yang isinya fragment dan side menu
