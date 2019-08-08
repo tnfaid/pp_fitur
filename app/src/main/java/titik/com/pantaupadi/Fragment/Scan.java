@@ -137,7 +137,7 @@ public class Scan extends Fragment {
         private TextView modus_nilai;
         private Button btn_tambah_tanggal;
         EditText txt_usia;
-        int max_ambil_gambar = 10;
+        int max_ambil_gambar = 1;
         String stringUsia;
 
 

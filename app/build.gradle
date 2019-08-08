@@ -34,8 +34,9 @@ dependencies {
 
     //add these for lines
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'com.android.support:recyclerview-v7:28.0.0-alpha1'
-    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    implementation 'com.github.bumptech.glide:glide:4.3.0'
     implementation 'com.synnapps:carouselview:0.1.4'
     implementation 'com.alespero:expandable-cardview:0.6'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'

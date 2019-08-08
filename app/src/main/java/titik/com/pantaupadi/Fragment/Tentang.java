@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import titik.com.pantaupadi.Activity.Blob.MainBlobDetector;
+import titik.com.pantaupadi.Activity.CaraPenggunaanAplikasi_info;
 import titik.com.pantaupadi.Activity.ScanHasil;
 import titik.com.pantaupadi.Activity.Tentang_CobaDeteksi;
 import titik.com.pantaupadi.R;
@@ -27,6 +28,14 @@ public class Tentang extends Fragment {
         view = (RelativeLayout) inflater.inflate(R.layout.menu_tentang, container, false);
 
         btn_cara_penggunaan = (Button) view.findViewById(R.id.cara_penggunaan);
+        btn_cara_penggunaan.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CaraPenggunaanAplikasi_info.class);
+                startActivity(i);
+            }
+        });
 //        btn_coba_deteksi = (Button) view.findViewById(R.id.coba_deteksi);
 //        btn_coba_recycler_view = (Button) view.findViewById(R.id.coba_RecyclerView);
         btn_blob_tracking = (Button) view.findViewById(R.id.blob_tracking);

@@ -35,7 +35,7 @@ public class ScanHasil extends AppCompatActivity {
     private DetectionAdapter myAdapter;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text_umur, text_modus ;
+    TextView text_umur, text_modus, text_take ;
     int usiaNya, hasilScan, umurFix, valueFix, jumlahAmbilGambar, umurDb, warnaDb, intModus, intUmur, intUmur2;
     String str_text_umur;
 
@@ -48,7 +48,7 @@ public class ScanHasil extends AppCompatActivity {
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view1);
         text_modus = (TextView) findViewById(R.id.tv_modus);
         text_umur = (TextView) findViewById(R.id.tv_umur);
-
+        text_take = (TextView) findViewById(R.id.tv_take);
 
         Intent intent = getIntent();
 
@@ -66,13 +66,13 @@ public class ScanHasil extends AppCompatActivity {
          */
 
         if (intent.hasExtra("intIntentUsia")){
-            text_umur.setText("nilai usia dari pop up = " + intent.getIntExtra("intIntentUsia",0));
+            text_umur.setText(" " + intent.getIntExtra("intIntentUsia",0));
 //            str_text_umur = text_umur.getText().toString();
 //            intUmur2 = Integer.parseInt(str_text_umur);
 
         }
-        text_modus.setText("\nget modus = " + intModus  + "\n jumlah ambil gambar = "+ jumlahAmbilGambar );
-
+        text_modus.setText(" " + intModus  );
+        text_take.setText(" " + jumlahAmbilGambar);
 //        Toast.makeText(this, "modus" , Toast.LENGTH_SHORT).show();
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -124,17 +124,17 @@ public class ScanHasil extends AppCompatActivity {
 
                                 if (jsonObject.getInt("value_warna") == getIntent().getIntExtra("intIntentHasil",0) &&
                                         jsonObject.getInt("usia")<=getIntent().getIntExtra("intIntentUsia",0)) {
-                                        item.setId(jsonObject.getString("id"));
-                                        item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
-                                        item.setUsia(String.valueOf(jsonObject.getInt("usia")));
-                                        item.setValue_warna(""+jsonObject.getInt("value_warna"));
-                                        item.setSolusi(jsonObject.getString("solusi"));
-                                        item.setGambar(jsonObject.getString("gambar"));
-                                        item.setKondisi(jsonObject.getString("kondisi"));
-                                        item.setPenulis(jsonObject.getString("penulis"));
-                                        item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
+                                    item.setId(jsonObject.getString("id"));
+                                    item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
+                                    item.setUsia(String.valueOf(jsonObject.getInt("usia")));
+                                    item.setValue_warna(""+jsonObject.getInt("value_warna"));
+                                    item.setSolusi(jsonObject.getString("solusi"));
+                                    item.setGambar(jsonObject.getString("gambar"));
+                                    item.setKondisi(jsonObject.getString("kondisi"));
+                                    item.setPenulis(jsonObject.getString("penulis"));
+                                    item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
 ////                                        item.setValue_warna(jsonObject.getString("value_warna"));
-                                        mItems.add(item);
+                                    mItems.add(item);
 //                                    } else{
 //                                        Toast.makeText(ScanHasil.this, "Data tidak terdaftar", Toast.LENGTH_SHORT).show();
 //                                    }
