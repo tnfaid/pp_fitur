@@ -1,7 +1,7 @@
 package titik.com.pantaupadi.Server;
 
 public class Server {
-    public static final String URL = "http://192.168.1.11:8080/CI_PantauPadi_webService_Upload/webService/";
+    public static final String URL = "http://192.168.43.135:8080/CI_PantauPadi_webService_Upload/webService/";
     public static final String URL_IMG = URL + "uploads/";
 }
 
