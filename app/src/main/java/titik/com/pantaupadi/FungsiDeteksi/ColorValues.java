@@ -39,10 +39,10 @@ public class ColorValues {
      */
     static {
         colorValues.put(ColorName.Green1, 0);
-        colorValues.put(ColorName.Green2, 2);
-        colorValues.put(ColorName.Green3, 3);
-        colorValues.put(ColorName.Green4, 4);
-        colorValues.put(ColorName.Green5, 5);
+        colorValues.put(ColorName.Green2, 0);
+        colorValues.put(ColorName.Green3, 0);
+        colorValues.put(ColorName.Green4, 0);
+        colorValues.put(ColorName.Green5, 0);
         colorValues.put(ColorName.Black, 0);
         colorValues.put(ColorName.Brown, 0);
         colorValues.put(ColorName.Red, 0);

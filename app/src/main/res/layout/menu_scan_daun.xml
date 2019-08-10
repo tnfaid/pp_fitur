@@ -59,15 +59,15 @@
                     android:padding="5dp"
                     android:src="@drawable/icon_detail_background" />
 
-                <ToggleButton
-                    android:id="@+id/mainActivity_flash_toggle"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/circle_green"
-                    android:src="@drawable/icon_thunder_background"
-                    android:textColor="@color/white" />
+                <!--<ToggleButton-->
+                    <!--android:id="@+id/mainActivity_flash_toggle"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:background="@drawable/circle_green"-->
+                    <!--android:src="@drawable/icon_thunder_background"-->
+                    <!--android:textColor="@color/white" />-->
 
                 <ImageView
                     android:id="@+id/mainActivity_start_detection"
@@ -81,28 +81,28 @@
                     android:src="@drawable/icon_camera_background" />
 
 
-                <ImageView
-                    android:id="@+id/mainActivity_settings"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/circle_green"
-                    android:enabled="false"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:src="@drawable/icon_setting_background" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/mainActivity_settings"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:background="@drawable/circle_green"-->
+                    <!--android:enabled="false"-->
+                    <!--android:gravity="center"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:src="@drawable/icon_setting_background" />-->
 
-                <ImageView
-                    android:id="@+id/mainActivity_save_image"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/circle_green"
-                    android:enabled="false"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:src="@drawable/icon_download_background" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/mainActivity_save_image"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@drawable/circle_green"-->
+                    <!--android:enabled="false"-->
+                    <!--android:gravity="center"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:src="@drawable/icon_download_background" />-->
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>

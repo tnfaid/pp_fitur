@@ -112,8 +112,8 @@ public class ScanHasilDetail extends AppCompatActivity {
                                 tv_penyakit.setText(jsonObject.getString("nama_penyakit"));
                                 tv_kondisi.setText(jsonObject.getString("kondisi"));
                                 tv_judul_solusi.setText(jsonObject.getString("solusi"));
-//                                tv_diunggah.setText(jsonObject.getString("penulis"));
-//                                tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
+                                tv_diunggah.setText(jsonObject.getString("penulis"));
+                                tv_tanggal.setText(jsonObject.getString("tanggal_upload"));
 //                                tv_umur.setText(jsonObject.getString("usia"));
 //                                tv_modus_nilai.setText(jsonObject.getString("modus_nilai"));
 //                                tv_jumlah_ambil_gambar.setText(jsonObject.getString("jumlah_ambil_gambar"));

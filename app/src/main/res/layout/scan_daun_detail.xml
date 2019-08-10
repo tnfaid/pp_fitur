@@ -119,6 +119,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:layout_marginTop="30dp"
                     android:id="@+id/tv_judul_kondisi"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -128,7 +129,7 @@
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"/>
 
-                <android.support.v7.widget.AppCompatTextView
+                <com.codesgood.views.JustifiedTextView
                     android:id="@+id/tv_kondisi"
                     android:layout_width="match_parent"
                     android:layout_below="@id/tv_judul_kondisi"
@@ -138,11 +139,11 @@
                     android:text="daun hijau muda ketika umur 25 hari"
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"
-                    android:gravity="center"
                     android:scrollHorizontally="false"
                     android:layout_gravity="center_vertical|end"/>
 
                 <TextView
+                    android:layout_marginTop="20dp"
                     android:id="@+id/tv_judul_solusi"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -153,7 +154,7 @@
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"/>
 
-                <android.support.v7.widget.AppCompatTextView
+                <com.codesgood.views.JustifiedTextView
                     android:layout_width="match_parent"
                     android:layout_below="@id/tv_judul_solusi"
                     android:layout_height="wrap_content"
@@ -162,7 +163,6 @@
                     android:text="kekurangan pupuk urea, tingkatkan pupuk 25%, Untuk 5 t/ha menggunakan takaran urea 75 kg/ha"
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"
-                    android:gravity="center"
                     android:scrollHorizontally="false"
                     android:layout_gravity="center_vertical|end"/>
                 <!--android:justificationMode="iter_word"-->

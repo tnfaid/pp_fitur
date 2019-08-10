@@ -170,12 +170,12 @@ public class Scan extends Fragment {
             cameraView.setOnCameraInitializedCallback(new CameraView.OnCameraInitializedCallback() {
                 @Override
                 public void cameraViewInitialized() {
-                    setupZoomControl();
-                    setupFlashControl();
+//                    setupZoomControl();
+//                    setupFlashControl();
                     setupStartDetectionControl();
-                    setupSaveImageControl();
-                    setupSettingsControl();
-                    setupNumberOfBandsControl();
+//                    setupSaveImageControl();
+//                    setupSettingsControl();
+//                    setupNumberOfBandsControl();
                 }
             });
 
@@ -205,10 +205,10 @@ public class Scan extends Fragment {
 
 
 
-//                              ini logikanya isola tapi udah tak ganti :v
+//                              ini logika modus nya
                                 if(firstDigit.size() >= max_ambil_gambar){
 
-                                    Toast.makeText(getActivity(), "UDAH MENTOK INI : ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Sudah Maksimal", Toast.LENGTH_SHORT).show();
                                     firstDigit.clear();
 
                                 } else {
@@ -216,18 +216,6 @@ public class Scan extends Fragment {
                                     firstDigit.add(Integer.parseInt(Integer.toString(detectionResult.getResistorValue())));
 
                                     //ini mengurutkan datanya dulu
-//                                    for (int h = 0; h < firstDigit.size(); h++) {
-//                                        for (int i = h + 1; i < firstDigit.size(); i++) {
-//                                            if (firstDigit.get(h) < firstDigit.get(i)) {
-//                                                counter = firstDigit.get(i);
-//                                                firstDigit.set(i, firstDigit.get(h));
-//                                                firstDigit.set(h, counter);
-//                                            }
-//                                        }
-//                                        value.add(firstDigit.get(h));
-//                                        result = result + value.get(h);
-//                                    }
-//
                                     for(int i=0;i<firstDigit.size()-1;i++){
                                         for(int j=i+1;j<firstDigit.size();j++){
                                             if(firstDigit.get(j)<firstDigit.get(i)){
@@ -260,23 +248,9 @@ public class Scan extends Fragment {
                                             FrekModus=FrekKandidatModus;
                                         }
                                     }
-                                    //rata"
-//                                    result = result / (double) value.size();
-//
-////                                  hold dulu yaaaah !
-//                                    temp = (double) value.get(0) - result;
-//                                    for (int h = 0; h < value.size(); h++) {
-//                                        similarValue.add(Math.abs((double) value.get(h) - result));
-//                                        if (similarValue.get(h) > temp) {
-//                                            temp = similarValue.get(h);
-//                                            hasil = h;
-//                                        }
-//
-//                                    }
-
                                     Toast.makeText(getContext(), "ambil gambar ke : " + i, Toast.LENGTH_SHORT).show();
 //                                    Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
                                 }
 
                                 }
@@ -324,9 +298,6 @@ public class Scan extends Fragment {
 
                         modus_nilai.setText("Hasil modus perhitungan " +HModus );
 
-
-
-
                         alertDialogBuilderUserInput
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -341,7 +312,7 @@ public class Scan extends Fragment {
                                             intent.putExtra("intIntentUsia", Integer.parseInt(stringUsia));
 
                                             getActivity().startActivity(intent);
-                                            Toast.makeText(getContext(), "nilai modus = "+ HModus + " usia = " + stringUsia + " max ambil gambar = " + max_ambil_gambar, Toast.LENGTH_LONG).show();
+//                                            Toast.makeText(getContext(), "nilai modus = "+ HModus + " usia = " + stringUsia + " max ambil gambar = " + max_ambil_gambar, Toast.LENGTH_LONG).show();
                                     }
                                 })
 
@@ -373,102 +344,102 @@ public class Scan extends Fragment {
          * Sets up and initializes the button which opens the settings activity.
          * A click on this button opens the SettingsActivity.
          */
-        public void setupSettingsControl() {
-            ImageView settingsButton = (ImageView) getActivity().findViewById(R.id.mainActivity_settings);
-
-            settingsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(getContext(), SettingsActivity.class));
-                }
-            });
-
-            settingsButton.setVisibility(View.VISIBLE);
-        }
+//        public void setupSettingsControl() {
+//            ImageView settingsButton = (ImageView) getActivity().findViewById(R.id.mainActivity_settings);
+//
+//            settingsButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(getContext(), SettingsActivity.class));
+//                }
+//            });
+//
+//            settingsButton.setVisibility(View.VISIBLE);
+//        }
 
         /**
          * Sets up and initializes the spinner to select the number of bands the resistor has.
          * The values of the ResistorDetector.NumberOfBands enum are used as values for the spinner.
          * If the spinner is changed, the selected enum value is set in the resistor detector.
          */
-        public void setupNumberOfBandsControl() {
-            Spinner numberOfBandsSelect = (Spinner) getActivity().findViewById(R.id.mainActivity_number_of_bands);
-
-            final ArrayAdapter<String> modeElements = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item);
-
-            for (ResistorDetector.NumberOfBands numberOfBands : ResistorDetector.NumberOfBands.values()) {
-                modeElements.add(numberOfBands.name());
-            }
-
-            modeElements.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            numberOfBandsSelect.setAdapter(modeElements);
-
-            numberOfBandsSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ResistorDetector.NumberOfBands selectedNumberOfBands = ResistorDetector.NumberOfBands.valueOf(modeElements.getItem(position));
-
-                    resistorDetector.setNumberOfBands(selectedNumberOfBands);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-            numberOfBandsSelect.setVisibility(View.VISIBLE);
-        }
+//        public void setupNumberOfBandsControl() {
+//            Spinner numberOfBandsSelect = (Spinner) getActivity().findViewById(R.id.mainActivity_number_of_bands);
+//
+//            final ArrayAdapter<String> modeElements = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item);
+//
+//            for (ResistorDetector.NumberOfBands numberOfBands : ResistorDetector.NumberOfBands.values()) {
+//                modeElements.add(numberOfBands.name());
+//            }
+//
+//            modeElements.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//            numberOfBandsSelect.setAdapter(modeElements);
+//
+//            numberOfBandsSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                    ResistorDetector.NumberOfBands selectedNumberOfBands = ResistorDetector.NumberOfBands.valueOf(modeElements.getItem(position));
+//
+//                    resistorDetector.setNumberOfBands(selectedNumberOfBands);
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//
+//                }
+//            });
+//
+//            numberOfBandsSelect.setVisibility(View.VISIBLE);
+//        }
 
         /**
          * Sets up and initializes the button which saves the current image content
          * of the indicator to a file.
          */
-        public void setupSaveImageControl() {
-            ImageView saveImageButton = (ImageView) getActivity().findViewById(R.id.mainActivity_save_image);
-
-            saveImageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Mat resistorImage = cameraViewListener.getResistorImage();
-
-                    Bitmap bitmap = null;
-
-                    try {
-                        bitmap = Bitmap.createBitmap(resistorImage.cols(), resistorImage.rows(), Bitmap.Config.ARGB_8888);
-                        Utils.matToBitmap(resistorImage, bitmap);
-                    } catch (CvException e) {
-                        Log.d("Exception", e.getMessage());
-                    }
-
-                    if (bitmap != null) {
-                        try {
-                            File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "resistorDetector");
-                            boolean isPresent = true;
-                            if (!folder.exists()) {
-                                isPresent = folder.mkdir();
-                            }
-
-                            if (isPresent) {
-                                File file = new File(folder, UUID.randomUUID().toString() + ".png");
-                                FileOutputStream out = new FileOutputStream(file);
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-                                out.close();
-
-                                Toast.makeText(getContext(), "Image Saved!", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (Exception e) {
-                            Log.d("Exception", e.getMessage());
-                        }
-                    }
-                }
-            });
-
-            saveImageButton.setVisibility(View.VISIBLE);
-        }
+//        public void setupSaveImageControl() {
+//            ImageView saveImageButton = (ImageView) getActivity().findViewById(R.id.mainActivity_save_image);
+//
+//            saveImageButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Mat resistorImage = cameraViewListener.getResistorImage();
+//
+//                    Bitmap bitmap = null;
+//
+//                    try {
+//                        bitmap = Bitmap.createBitmap(resistorImage.cols(), resistorImage.rows(), Bitmap.Config.ARGB_8888);
+//                        Utils.matToBitmap(resistorImage, bitmap);
+//                    } catch (CvException e) {
+//                        Log.d("Exception", e.getMessage());
+//                    }
+//
+//                    if (bitmap != null) {
+//                        try {
+//                            File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "resistorDetector");
+//                            boolean isPresent = true;
+//                            if (!folder.exists()) {
+//                                isPresent = folder.mkdir();
+//                            }
+//
+//                            if (isPresent) {
+//                                File file = new File(folder, UUID.randomUUID().toString() + ".png");
+//                                FileOutputStream out = new FileOutputStream(file);
+//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+//                                out.close();
+//
+//                                Toast.makeText(getContext(), "Image Saved!", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        } catch (Exception e) {
+//                            Log.d("Exception", e.getMessage());
+//                        }
+//                    }
+//                }
+//            });
+//
+//            saveImageButton.setVisibility(View.VISIBLE);
+//        }
 
         /**
          * Sets up and initializes the button which toggles the flash of the camera.
@@ -478,30 +449,30 @@ public class Scan extends Fragment {
          * If the button is toggled, the new flash state is set in the camera view.
          * This button is only displayed if the camera supports a flashlight.
          */
-        public void setupFlashControl() {
-            final ToggleButton flashToggle = (ToggleButton) getActivity().findViewById(R.id.mainActivity_flash_toggle);
-
-            if (cameraView.isFlashSupported()) {
-                boolean initFlashState = appSettings.getFlashEnabled();
-
-                flashToggle.setChecked(initFlashState);
-
-                cameraView.setFlashState(initFlashState);
-
-                flashToggle.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        cameraView.setFlashState(flashToggle.isChecked());
-
-                        appSettings.saveFlashEnabled(flashToggle.isChecked());
-                    }
-                });
-
-                flashToggle.setVisibility(View.VISIBLE);
-            } else {
-                flashToggle.setVisibility(View.GONE);
-            }
-        }
+//        public void setupFlashControl() {
+//            final ToggleButton flashToggle = (ToggleButton) getActivity().findViewById(R.id.mainActivity_flash_toggle);
+//
+//            if (cameraView.isFlashSupported()) {
+//                boolean initFlashState = appSettings.getFlashEnabled();
+//
+//                flashToggle.setChecked(initFlashState);
+//
+//                cameraView.setFlashState(initFlashState);
+//
+//                flashToggle.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        cameraView.setFlashState(flashToggle.isChecked());
+//
+//                        appSettings.saveFlashEnabled(flashToggle.isChecked());
+//                    }
+//                });
+//
+//                flashToggle.setVisibility(View.VISIBLE);
+//            } else {
+//                flashToggle.setVisibility(View.GONE);
+//            }
+//        }
 
         /**
          * Sets up and initializes the seekbar which is used to zoom he camera image.
@@ -512,46 +483,46 @@ public class Scan extends Fragment {
          * <p>
          * It is only displayed if the camera supports a flashlight.
          */
-        public void setupZoomControl() {
-            SeekBar zoomControl = (SeekBar) getActivity().findViewById(R.id.main_activity_camera_zoom);
-
-            if (cameraView.isZoomSupported()) {
-                zoomControl.setMax(cameraView.getMaxZoom());
-
-                int initZoomLevel = appSettings.getZoomLevel();
-
-                if (initZoomLevel < 0 || initZoomLevel > cameraView.getMaxZoom()) {
-                    initZoomLevel = (int) (cameraView.getMaxZoom() * 0.3);  //30% of max zoom level
-                }
-
-                zoomControl.setProgress(initZoomLevel);
-
-                cameraView.setZoomLevel(initZoomLevel);
-
-                zoomControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        cameraView.setZoomLevel(progress);
-
-                        appSettings.saveZoomLevel(progress);
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                });
-
-                zoomControl.setVisibility(View.VISIBLE);
-            } else {
-                zoomControl.setVisibility(View.GONE);
-            }
-        }
+//        public void setupZoomControl() {
+//            SeekBar zoomControl = (SeekBar) getActivity().findViewById(R.id.main_activity_camera_zoom);
+//
+//            if (cameraView.isZoomSupported()) {
+//                zoomControl.setMax(cameraView.getMaxZoom());
+//
+//                int initZoomLevel = appSettings.getZoomLevel();
+//
+//                if (initZoomLevel < 0 || initZoomLevel > cameraView.getMaxZoom()) {
+//                    initZoomLevel = (int) (cameraView.getMaxZoom() * 0.3);  //30% of max zoom level
+//                }
+//
+//                zoomControl.setProgress(initZoomLevel);
+//
+//                cameraView.setZoomLevel(initZoomLevel);
+//
+//                zoomControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//                    @Override
+//                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                        cameraView.setZoomLevel(progress);
+//
+//                        appSettings.saveZoomLevel(progress);
+//                    }
+//
+//                    @Override
+//                    public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//                    }
+//                });
+//
+//                zoomControl.setVisibility(View.VISIBLE);
+//            } else {
+//                zoomControl.setVisibility(View.GONE);
+//            }
+//        }
 
         /**
          * Called when the app is paused (e.g. moved to background).
