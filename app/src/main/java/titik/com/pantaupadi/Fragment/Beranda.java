@@ -19,11 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
@@ -45,6 +47,7 @@ public class Beranda extends Fragment {
 
     private static final String URL_DAUN = Server.URL + "ApiDaun.php";
     private static final String URL_CARI = Server.URL + "ApiCariDaun.php";
+    private static final String URL_COBA_CARI = Server.URL + "ApiNyobaCari.php";
     private static final String URL_DAUN_DETAIL = Server.URL + "detail.php";
 
     private static final String TAG = Beranda.class.getSimpleName();
@@ -63,7 +66,6 @@ public class Beranda extends Fragment {
     private BerandaAdapter berandaAdapter;
     SwipeRefreshLayout swipeRefreshLayout;
     final Context context = this.getContext();
-    ProgressDialog pDialog;
     final Beranda c = this;
 
 
@@ -88,39 +90,36 @@ public class Beranda extends Fragment {
                     public void run() {
                         swipeRefreshLayout.setRefreshing(false);
                         myAdapter.clear();
-                        loadJson(view);
+                        loadJson(URL_DAUN, view);
                     }
                 }, 1000);
             }
         });
 
-        loadJson(view);
+        loadJson(URL_DAUN, view);
         return view;
     }
 
 
-    private void loadJson(final View view ) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DAUN,
-                new Response.Listener<String>() {
-                    public void onResponse(String response){
-                        Log.d("json", response.toString());
+    private void loadJson(String url, final View view ) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for (int i = 0; i < response.length(); i++){
+                        JSONObject obj = response.getJSONObject(i);
 
-                        try {
-                            JSONArray jsonArray =  new JSONArray(response);
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                BerandaModel item = new BerandaModel();
-
-                                item.setId(jsonObject.getString("id"));
-                                item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
-                                item.setUsia(jsonObject.getString("usia"));
-                                item.setValue_warna(jsonObject.getString("value_warna"));
-                                item.setSolusi(jsonObject.getString("solusi"));
-                                item.setGambar(jsonObject.getString("gambar"));
-                                item.setKondisi(jsonObject.getString("kondisi"));
-                                item.setPenulis(jsonObject.getString("penulis"));
-                                item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
+                        BerandaModel item = new BerandaModel();
+//
+                                item.setId(obj.getString("id"));
+                                item.setNama_penyakit(obj.getString("nama_penyakit"));
+                                item.setUsia(obj.getString("usia"));
+                                item.setValue_warna(obj.getString("value_warna"));
+                                item.setSolusi(obj.getString("solusi"));
+                                item.setGambar(obj.getString("gambar"));
+                                item.setKondisi(obj.getString("kondisi"));
+                                item.setPenulis(obj.getString("penulis"));
+                                item.setTanggal_upload(obj.getString("tanggal_upload"));
                                 mItems.add(item);
 
                                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -128,18 +127,59 @@ public class Beranda extends Fragment {
                                 myAdapter = new BerandaAdapter(getContext(), mItems);
                                 mRecyclerView.setAdapter(myAdapter);
                                 myAdapter.notifyDataSetChanged();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
-                }, new Response.ErrorListener() {
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-            }
-        });
-        MySingleton.getInstance(this.getContext()).addToRequestQueue(stringRequest);
+            }}
+        );
+
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DAUN,
+//                new Response.Listener<String>() {
+//                    public void onResponse(String response){
+//                        Log.d("json", response.toString());
+//
+//                        //try catch biar g force close kalo error
+//                        try {
+//                            JSONArray jsonArray =  new JSONArray(response);
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject obj = jsonArray.getJSONObject(i);
+//                                BerandaModel item = new BerandaModel();
+//
+//                                item.setId(obj.getString("id"));
+//                                item.setNama_penyakit(obj.getString("nama_penyakit"));
+//                                item.setUsia(obj.getString("usia"));
+//                                item.setValue_warna(obj.getString("value_warna"));
+//                                item.setSolusi(obj.getString("solusi"));
+//                                item.setGambar(obj.getString("gambar"));
+//                                item.setKondisi(obj.getString("kondisi"));
+//                                item.setPenulis(obj.getString("penulis"));
+//                                item.setTanggal_upload(obj.getString("tanggal_upload"));
+//                                mItems.add(item);
+//
+//                                mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//                                mRecyclerView.setHasFixedSize(true);
+//                                myAdapter = new BerandaAdapter(getContext(), mItems);
+//                                mRecyclerView.setAdapter(myAdapter);
+//                                myAdapter.notifyDataSetChanged();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//        });
+        MySingleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
 
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -164,7 +204,7 @@ public class Beranda extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                cariData(s, context);
+                nyobaCari(s, context);
                 return false;
             }
 
@@ -172,42 +212,97 @@ public class Beranda extends Fragment {
         });
     }
 
+    protected void nyobaCari(final String keyword, final Context context){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COBA_CARI, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String json = response.toString();
+                Log.e("Response: ", response.toString());
+                try {
+                    JSONArray array = new JSONArray(json);
+                    mItems.clear();
+                    myAdapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject jsonObject = array.getJSONObject(i);
+
+                        BerandaModel item = new BerandaModel();
+//
+                        item.setId(jsonObject.getString("id"));
+                        item.setNama_penyakit(jsonObject.getString("nama_penyakit"));
+                        item.setUsia(jsonObject.getString("usia"));
+                        item.setValue_warna(jsonObject.getString("value_warna"));
+                        item.setSolusi(jsonObject.getString("solusi"));
+                        item.setGambar(jsonObject.getString("gambar"));
+                        item.setKondisi(jsonObject.getString("kondisi"));
+                        item.setPenulis(jsonObject.getString("penulis"));
+                        item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
+                        mItems.add(item);
+
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        mRecyclerView.setHasFixedSize(true);
+                        myAdapter = new BerandaAdapter(getContext(), mItems);
+                        mRecyclerView.setAdapter(myAdapter);
+                        myAdapter.notifyDataSetChanged();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("keyword", keyword);
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+
+    }
+
     private void cariData(final String keyword, final Context context ) {
 
-        StringRequest SearchReq = new StringRequest(Request.Method.POST, URL_CARI,
-                new Response.Listener<String>() {
+
+        StringRequest SearchReq = new StringRequest(Request.Method.POST, URL_CARI, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response){
                         String json = response.toString();
                         Log.e("Response: ", response.toString());
                         try {
-//                            JSONObject jsonObject = new JSONObject(response);
-                            JSONObject jsonObject = new JSONObject(String.valueOf(response));
-                            int value = jsonObject.getInt("value");
-                            if (value == 1) {
-                                mItems.clear();
-                                berandaAdapter.notifyDataSetChanged();
+                            JSONObject jsonObject = new JSONObject(json);
+                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+                            mItems.clear();
+                            berandaAdapter.notifyDataSetChanged();
 
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                JSONObject obj = jsonArray.getJSONObject(i);
 
-                                String getObject = jsonObject.getString("results");
-                                JSONArray jsonArray = new JSONArray(getObject);
+                                BerandaModel item = new BerandaModel();
+//
+                                item.setId(obj.getString("id"));
+                                item.setNama_penyakit(obj.getString("nama_penyakit"));
+                                item.setUsia(obj.getString("usia"));
+                                item.setValue_warna(obj.getString("value_warna"));
+                                item.setSolusi(obj.getString("solusi"));
+                                item.setGambar(obj.getString("gambar"));
+                                item.setKondisi(obj.getString("kondisi"));
+                                item.setPenulis(obj.getString("penulis"));
+                                item.setTanggal_upload(obj.getString("tanggal_upload"));
+                                mItems.add(item);
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject obj = jsonArray.getJSONObject(i);
-                                    BerandaModel item = new BerandaModel();
-
-                                    item.setId(obj.getString("id"));
-                                    item.setNama_penyakit(obj.getString("nama_penyakit"));
-                                    item.setUsia(obj.getString("usia"));
-                                    item.setValue_warna(obj.getString("value_warna"));
-                                    item.setSolusi(obj.getString("solusi"));
-                                    item.setGambar(obj.getString("gambar"));
-                                    item.setKondisi(obj.getString("kondisi"));
-                                    item.setPenulis(obj.getString("penulis"));
-                                    item.setTanggal_upload(obj.getString("tanggal_upload"));
-                                    mItems.add(item);
-                                 //   berandaAdapter.notifyDataSetChanged();
-                                }
+                                mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                mRecyclerView.setHasFixedSize(true);
+                                myAdapter = new BerandaAdapter(getContext(), mItems);
+                                mRecyclerView.setAdapter(myAdapter);
+                                myAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){
                             e.printStackTrace();
