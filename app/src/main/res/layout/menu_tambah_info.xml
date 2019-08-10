@@ -312,7 +312,7 @@
                         android:layout_marginBottom="47dp"
                         android:layout_toEndOf="@+id/iv_gambar"
                         android:background="@drawable/green_rounded_all"
-                        android:text="GAMBAR"
+                        android:text="PILIH"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
                 </RelativeLayout>

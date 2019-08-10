@@ -35,7 +35,7 @@ public class ScanHasilDetail extends AppCompatActivity {
 
     public static final String URL = Server.URL;
     public static final String URL_DETAIL = Server.URL + "ApiDetailPenyakitDaun.php";
-    TextView id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal, tv_umur, tv_modus_nilai, tv_jumlah_ambil_gambar;
+    TextView tv_usia, id, tv_penyakit, tv_kondisi, tv_judul_solusi, tv_diunggah, tv_tanggal, tv_umur, tv_modus_nilai, tv_jumlah_ambil_gambar;
     ImageView img_detail, info_detail;
 
 

@@ -137,7 +137,7 @@ public class Scan extends Fragment {
         private TextView modus_nilai;
         private Button btn_tambah_tanggal;
         EditText txt_usia;
-        int max_ambil_gambar = 10;
+        int max_ambil_gambar = 1;
         String stringUsia;
 
 
@@ -276,7 +276,7 @@ public class Scan extends Fragment {
 
                                     Toast.makeText(getContext(), "ambil gambar ke : " + i, Toast.LENGTH_SHORT).show();
 //                                    Toast.makeText(getContext(), "Rata2 : " + result, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(getContext(), "Hasil : " +HModus, Toast.LENGTH_LONG).show();
                                 }
 
                                 }

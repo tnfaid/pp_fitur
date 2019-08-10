@@ -28,6 +28,8 @@ public class BerandaAdapter extends RecyclerView.Adapter<BerandaAdapter.ViewHold
 
     private Context mContext;
     private List<BerandaModel> listBeranda;
+    private List<BerandaModel> listBerandaFiltered;
+//    private BerandaAdapterListener listener;
     View mView;
 
     public BerandaAdapter(Context mContext, ArrayList<BerandaModel> orderList) {

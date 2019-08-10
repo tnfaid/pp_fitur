@@ -32,7 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Activity.CaraPenggunaanAplikasi_info"></activity>
         <activity
             android:name=".Activity.Detection.SettingsActivity"
             android:label="Detection Details"
@@ -66,19 +66,18 @@
         <activity
             android:name=".Activity.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.Blob.MainBlobDetector"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.DetailPenyakitDaunActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -89,6 +88,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

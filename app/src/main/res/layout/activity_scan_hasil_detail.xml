@@ -168,20 +168,19 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:layout_marginLeft="20dp"
+                    android:textSize="15dp"
                     android:id="@+id/tv_kondisi"
                     android:layout_width="match_parent"
-                    android:layout_height="91dp"
+                    android:layout_height="wrap_content"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_kondisi"
-                    android:layout_gravity="center_vertical|end"
-                    android:gravity="center"
                     android:paddingLeft="20dp"
                     android:paddingTop="5dp"
                     android:scrollHorizontally="false"
                     android:text="daun hijau muda ketika umur 25 hari"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tv_judul_solusi"
@@ -196,11 +195,12 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:layout_marginLeft="20dp"
+                    android:textSize="15dp"
                     android:id="@+id/tv_solusi"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="100dp"
+                    android:layout_height="wrap_content"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_solusi"
                     android:layout_gravity="center_horizontal|end"
@@ -209,9 +209,39 @@
                     android:paddingTop="5dp"
                     android:scrollHorizontally="false"
                     android:text="kekurangan pupuk urea, tingkatkan pupuk 25%, Untuk 5 t/ha menggunakan takaran urea 75 kg/ha"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textColor="@color/black" />
                 <!--android:justificationMode="iter_word"-->
+
+                //ini usia
+                <TextView
+                    android:id="@+id/tv_judul_usia"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:paddingRight="20dp"
+                    android:layout_below="@id/tv_solusi"
+                    android:paddingLeft="20dp"
+                    android:text="Usia"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:fontFamily="@font/open_sans_bold"
+                    android:textSize="15dp"
+                    android:id="@+id/tv_usia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
+                    android:paddingRight="20dp"
+                    android:layout_below="@id/tv_judul_usia"
+                    android:layout_gravity="center_horizontal|end"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/black"
+                    android:text="20 HST"/>
 
             </RelativeLayout>
 
