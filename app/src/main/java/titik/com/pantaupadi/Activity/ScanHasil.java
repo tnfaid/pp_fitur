@@ -56,6 +56,9 @@ public class ScanHasil extends AppCompatActivity {
         intModus = intent.getIntExtra("intIntentHasil", 0);
         intUmur = intent.getIntExtra("intIntentUsia", 0);
 
+        intent.putExtra("take" , jumlahAmbilGambar);
+        intent.putExtra("modus" , intModus);
+
         /**
          *
          * get umur bermasalah coy, bisa sih kalo get pake cara ini
@@ -140,7 +143,7 @@ public class ScanHasil extends AppCompatActivity {
 //                                    }
                                 }else{
                                     Toast.makeText(ScanHasil.this, "Warna tidak dikenali", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(ScanHasil.this, "ini text_modus = " + getIntent().getIntExtra("intIntentHasil",0) + ", yang ini text_umur = " + getIntent().getIntExtra("intIntentUsia",0), Toast.LENGTH_LONG ).show();
+//                                    Toast.makeText(ScanHasil.this, "ini text_modus = " + getIntent().getIntExtra("intIntentHasil",0) + ", yang ini text_umur = " + getIntent().getIntExtra("intIntentUsia",0), Toast.LENGTH_LONG ).show();
                                 }
                             }
                             Log.e(getClass().getSimpleName(), "total items :"+mItems.size() );

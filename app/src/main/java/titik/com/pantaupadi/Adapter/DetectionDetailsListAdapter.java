@@ -20,6 +20,7 @@ import titik.com.pantaupadi.FungsiDeteksi.DetectionStepDetail;
  * <p>
  * Created by stefan on 28.05.2017.
  */
+//!!!!!!!!!!!jadi ini tuh detail buat yang contour warna itulohhh dari hasil scan
 public class DetectionDetailsListAdapter extends ArrayAdapter<DetectionStepDetail> {
 
     /**

@@ -29,6 +29,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
     private Context mContext;
     private List<BerandaModel> listBeranda;
     View mView;
+    int jumlahAmbilGambar, intModus, intUmur;
 
     public DetectionAdapter(Context mContext, ArrayList<BerandaModel> orderList) {
         this.mContext = mContext;
@@ -42,6 +43,9 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
     public DetectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detect_hasil_hitung, parent, false);
         DetectionAdapter.ViewHolder vh = new DetectionAdapter.ViewHolder(mView); // pass the view to View Holder
+
+
+
         return vh;
     }
 
@@ -58,6 +62,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
 //        Glide.with(mContext)
 //                .load(beranda.getGambar())
 //                .into(holder.mGambar);
+
 
         holder.mNamaPenyakit.setText(beranda.getNama_penyakit());
         holder.mAuthor.setText(beranda.getPenulis());
@@ -76,6 +81,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
                 intent.putExtra("kondisi",listBeranda.get(position).getKondisi());
                 intent.putExtra("solusi",listBeranda.get(position).getSolusi());
                 intent.putExtra("gambar",listBeranda.get(position).getGambar());
+                intent.putExtra("usia",listBeranda.get(position).getUsia());
 
                 mContext.startActivity(intent);
             }
@@ -116,6 +122,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
             mTanggalPost = itemView.findViewById(R.id.tv_tanggal_unggah);
             mDetail = itemView.findViewById(R.id.beranda_penyakit);
             mGambar = itemView.findViewById(R.id.imageView);
+
         }
 
 
