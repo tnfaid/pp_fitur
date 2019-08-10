@@ -43,7 +43,7 @@ public class DetectionAdapter extends RecyclerView.Adapter<DetectionAdapter.View
     public DetectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detect_hasil_hitung, parent, false);
         DetectionAdapter.ViewHolder vh = new DetectionAdapter.ViewHolder(mView); // pass the view to View Holder
-       
+
 
 
         return vh;
