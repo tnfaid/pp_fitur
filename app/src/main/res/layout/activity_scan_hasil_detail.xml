@@ -168,22 +168,12 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-<<<<<<< HEAD
                 <com.codesgood.views.JustifiedTextView
-=======
-                <me.biubiubiu.justifytext.library.JustifyTextView
-                    android:layout_marginLeft="20dp"
-                    android:textSize="15dp"
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:id="@+id/tv_kondisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_kondisi"
-<<<<<<< HEAD
-                    android:layout_gravity="center_vertical|end"
-=======
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:paddingLeft="20dp"
                     android:paddingTop="5dp"
                     android:scrollHorizontally="false"
@@ -203,13 +193,7 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-<<<<<<< HEAD
                 <com.codesgood.views.JustifiedTextView
-=======
-                <me.biubiubiu.justifytext.library.JustifyTextView
-                    android:layout_marginLeft="20dp"
-                    android:textSize="15dp"
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:id="@+id/tv_solusi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

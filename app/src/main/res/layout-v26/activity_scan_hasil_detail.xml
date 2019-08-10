@@ -56,11 +56,11 @@
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@id/iv_gambar"
             android:paddingLeft="20dp"
-            android:text="Banyak Ambil Gambar"
+            android:text="Tanggal Unggah"
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/tv_ambil_gambar"
+            android:id="@+id/tv_tanggal_unggah"
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@+id/tv_judul_tanggal"
@@ -76,15 +76,15 @@
             android:id="@+id/tv_judul_diunggah"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_below="@+id/tv_ambil_gambar"
+            android:layout_below="@+id/tv_tanggal_unggah"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@id/iv_gambar"
             android:paddingLeft="20dp"
-            android:text="Rataan nilai yang muncul"
+            android:text="Penulis"
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/tv_modus_nilai"
+            android:id="@+id/tv_penulis"
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@+id/tv_judul_diunggah"
@@ -96,37 +96,13 @@
             android:textStyle="bold"
             android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/tv_judul_umur"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@+id/tv_modus_nilai"
-            android:layout_marginTop="3dp"
-            android:layout_toRightOf="@id/iv_gambar"
-            android:paddingLeft="20dp"
-            android:text="Usia Tanaman"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/tv_umur"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_below="@+id/tv_judul_umur"
-            android:layout_marginTop="2dp"
-            android:layout_toRightOf="@id/iv_gambar"
-            android:paddingLeft="20dp"
-            android:text="xx HST"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18dp" />
-
         <ImageView
             android:id="@+id/iv_info_detail"
             android:layout_width="42dp"
             android:layout_height="40dp"
-            android:layout_below="@id/tv_modus_nilai"
+            android:layout_alignTop="@id/tv_judul_tanggal"
             android:layout_marginLeft="-64dp"
-            android:layout_marginTop="-182dp"
+            android:layout_marginTop="-70dp"
             android:layout_toRightOf="@+id/tv_judul_tanggal"
             android:src="@drawable/ic_info_black_24dp" />
     </RelativeLayout>
@@ -169,32 +145,18 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-<<<<<<< HEAD
                 <com.codesgood.views.JustifiedTextView
-=======
-                <me.biubiubiu.justifytext.library.JustifyTextView
-                    android:layout_marginLeft="20dp"
-                    android:textSize="15dp"
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:id="@+id/tv_kondisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
                     android:layout_below="@id/tv_judul_kondisi"
-<<<<<<< HEAD
-                    android:layout_gravity="center_vertical|end"
-=======
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:paddingLeft="20dp"
                     android:paddingTop="5dp"
                     android:scrollHorizontally="false"
                     android:text="daun hijau muda ketika umur 25 hari"
-<<<<<<< HEAD
                     android:textColor="@color/black"
                     android:textSize="15dp" />
-=======
-                    android:textColor="@color/black" />
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
 
                 <TextView
                     android:id="@+id/tv_judul_solusi"
@@ -209,13 +171,7 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-<<<<<<< HEAD
                 <com.codesgood.views.JustifiedTextView
-=======
-                <me.biubiubiu.justifytext.library.JustifyTextView
-                    android:layout_marginLeft="20dp"
-                    android:textSize="15dp"
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
                     android:id="@+id/tv_solusi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -225,13 +181,8 @@
                     android:paddingTop="5dp"
                     android:scrollHorizontally="false"
                     android:text="kekurangan pupuk urea, tingkatkan pupuk 25%, Untuk 5 t/ha menggunakan takaran urea 75 kg/ha"
-<<<<<<< HEAD
                     android:textColor="@color/black"
                     android:textSize="15dp" />
-=======
-                    android:textColor="@color/black" />
->>>>>>> 72e14f8d7d2af2e16c01f56516d03df832602429
-                <!--android:justificationMode="iter_word"-->
 
                 //ini usia
                 <TextView

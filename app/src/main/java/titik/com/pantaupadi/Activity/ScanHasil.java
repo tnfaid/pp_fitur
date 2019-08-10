@@ -138,11 +138,8 @@ public class ScanHasil extends AppCompatActivity {
                                     item.setTanggal_upload(jsonObject.getString("tanggal_upload"));
 ////                                        item.setValue_warna(jsonObject.getString("value_warna"));
                                     mItems.add(item);
-//                                    } else{
-//                                        Toast.makeText(ScanHasil.this, "Data tidak terdaftar", Toast.LENGTH_SHORT).show();
-//                                    }
                                 }else{
-                                    Toast.makeText(ScanHasil.this, "Warna tidak dikenali", Toast.LENGTH_SHORT).show();
+                                      Toast.makeText(ScanHasil.this, "Warna tidak dikenali", Toast.LENGTH_SHORT).show();
 //                                    Toast.makeText(ScanHasil.this, "ini text_modus = " + getIntent().getIntExtra("intIntentHasil",0) + ", yang ini text_umur = " + getIntent().getIntExtra("intIntentUsia",0), Toast.LENGTH_LONG ).show();
                                 }
                             }

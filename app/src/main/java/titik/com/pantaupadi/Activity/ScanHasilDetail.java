@@ -53,8 +53,8 @@ public class ScanHasilDetail extends AppCompatActivity {
         tv_penyakit = (TextView) findViewById(R.id.tv_penyakit);
         tv_kondisi = (TextView) findViewById(R.id.tv_kondisi);
         tv_judul_solusi = (TextView) findViewById(R.id.tv_solusi);
-        tv_tanggal = (TextView) findViewById(R.id.tv_tanggal);
-        tv_diunggah = (TextView) findViewById(R.id.tv_diunggah);
+        tv_tanggal = (TextView) findViewById(R.id.tv_tanggal_unggah);
+        tv_diunggah = (TextView) findViewById(R.id.tv_penulis);
         img_detail = (ImageView) findViewById(R.id.gambar);
         tv_modus_nilai = (TextView) findViewById(R.id.tv_modus_nilai);
         tv_jumlah_ambil_gambar = (TextView) findViewById(R.id.tv_ambil_gambar);
